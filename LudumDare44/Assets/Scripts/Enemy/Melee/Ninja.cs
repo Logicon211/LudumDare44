@@ -47,6 +47,7 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
 
     private void Update()
     {
+        CheckIsAttacking();
     }
 
     public void Damage(float damageTaken)
@@ -91,5 +92,10 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
         PlayerController playerController = player.gameObject.GetComponent<PlayerController>();
         playerController.Damage(attackDamage);
         Instantiate(hitEffect, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 0.1f), Quaternion.identity);
+    }
+
+    private void CheckIfAttacking()
+    {
+        
     }
 }
