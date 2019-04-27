@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotgunPowerUp : PowerUp {
+public class ShieldPowerUpOld : PowerUpOld {
 
 	public override void GivePowerUp() {
-		controller.PickupShotgun();
+		controller.PickupShield();
 	}
 }
