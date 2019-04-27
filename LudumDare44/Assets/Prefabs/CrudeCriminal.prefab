@@ -293,9 +293,12 @@ MonoBehaviour:
   movementSmoothing: 0.05
   health: 10
   shootCooldown: 5
-  animator: {fileID: 0}
+  animator: {fileID: 95244461216015096}
   explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
   poofEffect: {fileID: 156964, guid: bfe13d3159b77fd479831552255c3a41, type: 3}
+  roomController: {fileID: 0}
+  shotLocation: {fileID: 4850739919538926}
+  projectile: {fileID: 110538, guid: 431624222d72c7947a5d7d26e3ef0764, type: 3}
 --- !u!114 &-569289314358243700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +311,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1201d1a652d7a9548be35b41900c60e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 20
+  maxDistance: 40
   attackDistance: 40
   speed: 10
-  attackSpeed: 20
+  attackSpeed: 100
+  attackCooldown: 2

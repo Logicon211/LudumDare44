@@ -23,8 +23,8 @@ TagManager:
   - Terrain
   - Enemies
   - PlayerBullet
-  - 
-  - 
+  - EnemyBullet
+  - Obstacle
   - 
   - 
   - 

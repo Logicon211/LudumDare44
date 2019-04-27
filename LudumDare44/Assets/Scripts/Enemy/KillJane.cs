@@ -1,51 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Enemy.Interface;
 using UnityEngine;
-    
-public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float>
+
+public class KillJane : MonoBehaviour
 {
     [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
     [SerializeField] private float health = 10f;
     [SerializeField] private float shootCooldown = 5f;
+    [SerializeField] private float attackDamage = 5f;
+    [SerializeField] private float maxRangeToLandAttack = 7f;
     public Animator animator;
 
     public GameObject explosion;
     public GameObject poofEffect;
-
-    private AudioSource audio;
-    private Rigidbody2D enemyBody;
-
-    private Vector3 velocity = Vector3.zero;
-    private float currentCooldown;
-    private bool hasShot = true;
-    private GameManager gameManager;
-
-    private float currentHealth;
-    SpriteRenderer spriteRenderer;
-
-    private bool isDead = false;
+    public GameObject hitEffect;
+    public AudioClip attackSound;
 
     public RoomController roomController;
-    public Transform shotLocation;
-    public GameObject projectile;
+	
+    private AudioSource audio;
+    private Rigidbody2D enemyBody;
+    private Vector3 velocity = Vector3.zero;
+    private float currentCooldown;
+    private GameManager gameManager;
+    private GameObject player;
+    private EnemyController enemyController;
 
+    private float currentHealth;
+    private float attackDuration;
+    private SpriteRenderer spriteRenderer;
+
+    private bool isDead = false;
+    private bool isAttacking = false;
+
+    private Transform shootPosition;
+    
     private void Awake() {
         enemyBody = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        enemyController = GetComponent<EnemyController>();
         currentCooldown = 2f;
     }
-
+    
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        currentHealth = health;
         Instantiate(poofEffect, transform.position, Quaternion.identity);
+        currentHealth = health;
     }
 
     private void Update()
     {
-        CheckAttackCooldown();
+
     }
 
     public void Damage(float damageTaken)
@@ -88,29 +95,17 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
 
     public void Attack(float tarX, float tarY)
     {
-        // if(Vector2.Distance(player.transform.position, transform.position) <= attackRange) {
-        //     //TODO: Do damage to player
-        //     PlayerController playerController = player.gameObject.GetComponent<PlayerController>();
-        //     playerController.Damage(attackDamage);
-        //     Instantiate(hitEffect, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 0.1f), Quaternion.identity);
-        // }
-        animator.SetTrigger("shootTrigger");
-        audio.Play(0);
-        GameObject bullet = Instantiate(projectile, shotLocation.position, Quaternion.identity) as GameObject;
-        bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(tarX * 10f, tarY * 10f);
-        hasShot = true;
+        animator.SetTrigger("Attack");
+        audio.PlayOneShot(attackSound);
     }
 
-    private void CheckAttackCooldown()
+    public void FinishPunch()
     {
-        if (hasShot) 
-        {
-            currentCooldown -= Time.deltaTime;
-            if (currentCooldown <= 0f) 
-            {
-                currentCooldown = shootCooldown;
-                hasShot = false;
-            }
+        if(Vector2.Distance(player.transform.position, transform.position) <= maxRangeToLandAttack) {
+            //TODO: Do damage to player
+            var craigController = player.gameObject.GetComponent<CraigController>();
+            craigController.Damage(attackDamage);
+            Instantiate(hitEffect, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 0.1f), Quaternion.identity);
         }
     }
 }

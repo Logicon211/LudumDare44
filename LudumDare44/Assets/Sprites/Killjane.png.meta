@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: 5571423630625436163
     second: Killjane_2
+  - first:
+      213: -3950864572640876305
+    second: Killjane_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -119,17 +122,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 256
-        height: 256
+        y: 512
+        width: 512
+        height: 512
       alignment: 9
-      pivot: {x: 0.2224418, y: 0.4016249}
+      pivot: {x: 0.19, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77d1bbdcb9a87a74d90cc9ece00960ca
+      spriteID: 3896ea9df80e30043aba100cc4f9a88f
       internalID: -5596859944291737405
       vertices: []
       indices: 
@@ -139,18 +142,18 @@ TextureImporter:
       name: Killjane_1
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 256
-        height: 256
+        x: 512
+        y: 512
+        width: 512
+        height: 512
       alignment: 9
-      pivot: {x: 0.2224418, y: 0.4016249}
+      pivot: {x: 0.19, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aea50661cfd823a4cb6a8a63cd5b8ce0
+      spriteID: a72914a36599677489edbb1b5039c13b
       internalID: -7724285483574083801
       vertices: []
       indices: 
@@ -160,19 +163,40 @@ TextureImporter:
       name: Killjane_2
       rect:
         serializedVersion: 2
-        x: 512
-        y: 0
-        width: 256
-        height: 256
+        x: 1024
+        y: 512
+        width: 512
+        height: 512
       alignment: 9
-      pivot: {x: 0.2224418, y: 0.4016249}
+      pivot: {x: 0.19, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 704d277d533b50f4f9f4d571c1952976
+      spriteID: 421b9ef9a2e07de4abb0451726257e9f
       internalID: 5571423630625436163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Killjane_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 9
+      pivot: {x: 0.19, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7060c06b01250744be0f82ae9f23432
+      internalID: -3950864572640876305
       vertices: []
       indices: 
       edges: []
@@ -180,7 +204,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a107d356ae1cb1f4c8ad09f7cdec233d
+    spriteID: d9a9ffc9f67b11644a500b61a9f73fe0
     internalID: 0
     vertices: []
     indices: 
