@@ -9,6 +9,7 @@ TagManager:
   - Garbage
   - Rocket
   - Wall
+  - Health Bar
   layers:
   - Default
   - TransparentFX

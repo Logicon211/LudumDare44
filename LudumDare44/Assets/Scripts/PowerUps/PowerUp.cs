@@ -8,6 +8,7 @@ public abstract class PowerUp : MonoBehaviour
 
     // Prefab for powerup overlay
     public GameObject powerUpOverlay;
+    private HealthBar healthBar;
 
     // Actual overlay used by the object
     private GameObject overlay;
@@ -19,6 +20,7 @@ public abstract class PowerUp : MonoBehaviour
     {
         pickupable = false;
         overlay = InstantiatePowerUpOverlay();
+        healthBar = GameObject.FindWithTag("Health Bar").GetComponent<HealthBar>();
     }
 
     // Update is called once per frame
@@ -63,12 +65,16 @@ public abstract class PowerUp : MonoBehaviour
     {
         pickupable = true;
         overlaySpriteRenderer.enabled = true;
+        
+        healthBar.ShowHealthLossPreview(0.3f);
     }
 
     private void DisablePowerUpOverlay()
     {
         pickupable = false;
         overlaySpriteRenderer.enabled = false;
+        
+        healthBar.HideHealthLossPreview();
     }
     private bool IsPickupable()
     {
@@ -79,9 +85,14 @@ public abstract class PowerUp : MonoBehaviour
     {
         PowerUpEffect();
         Destroy(overlay);
+        healthBar.HideHealthLossPreview();
+        healthBar.DecreaseHealth(GetHealthLossAmount());
         Destroy(gameObject);
+        
     }
 
     public abstract void PowerUpEffect();
+
+    public abstract float GetHealthLossAmount();
 
 }

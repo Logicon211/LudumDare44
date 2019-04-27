@@ -95,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpOverlay: {fileID: 679222922426803567, guid: 858f5ba70ce095848953e31f335b4fda,
     type: 3}
+  healthBar: {fileID: 0}
 --- !u!58 &8380426446095339737
 CircleCollider2D:
   m_ObjectHideFlags: 0
