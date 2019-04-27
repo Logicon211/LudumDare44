@@ -1,8 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public interface IEnemy
+namespace Enemy.Interface
 {
-    
+    public interface IEnemy
+    {
+        void Move(float tarX, float tarY);
+
+        void Rotate(Vector3 direction);
+
+        void Attack(float tarX, float tarY);
+    }
 }

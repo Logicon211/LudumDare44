@@ -1,5 +1,8 @@
-﻿public interface IDamageable<T>
+﻿namespace Enemy.Interface
 {
-    void Damage(T damageTaken);
+    public interface IDamageable<T>
+    {
+        void Damage(T damageTaken);
+    }
 }
 
