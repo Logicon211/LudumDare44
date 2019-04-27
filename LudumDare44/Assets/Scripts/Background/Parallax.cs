@@ -14,23 +14,26 @@ public class Parallax : MonoBehaviour
     [SerializeField] private float topLayerSpeed = 20f;
 
     private Vector3 startPosition;
+    private GameObject parent;
     
     // Start is called before the first frame update
     private void Start()
     {
-        startPosition = transform.position;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        MoveLayer(middleLayer, middleLayerSpeed);
+        startPosition = transform.position;
+        MoveLayer(bottomLayer, bottomLayerSpeed, 163.84f);
+        MoveLayer(middleLayer, middleLayerSpeed, 163.84f);
+        MoveLayer(topLayer, topLayerSpeed, 163.84f);
     }
 
-    private void MoveLayer(GameObject layer, float speed)
+    private void MoveLayer(GameObject layer, float speed, float length)
     {
-        float newPosition = Mathf.Repeat(Time.time * speed, 5);
-        transform.position = startPosition + Vector3.forward * newPosition;
+        float newPosition = Mathf.Repeat(Time.time * speed, length);
+        layer.transform.position = startPosition + Vector3.right * newPosition;
     }
 
     public void SetSpeed(float bottomLayerSpeed, float middleLayerSpeed, float topLayerSpeed)
