@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
-    public bool active = false;
+    public bool running = false;
 
     public int[] ninjasWaves;
     public int[] crudeCriminalsWaves;
@@ -21,7 +21,8 @@ public class RoomController : MonoBehaviour
     public int currentAliveEnemyCount = 0;
 
     public Transform[] spawnPoints;
-    public GameObject door;
+    public GameObject nextDoor;
+    public GameObject oldDoor;
     public GameObject roof;
 
     private GameObject player;
@@ -30,16 +31,19 @@ public class RoomController : MonoBehaviour
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag("Player");
+        nextDoor.SetActive(false);
+        nextDoor.SetActive(true);
 	}
     // Update is called once per frame
     void Update()
     {
-        if(active) {
+        if(running) {
             if(currentAliveEnemyCount <=0) {
                 currentWaveNumber++;
 
-                if(currentWaveNumber >= numberOfWaves - 1) {
-                    OpenDoor();
+                if(currentWaveNumber >= numberOfWaves) {
+                    OpenNextDoor();
+                    running = false;
                 } else {
                     
                     Quaternion rotation = Quaternion.identity;
@@ -64,8 +68,6 @@ public class RoomController : MonoBehaviour
                         //currentAliveEnemyCount++;
                     }
                 }
-
-                //Spawn some guys in
             }
         }
     }
@@ -98,14 +100,22 @@ public class RoomController : MonoBehaviour
         currentAliveEnemyCount--;
     }
 
-    public void OpenDoor() {
-        door.SetActive(false);
+    public void OpenNextDoor() {
+        nextDoor.SetActive(false);
         //Play open door noise?
+    }
+
+    public void closePreviousDoor() {
+        if(!running) {
+            oldDoor.SetActive(true);
+            running = true;
+            //Play open door noise?
+        }
     }
 
     public void DeactivateRoom() {
         //Close door behind player and show the roof
-        door.SetActive(true);
+        nextDoor.SetActive(true);
         roof.SetActive(true);
         //Play close door noise?
     }
