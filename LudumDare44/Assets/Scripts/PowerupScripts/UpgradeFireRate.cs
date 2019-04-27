@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AccuracyUpgrade : PowerUp
+public class UpgradeFireRate : PowerUp
 {
+
+    public override float GetHealthLossAmount()
+    {
+        return 25f;
+    }
 
     private CraigController cc;
 
     public override void PowerUpEffect()
     {
-        cc.upgradeAccuracy();
+        cc.upgradeFireRate();
         //play some unique sound effect?
     }
 
@@ -19,6 +24,4 @@ public class AccuracyUpgrade : PowerUp
         base.Start();
         cc = (GameObject.FindGameObjectWithTag("Player")).GetComponent<CraigController>();
     }
-
-
 }

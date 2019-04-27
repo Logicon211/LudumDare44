@@ -11,8 +11,8 @@ public class CraigController : MonoBehaviour
     private float horizontalMove;
     private float verticalMove;
 
-    private float maxHealth = 140f;
-    private float health = 140f;
+    private float maxHealth = 200f;
+    private float health = 200f;
     private float energy = 0f;
     private float bulletVelocity = 50f;
 
@@ -68,7 +68,7 @@ public class CraigController : MonoBehaviour
     private float damage = 3f;
     private float heatCost = 5f;
     public float playerspeed = 4f;
-    public float accuracy = 15f;
+    public float accuracy = 10f;
     
 
     //Bullet speed
@@ -258,7 +258,7 @@ public class CraigController : MonoBehaviour
         for (int i = 0; i<spread; i++) {
             GameObject projectileLaunched = Instantiate(bullet, shootPosition.position, rotation) as GameObject;
             projectileLaunched.GetComponent<BulletController>().setValues(damage, knockback);
-            projectileLaunched.transform.Rotate(0, 0, Random.Range(-15, 15));
+            projectileLaunched.transform.Rotate(0, 0, Random.Range(-accuracy, accuracy));
             projectileLaunched.GetComponent<Rigidbody2D>().velocity = projectileLaunched.transform.right * (bulletVelocity + Random.Range(-2, 2));
 
         }
@@ -321,9 +321,9 @@ public class CraigController : MonoBehaviour
     }
     public void upgradeBulletVolume()
     {
-        if (AS.volume + 0.2f < 1f)
+        if (AS.volume + 0.3f < 1f)
         {
-            AS.volume = AS.volume + 0.2f;
+            AS.volume = AS.volume + 0.3f;
         }
         else
         {
@@ -334,13 +334,19 @@ public class CraigController : MonoBehaviour
     {
         if (accuracy - 5f >= 0f)
         {
-            accuracy = accuracy - 5f;
+            accuracy = accuracy - 4f;
         }
         else
         {
             accuracy = 0f;
         }
     }
+
+    public void upgradeMaxHealth()
+    {
+        maxHealth = maxHealth + 50;
+    }
+
 
     /**
      * One time upgrades
