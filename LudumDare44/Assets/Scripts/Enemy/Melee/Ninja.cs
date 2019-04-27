@@ -28,24 +28,30 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
 
     private Transform shootPosition;
     
+    private void Awake() {
+        enemyBody = GetComponent<Rigidbody2D>();
+        audio = GetComponent<AudioSource>();
+        currentCooldown = 2f;
+    }
+    
     private void Start()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     private void Update()
     {
-        throw new System.NotImplementedException();
+      
     }
 
     public void Damage(float damageTaken)
     {
-        throw new System.NotImplementedException();
+        
     }
     
     public void Kill()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void Move(float tarX, float tarY)
@@ -53,14 +59,16 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
         Vector3 targetVelocity = new Vector2(tarX * 10f, tarY * 10f);
         enemyBody.velocity = Vector3.SmoothDamp(enemyBody.velocity, targetVelocity, ref velocity, movementSmoothing);
     }
-
+    
     public void Rotate(Vector3 direction)
     {
-        throw new System.NotImplementedException();
+        if (direction != Vector3.zero) {
+            transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+        }
     }
 
     public void Attack(float tarX, float tarY)
     {
-        throw new System.NotImplementedException();
+       
     }
 }
