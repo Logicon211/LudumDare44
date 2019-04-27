@@ -17,6 +17,7 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     public GameObject explosion;
     public GameObject poofEffect;
     public GameObject hitEffect;
+    public AudioClip attackSound;
 	
     private AudioSource audio;
     private Rigidbody2D enemyBody;
@@ -24,11 +25,14 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     private float currentCooldown;
     private GameManager gameManager;
     private GameObject player;
+    private EnemyMovement enemyMovement;
 
     private float currentHealth;
+    private float attackDuration;
     private SpriteRenderer spriteRenderer;
 
     private bool isDead = false;
+    private bool isAttacking = false;
 
     private Transform shootPosition;
     
@@ -37,6 +41,7 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
         audio = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player");
+        enemyMovement = GetComponent<EnemyMovement>();
         currentCooldown = 2f;
     }
     
@@ -47,7 +52,7 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
 
     private void Update()
     {
-        CheckIsAttacking();
+
     }
 
     public void Damage(float damageTaken)
@@ -88,14 +93,17 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
 
     public void Attack(float tarX, float tarY)
     {
-        //TODO: Do damage to player
-        PlayerController playerController = player.gameObject.GetComponent<PlayerController>();
-        playerController.Damage(attackDamage);
-        Instantiate(hitEffect, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 0.1f), Quaternion.identity);
+        animator.SetTrigger("Attack");
+        audio.PlayOneShot(attackSound);
     }
 
-    private void CheckIsAttacking()
+    public void FinishPunch()
     {
-        
+        if(Vector2.Distance(player.transform.position, transform.position) <= enemyMovement.GetAttackRange()) {
+            //TODO: Do damage to player
+            var craigController = player.gameObject.GetComponent<CraigController>();
+            craigController.Damage(attackDamage);
+            Instantiate(hitEffect, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 0.1f), Quaternion.identity);
+        }
     }
 }

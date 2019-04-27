@@ -50,4 +50,9 @@ public class EnemyMovement : MonoBehaviour
         moveDir = Vector3.zero;
         move = false;
     }
+
+    public float GetAttackRange()
+    {
+        return attackDistance;
+    }
 }
