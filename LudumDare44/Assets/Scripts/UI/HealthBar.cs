@@ -31,6 +31,8 @@ public class HealthBar : MonoBehaviour
         
         HideHealthLossPreview();
         currentHealth = 1f;
+           this.transform.position = ()
+            screen
     }
     
     // Update is called once per frame
