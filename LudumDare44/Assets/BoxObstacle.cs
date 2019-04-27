@@ -11,11 +11,15 @@ public class BoxObstacle : MonoBehaviour, IDamageable<float>
 
     public float health = 20f;
 
+    private float currentHealth;
+    SpriteRenderer spriteRenderer;
+
     private bool isDead = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        currentHealth = health;
     }
 
     // Update is called once per frame
@@ -26,9 +30,14 @@ public class BoxObstacle : MonoBehaviour, IDamageable<float>
 
     public void Damage(float damageTaken)
     {
-        health -= damageTaken;
-        if (health <= 0f)
+        currentHealth -= damageTaken;
+        if (currentHealth <= 0f)
             Kill();
+        if (health > currentHealth) 
+        {
+            var healthPercentage = currentHealth/health;
+            spriteRenderer.color = new Color(1f, healthPercentage, healthPercentage);
+        }
     }
 
     public void Kill()

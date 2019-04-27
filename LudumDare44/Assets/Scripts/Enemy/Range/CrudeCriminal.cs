@@ -28,6 +28,8 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
 
     private Transform shootPosition;
 
+    public RoomController roomController;
+
     private void Awake() {
         enemyBody = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
@@ -63,6 +65,9 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
             isDead = true;
             Instantiate(explosion, transform.position, Quaternion.identity);
             // gameManager.DecreaseEnemyCount();
+            if(roomController) {
+                roomController.DecrementAliveEnemyCount();
+            }
             Destroy(gameObject);
         }
     }
