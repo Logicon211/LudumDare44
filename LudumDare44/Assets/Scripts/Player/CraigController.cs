@@ -67,8 +67,8 @@ public class CraigController : MonoBehaviour
     private float fireRate = 0.2f;
     private float damage = 3f;
     private float heatCost = 5f;
-    public float playerspeed = 4f;
-    public float accuracy = 10f;
+    private float playerspeed = 10f;
+    private float accuracy = 8f;
     
 
     //Bullet speed
@@ -246,20 +246,19 @@ public class CraigController : MonoBehaviour
         rotation *= Quaternion.Euler(Vector3.forward * 90);
 
 
-//Spread = 1;
-//fireRate = 1.5f;
-//damage = 3f;
-//heatCooldownAccel = 1;
-//heatCost = 5f;
-//craigSpeed = 5f;
-//bulletVolume = 50f;
+            //Spread = 1;
+            //fireRate = 1.5f;
+            //damage = 3f;
+            //heatCooldownAccel = 1;
+            //heatCost = 5f;
+            //craigSpeed = 5f;
+            //bulletVolume = 50f;
 
-
-        for (int i = 0; i<spread; i++) {
+            for (int i = 0; i<spread; i++) {
             GameObject projectileLaunched = Instantiate(bullet, shootPosition.position, rotation) as GameObject;
             projectileLaunched.GetComponent<BulletController>().setValues(damage, knockback);
             projectileLaunched.transform.Rotate(0, 0, Random.Range(-accuracy, accuracy));
-            projectileLaunched.GetComponent<Rigidbody2D>().velocity = projectileLaunched.transform.right * (bulletVelocity + Random.Range(-2, 2));
+            projectileLaunched.GetComponent<Rigidbody2D>().velocity = projectileLaunched.transform.right * (bulletVelocity);
 
         }
             animator.SetTrigger("ShootGun");
@@ -332,9 +331,9 @@ public class CraigController : MonoBehaviour
     }
     public void upgradeAccuracy()
     {
-        if (accuracy - 5f >= 0f)
+        if (accuracy - 3f >= 0f)
         {
-            accuracy = accuracy - 4f;
+            accuracy = accuracy - 3f;
         }
         else
         {
