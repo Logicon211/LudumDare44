@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enemy.Interface;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour {
