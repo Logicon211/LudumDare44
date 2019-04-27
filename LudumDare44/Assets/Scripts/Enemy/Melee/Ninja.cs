@@ -25,7 +25,7 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     private float currentCooldown;
     private GameManager gameManager;
     private GameObject player;
-    private EnemyMovement enemyMovement;
+    private EnemyController enemyController;
 
     private float currentHealth;
     private float attackDuration;
@@ -41,7 +41,7 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
         audio = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player");
-        enemyMovement = GetComponent<EnemyMovement>();
+        enemyController = GetComponent<EnemyController>();
         currentCooldown = 2f;
     }
     
@@ -99,7 +99,7 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
 
     public void FinishPunch()
     {
-        if(Vector2.Distance(player.transform.position, transform.position) <= enemyMovement.GetAttackRange()) {
+        if(Vector2.Distance(player.transform.position, transform.position) <= enemyController.GetAttackRange()) {
             //TODO: Do damage to player
             var craigController = player.gameObject.GetComponent<CraigController>();
             craigController.Damage(attackDamage);
