@@ -16,7 +16,7 @@ MonoBehaviour:
   TilePxSize: {x: 50, y: 50}
   SliceOffset: {x: 0, y: 0}
   SlicePadding: {x: 0, y: 0}
-  BackgroundColor: {r: 0, g: 0.4716981, b: 0.016779719, a: 0.8039216}
+  BackgroundColor: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 0.8039216}
   VisualTileSize: {x: 76.4, y: 76.4}
   VisualTilePadding: 1
   TileRowLength: 9
@@ -367,7 +367,7 @@ MonoBehaviour:
       showTileWithPrefab: 0
       showPrefabPreviewInTilePalette: 0
     autilingGroup: 0
-  m_pixelsPerUnit: 100
+  m_pixelsPerUnit: 10
   m_brushGroupNames:
   - Default
   - 
