@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
 	private float currentTimeBetweenSpawns;
 
 	private GameObject player;
-	private PlayerController playerController;
+	private CraigController craigController;
 	public static GameManager instance = null;
 
 	private GameObject cameraObject;
@@ -33,8 +33,8 @@ public class GameManager : MonoBehaviour {
 	private string[] cutscenes = {"Pre-BossScene", "SecondBossScene"};
 
 	private int nextCutsceneIndex = 0;
-	public AudioSource AS;
-	public AudioClip AC1;
+	// public AudioSource AS;
+	// public AudioClip AC1;
 
 
 	private void Awake() {
@@ -52,11 +52,11 @@ public class GameManager : MonoBehaviour {
 		//boardScript = GetComponent<BoardManager>();
 		//Call the InitGame function to initialize the first level 
 		//InitGame();
-		spawnManager = GetComponent<WaveSpawnManager>();
-		if(spawn){
-			maxLevel = spawnManager.GetNumOfLevels();
-			currentTimeBetweenSpawns = cooldownBetweenSpawns;
-		}
+		// spawnManager = GetComponent<WaveSpawnManager>();
+		// if(spawn){
+		// 	maxLevel = spawnManager.GetNumOfLevels();
+		// 	currentTimeBetweenSpawns = cooldownBetweenSpawns;
+		// }
 	}
 
 	// Use this for initialization
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour {
 		player = GameObject.FindWithTag("Player");
 		cameraObject = GameObject.FindWithTag("MainCamera");
 		listener = cameraObject.GetComponent<AudioListener>();
-		playerController = player.GetComponent<PlayerController>();
+		craigController = player.GetComponent<CraigController>();
 
 		// if(spawn){
 		// 	enemyCount = spawnManager.GetNumOfEnemiesOnLevel(currentLevel);
@@ -155,7 +155,7 @@ public class GameManager : MonoBehaviour {
 
 	public void CheckGameOver() {
 		if (SceneManager.GetActiveScene().name != "GameOverScreen" && !victory){
-			if (playerController.GetHealth() <= 0f){
+			if (craigController.GetHealth() <= 0f){
 				loss = true;
 				SceneManager.LoadScene("GameOverScreen", LoadSceneMode.Single);
 			}
