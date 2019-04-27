@@ -17,8 +17,11 @@ public class RoomController : MonoBehaviour
     public int currentAliveEnemyCount = 0;
 
     public Transform[] spawnPoints;
+    public GameObject door;
 
     private GameObject player;
+
+
 
 	// Use this for initialization
 	void Start () {

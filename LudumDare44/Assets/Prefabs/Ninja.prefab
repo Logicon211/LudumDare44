@@ -167,7 +167,7 @@ MonoBehaviour:
   health: 10
   shootCooldown: 5
   attackDamage: 5
-  animator: {fileID: 0}
+  animator: {fileID: 95725642779222972}
   explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
   poofEffect: {fileID: 156964, guid: bfe13d3159b77fd479831552255c3a41, type: 3}
   hitEffect: {fileID: 1410727943527182, guid: fd5f37cdce8bb924ca437ea0068f84af, type: 3}
@@ -185,9 +185,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 0
-  attackDistance: 2
+  attackDistance: 7
   speed: 10
-  attackSpeed: 200
+  attackSpeed: 20
+  attackCooldown: 1
 --- !u!82 &82736749433757514
 AudioSource:
   m_ObjectHideFlags: 0
