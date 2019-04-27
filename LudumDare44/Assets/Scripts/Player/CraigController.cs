@@ -11,10 +11,6 @@ public class CraigController : MonoBehaviour
     private float horizontalMove;
     private float verticalMove;
 
-    public float defaultPlayerSpeed = 4f;
-    public float playerspeed = 4f;
-
-
     private float maxHealth = 140f;
     private float health = 140f;
     private float energy = 0f;
@@ -52,6 +48,7 @@ public class CraigController : MonoBehaviour
     private GameObject particles;
 
     private Transform shootPosition;
+    public AudioSource GunSizzlan;
 
     private int BASE_ANIMATION_LAYER = 0;
     private int SHOTGUN_ANIMATION_LAYER = 1;
@@ -62,26 +59,24 @@ public class CraigController : MonoBehaviour
     private int heatMax = 100;
     private float cooldown = 0;
     private float heatcooldowndelaytimer;
-    private float heatCooldownAccelBase = 2f;
+    private float heatCooldownAccelBase = 0.2f;
     private float heatCooldownAccel = 0f;
 
     //Modular upgrade
     private int spread = 1;
-    private float fireRate = 0.1f;
+    private float fireRate = 0.2f;
     private float damage = 3f;
-
-
     private float heatCost = 5f;
-    private float craigSpeed = 5f;
-    private float bulletVolume = 50f;
+    public float playerspeed = 4f;
+    
 
     //Bullet speed
     //One time upgrades:
-    private bool knockback;
-    private bool heatCooldownDelay;
-    private bool bulletTime;
-    private bool healthRegenUp;
-    private bool explodingEnemies;
+    private bool knockback = false;
+    private bool heatCooldownDelay = false;
+    private bool bulletTime = false;
+    private bool healthRegenUp = false;
+    private bool explodingEnemies = false;
 
     //Joke upgrades
     //Gun sound
@@ -118,7 +113,6 @@ public class CraigController : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal");
         verticalMove = Input.GetAxisRaw("Vertical");
         //Get Action inputs
-        //LeftClickDown = Input.GetButtonDown("Fire1");
         LeftClickDown = Input.GetButton("Fire1");
         LeftClick = Input.GetButton("Fire1");
         RightClick = Input.GetButton("Fire2");
@@ -134,10 +128,7 @@ public class CraigController : MonoBehaviour
 
         PlayerRigidBody.mass = 1;
 
-
         Debug.Log(heat);
-
-
 
         if (direction != Vector2.zero)
         {
@@ -208,13 +199,8 @@ public class CraigController : MonoBehaviour
             }
         }
 
-
         cooldown = cooldown -Time.deltaTime;
-
-
-        //cooldown heat timer
-
-        
+        GunSizzlan.volume = (0.5f * (heat / heatMax));
 
     }
 
@@ -222,22 +208,6 @@ public class CraigController : MonoBehaviour
     private void FixedUpdate()
     {
 
-    }
-
-
-    /*
-        Takes an int corresponding to the current powerup craig will get
-         0 - nothing
-         1 - Laser
-         2 - Shotgun
-         3 - Health
-         4 - Wrench?
-         5 - Speed Boost
-         6 - Shiny Teeth
-    */
-    public void SetPowerUp(int powerupValue)
-    {
-        //Do Stuff
     }
 
     public void Damage(float damageTaken)
@@ -270,7 +240,7 @@ public class CraigController : MonoBehaviour
         if (cooldown <= 0)
         {
 
-        AS.PlayOneShot(shotgunSound);
+        
 
         Quaternion rotation = transform.rotation;
         rotation *= Quaternion.Euler(Vector3.forward * 90);
@@ -293,27 +263,99 @@ public class CraigController : MonoBehaviour
 
         }
             animator.SetTrigger("ShootGun");
+            AS.PlayOneShot(shotgunSound);
             heat += heatCost;
             //Debug.Log(heat);
+
             
-            cooldown = fireRate + (0.4f * (heat/heatMax));
+
+            cooldown = fireRate + (0.35f * (heat/heatMax));
             if (!heatCooldownDelay)
             {
                 heatcooldowndelaytimer = 1f;
             }
             else
             {
-                heatcooldowndelaytimer = 0.4f;
-                heatCooldownAccel = heatCooldownAccelBase;
+                heatcooldowndelaytimer = 0.5f;
             }
-            
+            heatCooldownAccel = heatCooldownAccelBase;
+
             //Debug.Log(cooldown);
             if (heat >= heatMax)
             {
                 //OVERHEAT
             }
-            
-    }
-    }//End of cooldown
 
+        }//End of cooldown
+    }
+
+
+    //Spread = 1;
+    //fireRate = 1.5f;
+    //damage = 3f;
+    //heatCooldownAccel = 1;
+    //heatCost = 5f;
+    //craigSpeed = 5f;
+    //bulletVolume = 50f;
+
+        //Modular upgrades
+    public void upgradeSpread()
+    {
+        spread++;
+    }
+    public void upgradeFireRate()
+    {
+        fireRate = fireRate - 0.05f;
+    }
+    public void upgradeDamage()
+    {
+        damage++;
+    }
+    public void upgradeHeatCost()
+    {
+        heatCost = heatCost - 1f;
+    }
+    public void upgradeCraigSpeed()
+    {
+        playerspeed += 0.5f;
+    }
+    public void upgradeBulletVolume()
+    {
+        if (AS.volume + 0.2f < 1f)
+        {
+            AS.volume = AS.volume + 0.2f;
+        }
+        else
+        {
+            AS.volume = 1f;
+        }
+    }
+    /**
+     * One time upgrades
+    private bool knockback = false;
+    private bool heatCooldownDelay = false;
+    private bool bulletTime = false;
+    private bool healthRegenUp = false;
+    private bool explodingEnemies = false;
+    */
+    public void upgradeKnockback()
+    {
+        knockback = true;
+    }
+    public void upgradeHeatCooldownDelay()
+    {
+        heatCooldownDelay = true;
+    }
+    public void upgradeBulletTime()
+    {
+        bulletTime = true;
+    }
+    public void upgradeHealthRegenUp()
+    {
+        healthRegenUp = true;
+    }
+    public void UpgradeExplodingEnemies()
+    {
+        explodingEnemies = true;
+    }
 }
