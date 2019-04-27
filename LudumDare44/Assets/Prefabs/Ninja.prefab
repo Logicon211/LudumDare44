@@ -166,9 +166,12 @@ MonoBehaviour:
   movementSmoothing: 0.05
   health: 10
   shootCooldown: 5
+  attackDamage: 5
   animator: {fileID: 0}
   explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
   poofEffect: {fileID: 156964, guid: bfe13d3159b77fd479831552255c3a41, type: 3}
+  hitEffect: {fileID: 1410727943527182, guid: fd5f37cdce8bb924ca437ea0068f84af, type: 3}
+  attackSound: {fileID: 8300000, guid: 4f11b51baa26ec34c979ed61696d60c2, type: 3}
 --- !u!114 &3451232877390836828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +187,7 @@ MonoBehaviour:
   maxDistance: 0
   attackDistance: 2
   speed: 10
-  attackSpeed: 20
+  attackSpeed: 200
 --- !u!82 &82736749433757514
 AudioSource:
   m_ObjectHideFlags: 0
