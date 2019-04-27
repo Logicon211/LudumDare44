@@ -94,7 +94,7 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
         Instantiate(hitEffect, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 0.1f), Quaternion.identity);
     }
 
-    private void CheckIfAttacking()
+    private void CheckIsAttacking()
     {
         
     }
