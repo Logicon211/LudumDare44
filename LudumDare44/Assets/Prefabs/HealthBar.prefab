@@ -278,6 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1969940900728887470}
   - component: {fileID: 1969940900728887469}
+  - component: {fileID: 1137979195}
   m_Layer: 0
   m_Name: HealthLossPreviewRedSprite
   m_TagString: Untagged
@@ -336,7 +337,8 @@ SpriteRenderer:
   m_SortingLayerID: 1626492625
   m_SortingLayer: 4
   m_SortingOrder: 120
-  m_Sprite: {fileID: 21300000, guid: 4bc19a833422e4044a1913619ffdda75, type: 3}
+  m_Sprite: {fileID: 5313941687634734116, guid: 27df1dc64f481304f821ffd5540333d7,
+    type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -347,6 +349,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1137979195
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969940900728887471}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1cadad0f663fdfe4bb00a227d2ea29f7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1969940900887537471
 GameObject:
   m_ObjectHideFlags: 0
