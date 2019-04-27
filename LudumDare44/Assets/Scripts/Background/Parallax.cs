@@ -25,9 +25,9 @@ public class Parallax : MonoBehaviour
     private void Update()
     {
         startPosition = transform.position;
-        MoveLayer(bottomLayer, bottomLayerSpeed, 163.84f);
-        MoveLayer(middleLayer, middleLayerSpeed, 163.84f);
-        MoveLayer(topLayer, topLayerSpeed, 163.84f);
+        MoveLayer(bottomLayer, -bottomLayerSpeed, 163.84f);
+        MoveLayer(middleLayer, -middleLayerSpeed, 163.84f);
+        MoveLayer(topLayer,  -topLayerSpeed, 163.84f);
     }
 
     private void MoveLayer(GameObject layer, float speed, float length)
