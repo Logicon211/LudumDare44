@@ -12,6 +12,7 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     [SerializeField] private float health = 10f;
     [SerializeField] private float shootCooldown = 5f;
     [SerializeField] private float attackDamage = 5f;
+    [SerializeField] private float maxRangeToLandAttack = 7f;
     public Animator animator;
 
     public GameObject explosion;
@@ -99,7 +100,7 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
 
     public void FinishPunch()
     {
-        if(Vector2.Distance(player.transform.position, transform.position) <= enemyController.GetAttackRange()) {
+        if(Vector2.Distance(player.transform.position, transform.position) <= maxRangeToLandAttack) {
             //TODO: Do damage to player
             var craigController = player.gameObject.GetComponent<CraigController>();
             craigController.Damage(attackDamage);
