@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f3024fc7bd38eb49aab2f9f50a78984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 1947279288}
 --- !u!1001 &1381198839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -354,3 +354,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe30090d881811478a8e571525223f6, type: 3}
+--- !u!4 &1947279288 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8082889731504182021, guid: aaef8b9c606be0f47a591775cf30a6ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 1381198839}
+  m_PrefabAsset: {fileID: 0}

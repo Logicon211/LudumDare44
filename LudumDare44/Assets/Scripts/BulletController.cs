@@ -6,7 +6,10 @@ using UnityEngine;
 public class BulletController : MonoBehaviour {
 
 	public GameObject hitEffect;
-	public float damage = 10f;
+	private float damage = 10f;
+    private bool knockback;
+    
+
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +20,15 @@ public class BulletController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void setValues(float damageIn, bool knockbackIn)
+    {
+        damage = damageIn;
+        knockback = knockbackIn;
+    }
+
+
+
 
 	/// <summary>
 	/// Sent when another object enters a trigger collider attached to this
