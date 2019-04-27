@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageUpgrade : PowerUp
+public class UpgradeExplodingEnemies : PowerUp
 {
 
     private CraigController cc;
 
+    public override float GetHealthLossAmount()
+    {
+        return 60f;
+    }
+
     public override void PowerUpEffect()
     {
-        cc.upgradeDamage();        
+        cc.UpgradeExplodingEnemies();
         //play some unique sound effect?
     }
 
@@ -19,6 +24,4 @@ public class DamageUpgrade : PowerUp
         base.Start();
         cc = (GameObject.FindGameObjectWithTag("Player")).GetComponent<CraigController>();
     }
-
-
 }
