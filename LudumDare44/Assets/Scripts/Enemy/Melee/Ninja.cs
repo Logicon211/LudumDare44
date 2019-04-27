@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Enemy.Interface;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
 {
@@ -22,7 +24,7 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     private GameManager gameManager;
 
     private float currentHealth;
-    SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
 
     private bool isDead = false;
 
@@ -31,24 +33,30 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     private void Awake() {
         enemyBody = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentCooldown = 2f;
     }
     
     private void Start()
     {
-        
+        currentHealth = health;
     }
 
     private void Update()
     {
-      
+        CheckAttackCooldown();
     }
 
     public void Damage(float damageTaken)
     {
-        health -= damageTaken;
-        if (health <= 0f)
+        currentHealth -= damageTaken;
+        if (currentHealth <= 0f && !isDead)
             Kill();
+        if (health > currentHealth) 
+        {
+            var healthPercentage = currentHealth/health;
+            spriteRenderer.color = new Color(1f, healthPercentage, healthPercentage);
+        }
     }
     
     public void Kill()
@@ -69,13 +77,32 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     
     public void Rotate(Vector3 direction)
     {
-        if (direction != Vector3.zero) {
+        if (direction != Vector3.zero) 
+        {
             transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
         }
     }
 
     public void Attack(float tarX, float tarY)
     {
-       
+        if(Vector2.Distance(player.transform.position, transform.position) <= attackRange) {
+            //TODO: Do damage to player
+            PlayerController playerController = player.gameObject.GetComponent<PlayerController>();
+            playerController.Damage(attackDamage);
+            Instantiate(hitEffect, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 0.1f), Quaternion.identity);
+        }
+    }
+
+    private void CheckAttackCooldown()
+    {
+        if (hasShot) 
+        {
+            currentCooldown -= Time.deltaTime;
+            if (currentCooldown <= 0f) 
+            {
+                currentCooldown = shootCooldown;
+                hasShot = false;
+            }
+        }
     }
 }
