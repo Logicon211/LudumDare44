@@ -6,11 +6,15 @@ public class RoomController : MonoBehaviour
 {
     public bool active = false;
 
-    public int[] ninjas;
-    public int[] crudeCriminals;
-    public int[] oilOrks;
+    public int[] ninjasWaves;
+    public int[] crudeCriminalsWaves;
+    public int[] oilOrksWaves;
     public int numberOfWaves;
     // Start is called before the first frame update
+
+    public GameObject ninja;
+    public GameObject crudeCriminal;
+    public GameObject oilOrk;
 
     private int currentWaveNumber = -1;
 
@@ -18,9 +22,9 @@ public class RoomController : MonoBehaviour
 
     public Transform[] spawnPoints;
     public GameObject door;
+    public GameObject roof;
 
     private GameObject player;
-
 
 
 	// Use this for initialization
@@ -34,8 +38,31 @@ public class RoomController : MonoBehaviour
             if(currentAliveEnemyCount <=0) {
                 currentWaveNumber++;
 
-                if(currentAliveEnemyCount >= numberOfWaves - 1) {
-                    //Open door to next room
+                if(currentWaveNumber >= numberOfWaves - 1) {
+                    OpenDoor();
+                } else {
+                    
+                    Quaternion rotation = Quaternion.identity;
+                    //Spawn Ninjas
+                    for(int i=0; i< ninjasWaves[currentWaveNumber]; i++) {
+                        GameObject spawnedNinja = Instantiate (ninja, PickSpawnPointNotOnPlayer(), rotation);
+                        spawnedNinja.GetComponent<Ninja>().roomController = this;
+                        currentAliveEnemyCount++;
+                    }
+
+                    //Spawn Crude Criminals
+                    for(int i=0; i< crudeCriminalsWaves[currentWaveNumber]; i++) {
+                        GameObject spawnedCrudeCriminal = Instantiate (crudeCriminal, PickSpawnPointNotOnPlayer(), rotation);
+                        spawnedCrudeCriminal.GetComponent<CrudeCriminal>().roomController = this;
+                        currentAliveEnemyCount++;
+                    }
+
+                    //Spawn Orks
+                    for(int i=0; i< oilOrksWaves[currentWaveNumber]; i++) {
+                        //GameObject spawnedOilOrk = Instantiate (oilOrk, PickSpawnPointNotOnPlayer(), rotation);
+                        //TODO: Assign roomcontroller here
+                        //currentAliveEnemyCount++;
+                    }
                 }
 
                 //Spawn some guys in
@@ -71,8 +98,16 @@ public class RoomController : MonoBehaviour
         currentAliveEnemyCount--;
     }
 
+    public void OpenDoor() {
+        door.SetActive(false);
+        //Play open door noise?
+    }
+
     public void DeactivateRoom() {
         //Close door behind player and show the roof
+        door.SetActive(true);
+        roof.SetActive(true);
+        //Play close door noise?
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
