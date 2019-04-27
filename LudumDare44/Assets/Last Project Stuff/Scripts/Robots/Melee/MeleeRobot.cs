@@ -107,7 +107,7 @@ public class MeleeRobot : MonoBehaviour, IDamageable<float> {
 			isDead = true;
 			Instantiate(explosion, transform.position, Quaternion.identity);
 			garbageScript.SpawnAtLocation(1, transform.position.x, transform.position.y, false);
-			gameManager.DecreaseEnemyCount();
+			// gameManager.DecreaseEnemyCount();
 			Destroy(gameObject);
 		}
 	}

@@ -103,7 +103,7 @@ public class RangeRobotController : MonoBehaviour, IDamageable<float> {
 			isDead = true;
 			Instantiate(explosion, transform.position, Quaternion.identity);
 			garbageScript.SpawnAtLocation(GarbageSpawnController.CIRCLE_GARBAGE_INDEX, transform.position.x, transform.position.y, false);
-			gameManager.DecreaseEnemyCount();
+			// gameManager.DecreaseEnemyCount();
 			Destroy(gameObject);
 		}
 	}

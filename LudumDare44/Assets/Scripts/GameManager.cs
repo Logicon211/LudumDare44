@@ -66,18 +66,18 @@ public class GameManager : MonoBehaviour {
 		listener = cameraObject.GetComponent<AudioListener>();
 		playerController = player.GetComponent<PlayerController>();
 
-		if(spawn){
-			enemyCount = spawnManager.GetNumOfEnemiesOnLevel(currentLevel);
-			bossCount = spawnManager.GetNumOfBossesOnLevel(currentLevel);
-			spawnManager.SpawnWave(currentLevel);
-		}
-		bossMessageDone=false;
-		bossMessageCount=0;
+		// if(spawn){
+		// 	enemyCount = spawnManager.GetNumOfEnemiesOnLevel(currentLevel);
+		// 	bossCount = spawnManager.GetNumOfBossesOnLevel(currentLevel);
+		// 	spawnManager.SpawnWave(currentLevel);
+		// }
+		// bossMessageDone=false;
+		// bossMessageCount=0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		CheckForWaveChange();
+		// CheckForWaveChange();
 		if (player != null)
 			CheckGameOver();
 	}
@@ -85,53 +85,53 @@ public class GameManager : MonoBehaviour {
 	
 	
 	// Logic for checking for a wave change
-	private void CheckForWaveChange() {
-		if (enemyCount <= 0 && bossCount <= 0 && spawn) {
-			currentTimeBetweenSpawns -= Time.deltaTime;
+	// private void CheckForWaveChange() {
+	// 	if (enemyCount <= 0 && bossCount <= 0 && spawn) {
+	// 		currentTimeBetweenSpawns -= Time.deltaTime;
 			
-			if(!bossMessageDone && bossMessageCount <2){
-				if(spawnManager.GetNumOfBossesOnLevel(currentLevel+2) >0){
+	// 		if(!bossMessageDone && bossMessageCount <2){
+	// 			if(spawnManager.GetNumOfBossesOnLevel(currentLevel+2) >0){
 				
-					bossMessageDone = true;
-					if(bossMessageCount ==0){
-						bossMessageCount++;
-						AS.Play();
-						Debug.Log("playing AC1");
+	// 				bossMessageDone = true;
+	// 				if(bossMessageCount ==0){
+	// 					bossMessageCount++;
+	// 					AS.Play();
+	// 					Debug.Log("playing AC1");
 					
-					}
-					else if(bossMessageCount ==1){
-						AS.clip = AC1;
-						AS.Play();
-						bossMessageCount++;
-						Debug.Log("playing AC2");
-					}
-				}
+	// 				}
+	// 				else if(bossMessageCount ==1){
+	// 					AS.clip = AC1;
+	// 					AS.Play();
+	// 					bossMessageCount++;
+	// 					Debug.Log("playing AC2");
+	// 				}
+	// 			}
 
-			}	
-			if (currentTimeBetweenSpawns <= 0f) {
-				currentLevel++;
-				if (currentLevel <= maxLevel) {
-					enemyCount = spawnManager.GetNumOfEnemiesOnLevel(currentLevel);
-					bossCount = spawnManager.GetNumOfBossesOnLevel(currentLevel);
+	// 		}	
+	// 		if (currentTimeBetweenSpawns <= 0f) {
+	// 			currentLevel++;
+	// 			if (currentLevel <= maxLevel) {
+	// 				enemyCount = spawnManager.GetNumOfEnemiesOnLevel(currentLevel);
+	// 				bossCount = spawnManager.GetNumOfBossesOnLevel(currentLevel);
 					
-					// Enemy count under 0 indicates a cutscene
-					if (enemyCount < 0) {
+	// 				// Enemy count under 0 indicates a cutscene
+	// 				if (enemyCount < 0) {
 						
-						bossMessageDone =false;
-						StartCutScene();
-					}
-					else {
-						SpawnWave(currentLevel);
-						currentTimeBetweenSpawns = cooldownBetweenSpawns;
-					}
-				}
-				else if (currentLevel > maxLevel) {
-					Debug.Log("VICTORY");
-					Victory();
-				}
-			}
-		}
-	}
+	// 					bossMessageDone =false;
+	// 					StartCutScene();
+	// 				}
+	// 				else {
+	// 					SpawnWave(currentLevel);
+	// 					currentTimeBetweenSpawns = cooldownBetweenSpawns;
+	// 				}
+	// 			}
+	// 			else if (currentLevel > maxLevel) {
+	// 				Debug.Log("VICTORY");
+	// 				Victory();
+	// 			}
+	// 		}
+	// 	}
+	// }
 
 	private void SpawnWave(int currentLevel) {
 		spawnManager.SpawnWave(currentLevel);
@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour {
 		SceneManager.UnloadSceneAsync(cutscenes[nextCutsceneIndex]);
 		nextCutsceneIndex++;
 		listener.enabled = true;
-		SetEnemyCountToZero();
+		// SetEnemyCountToZero();
 		UnPauseGame();
 	}
 
@@ -180,20 +180,20 @@ public class GameManager : MonoBehaviour {
 		Time.timeScale = 1;
 	}
 
-	public void DecreaseEnemyCount() {
-		if (enemyCount > 0)
-			enemyCount--;
-	}
+	// public void DecreaseEnemyCount() {
+	// 	if (enemyCount > 0)
+	// 		enemyCount--;
+	// }
 
-	public void DecreaseBossCount() {
-		if (bossCount > 0)
-			bossCount--;
-	}
+	// public void DecreaseBossCount() {
+	// 	if (bossCount > 0)
+	// 		bossCount--;
+	// }
 
-	//Used By cutscenes to indicate they are done
-	public void SetEnemyCountToZero() {
-		enemyCount = 0;
-	}
+	// //Used By cutscenes to indicate they are done
+	// public void SetEnemyCountToZero() {
+	// 	enemyCount = 0;
+	// }
 	
 	//Utility Methods
 	
@@ -214,9 +214,9 @@ public class GameManager : MonoBehaviour {
 		loss = false;
 		SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
 		currentLevel = 0;
-		enemyCount = spawnManager.GetNumOfEnemiesOnLevel(currentLevel);
-		bossCount = spawnManager.GetNumOfBossesOnLevel(currentLevel);
-		spawnManager.SpawnWave(currentLevel);
+		// enemyCount = spawnManager.GetNumOfEnemiesOnLevel(currentLevel);
+		// bossCount = spawnManager.GetNumOfBossesOnLevel(currentLevel);
+		// spawnManager.SpawnWave(currentLevel);
 	}
 
 	public void LoadScene(int sceneIndex) {
