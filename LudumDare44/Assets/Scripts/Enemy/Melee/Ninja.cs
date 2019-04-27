@@ -53,10 +53,12 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     
     public void Kill()
     {
-        isDead = true;
-        Instantiate(explosion, transform.position, Quaternion.identity);
-        // gameManager.DecreaseEnemyCount();
-        Destroy(gameObject);
+        if(!isDead) {
+            isDead = true;
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            // gameManager.DecreaseEnemyCount();
+            Destroy(gameObject);
+        }
     }
 
     public void Move(float tarX, float tarY)

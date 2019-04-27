@@ -43,7 +43,7 @@ public class BoxObstacle : MonoBehaviour, IDamageable<float>
                 Vector3 velocity = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f));
                 velocity.Normalize();
                 rb.AddForce(velocity * 1000f);
-                rb.AddTorque(Random.Range(0f, 1000f));
+                rb.AddTorque(Random.Range(0f, 500f));
 
             }
             // gameManager.DecreaseEnemyCount();
