@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7661a81e9710a418836ddbaa007fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpOverlay: {fileID: 8659477461484029276, guid: c57e4972c4a4b814bb7c4cfcb516647f,
+  powerUpOverlay: {fileID: 679222922426803567, guid: 858f5ba70ce095848953e31f335b4fda,
     type: 3}
 --- !u!212 &1106343348
 SpriteRenderer:

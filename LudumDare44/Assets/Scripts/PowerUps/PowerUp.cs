@@ -52,7 +52,7 @@ public abstract class PowerUp : MonoBehaviour
 
     private GameObject InstantiatePowerUpOverlay()
     {
-        Vector3 overlayPosition = transform.position + new Vector3(0f, 2f);
+        Vector3 overlayPosition = transform.position + new Vector3(0f, 3.5f);
         GameObject overlay = Instantiate(powerUpOverlay, overlayPosition, Quaternion.identity);
         overlaySpriteRenderer = overlay.GetComponent<SpriteRenderer>();
         overlaySpriteRenderer.enabled = false;
