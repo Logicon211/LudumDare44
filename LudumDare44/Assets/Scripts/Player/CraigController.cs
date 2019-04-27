@@ -68,6 +68,7 @@ public class CraigController : MonoBehaviour
     private float damage = 3f;
     private float heatCost = 5f;
     public float playerspeed = 4f;
+    public float accuracy = 15f;
     
 
     //Bullet speed
@@ -258,7 +259,7 @@ public class CraigController : MonoBehaviour
         for (int i = 0; i<spread; i++) {
             GameObject projectileLaunched = Instantiate(bullet, shootPosition.position, rotation) as GameObject;
             projectileLaunched.GetComponent<BulletController>().setValues(damage, knockback);
-            projectileLaunched.transform.Rotate(0, 0, Random.Range(-5, 5));
+            projectileLaunched.transform.Rotate(0, 0, Random.Range(-15, 15));
             projectileLaunched.GetComponent<Rigidbody2D>().velocity = projectileLaunched.transform.right * (bulletVelocity + Random.Range(-2, 2));
 
         }
@@ -330,6 +331,18 @@ public class CraigController : MonoBehaviour
             AS.volume = 1f;
         }
     }
+    public void upgradeAccuracy()
+    {
+        if (accuracy - 5f >= 0f)
+        {
+            accuracy = accuracy - 5f;
+        }
+        else
+        {
+            accuracy = 0f;
+        }
+    }
+
     /**
      * One time upgrades
     private bool knockback = false;
@@ -358,4 +371,5 @@ public class CraigController : MonoBehaviour
     {
         explodingEnemies = true;
     }
+    
 }
