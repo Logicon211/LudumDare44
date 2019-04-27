@@ -28,8 +28,8 @@ public class BulletController : MonoBehaviour {
 		IDamageable<float> damagable = other.GetComponent<IDamageable<float>>();
 		if(damagable != null) {
 			damagable.Damage(damage);
-			Instantiate(hitEffect, transform.position, Quaternion.identity);
-			Destroy(gameObject);
 		}
+		Instantiate(hitEffect, transform.position, Quaternion.identity);
+		Destroy(gameObject);
 	}
 }
