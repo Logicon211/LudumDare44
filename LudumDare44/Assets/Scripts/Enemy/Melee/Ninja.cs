@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Enemy.Interface;
+using TMPro.EditorUtilities;
 using UnityEngine;
-using UnityEngine.Networking;
 
 public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
 {
@@ -11,17 +11,19 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
     [SerializeField] private float health = 10f;
     [SerializeField] private float shootCooldown = 5f;
+    [SerializeField] private float attackDamage = 5f;
     public Animator animator;
 
     public GameObject explosion;
     public GameObject poofEffect;
+    public GameObject hitEffect;
 	
     private AudioSource audio;
     private Rigidbody2D enemyBody;
     private Vector3 velocity = Vector3.zero;
     private float currentCooldown;
-    private bool hasShot = true;
     private GameManager gameManager;
+    private GameObject player;
 
     private float currentHealth;
     private SpriteRenderer spriteRenderer;
@@ -34,6 +36,7 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
         enemyBody = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        player = GameObject.FindGameObjectWithTag("Player");
         currentCooldown = 2f;
     }
     
@@ -44,7 +47,6 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
 
     private void Update()
     {
-        CheckAttackCooldown();
     }
 
     public void Damage(float damageTaken)
@@ -85,24 +87,9 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
 
     public void Attack(float tarX, float tarY)
     {
-        if(Vector2.Distance(player.transform.position, transform.position) <= attackRange) {
-            //TODO: Do damage to player
-            PlayerController playerController = player.gameObject.GetComponent<PlayerController>();
-            playerController.Damage(attackDamage);
-            Instantiate(hitEffect, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 0.1f), Quaternion.identity);
-        }
-    }
-
-    private void CheckAttackCooldown()
-    {
-        if (hasShot) 
-        {
-            currentCooldown -= Time.deltaTime;
-            if (currentCooldown <= 0f) 
-            {
-                currentCooldown = shootCooldown;
-                hasShot = false;
-            }
-        }
+        //TODO: Do damage to player
+        PlayerController playerController = player.gameObject.GetComponent<PlayerController>();
+        playerController.Damage(attackDamage);
+        Instantiate(hitEffect, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 0.1f), Quaternion.identity);
     }
 }
