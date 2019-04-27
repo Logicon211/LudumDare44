@@ -11,12 +11,10 @@ GameObject:
   - component: {fileID: 4871754821846508}
   - component: {fileID: 212417208103882724}
   - component: {fileID: 50071675085877800}
-  - component: {fileID: 61138353516980562}
   - component: {fileID: 95725642779222972}
-  - component: {fileID: 4956581430682128998}
-  - component: {fileID: 3451232877390836828}
   - component: {fileID: 82736749433757514}
   - component: {fileID: -6531739477275536654}
+  - component: {fileID: 64916502218315584}
   m_Layer: 11
   m_Name: KillJane
   m_TagString: Enemy
@@ -33,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1981390518264148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 65.261536, y: -13.8538, z: 4.3164062}
-  m_LocalScale: {x: 1.9023483, y: 1.9023483, z: 1.9023483}
+  m_LocalScale: {x: 1.599875, y: 1.599875, z: 1.599875}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -107,33 +105,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &61138353516980562
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981390518264148}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.19, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 4.5, y: 4.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.4, y: 2}
-  m_EdgeRadius: 0
+  m_Constraints: 4
 --- !u!95 &95725642779222972
 Animator:
   serializedVersion: 3
@@ -153,46 +125,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4956581430682128998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981390518264148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80d01fe2a4bf4d0ca59747967d672847, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSmoothing: 0.05
-  health: 10
-  shootCooldown: 5
-  attackDamage: 5
-  maxRangeToLandAttack: 7
-  animator: {fileID: 95725642779222972}
-  explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
-  poofEffect: {fileID: 156964, guid: bfe13d3159b77fd479831552255c3a41, type: 3}
-  hitEffect: {fileID: 1410727943527182, guid: fd5f37cdce8bb924ca437ea0068f84af, type: 3}
-  attackSound: {fileID: 8300000, guid: 4f11b51baa26ec34c979ed61696d60c2, type: 3}
-  roomController: {fileID: 0}
---- !u!114 &3451232877390836828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981390518264148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1201d1a652d7a9548be35b41900c60e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistance: 0
-  attackDistance: 7
-  speed: 10
-  attackSpeed: 20
-  attackCooldown: 1
 --- !u!82 &82736749433757514
 AudioSource:
   m_ObjectHideFlags: 0
@@ -312,3 +244,23 @@ MonoBehaviour:
   hitEffect: {fileID: 1410727943527182, guid: fd5f37cdce8bb924ca437ea0068f84af, type: 3}
   attackSound: {fileID: 8300000, guid: 4f11b51baa26ec34c979ed61696d60c2, type: 3}
   roomController: {fileID: 0}
+  attackSpeed: 20
+  dashSpeed: 20
+  attackCooldown: 2
+  dashTime: 1
+--- !u!58 &64916502218315584
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981390518264148}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.056727488, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.9160725
