@@ -6,7 +6,6 @@ using UnityEngine.Serialization;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public IEnemy controller;
     public float maxDistance = 20f;
     public float attackDistance = 40f;
     public float speed = 10f;
@@ -17,10 +16,12 @@ public class EnemyMovement : MonoBehaviour
     private bool move = false;
     private bool attack = false;
     private Vector3 moveDir = Vector3.zero;
+    private IEnemy controller;
 
     // Use this for initialization
     private void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
+        this.controller = this.gameObject.GetComponent<IEnemy>();
     }
 	
     // Update is called once per frame
