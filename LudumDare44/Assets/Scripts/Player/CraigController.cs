@@ -13,13 +13,13 @@ public class CraigController : MonoBehaviour
 
     public float defaultPlayerSpeed = 4f;
     public float playerspeed = 4f;
-    
+
 
     private float maxHealth = 140f;
     private float health = 140f;
     private float energy = 0f;
     private float bulletVelocity = 50f;
-    
+
     public GameObject bullet;
     public AudioClip hurtSound;
     public AudioClip shotgunSound;
@@ -47,7 +47,7 @@ public class CraigController : MonoBehaviour
     private Vector2 punchDirecion;
 
     private bool usingShotgun = true;
-   
+
     private AudioSource AS;
     private GameObject particles;
 
@@ -56,6 +56,39 @@ public class CraigController : MonoBehaviour
     private int BASE_ANIMATION_LAYER = 0;
     private int SHOTGUN_ANIMATION_LAYER = 1;
     private int LAZER_ANIMATION_LAYER = 2;
+
+
+    private float heat = 0;
+    private int heatMax = 100;
+    private float cooldown = 0;
+    private float heatcooldowndelaytimer;
+    private float heatCooldownAccelBase = 2f;
+    private float heatCooldownAccel = 0f;
+
+    //Modular upgrade
+    private int spread = 1;
+    private float fireRate = 0.1f;
+    private float damage = 3f;
+
+
+    private float heatCost = 5f;
+    private float craigSpeed = 5f;
+    private float bulletVolume = 50f;
+
+    //Bullet speed
+    //One time upgrades:
+    private bool knockback;
+    private bool heatCooldownDelay;
+    private bool bulletTime;
+    private bool healthRegenUp;
+    private bool explodingEnemies;
+
+    //Joke upgrades
+    //Gun sound
+    //Jeans
+
+
+
 
     // Use this for initialization
     void Start()
@@ -85,7 +118,8 @@ public class CraigController : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal");
         verticalMove = Input.GetAxisRaw("Vertical");
         //Get Action inputs
-        LeftClickDown = Input.GetButtonDown("Fire1");
+        //LeftClickDown = Input.GetButtonDown("Fire1");
+        LeftClickDown = Input.GetButton("Fire1");
         LeftClick = Input.GetButton("Fire1");
         RightClick = Input.GetButton("Fire2");
         RightClickRelease = Input.GetButtonUp("Fire2");
@@ -98,10 +132,10 @@ public class CraigController : MonoBehaviour
         direction = Camera.main.ScreenToWorldPoint(mousePos) - transform.position;
         direction.Normalize();
 
-            PlayerRigidBody.mass = 1;
-                      
-        
+        PlayerRigidBody.mass = 1;
 
+
+        Debug.Log(heat);
 
 
 
@@ -121,23 +155,23 @@ public class CraigController : MonoBehaviour
         // 	DodgeDirection.Normalize ();
         // }
 
-       
+
         //PlaYer movement
         //if (!Dashing && !Dodging)
         //{
-            NewPos = Vector3.Normalize(new Vector2(horizontalMove * playerspeed, verticalMove * playerspeed));
-            PlayerRigidBody.velocity = playerspeed * NewPos;
-            if (horizontalMove != 0f || verticalMove != 0f)
-            {
-                animator.SetBool("isWalking", true);
-            }
-            else
-            {
-                animator.SetBool("isWalking", false);
-            }
+        NewPos = Vector3.Normalize(new Vector2(horizontalMove * playerspeed, verticalMove * playerspeed));
+        PlayerRigidBody.velocity = playerspeed * NewPos;
+        if (horizontalMove != 0f || verticalMove != 0f)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
 
         //}
-       
+
         // if(Dodging){
         //     PlayerRigidBody.velocity = 35 * DodgeDirection;
         // 	dodgeCooldown -= Time.fixedDeltaTime;
@@ -151,8 +185,37 @@ public class CraigController : MonoBehaviour
         if (LeftClickDown && !gameManager.IsPaused())
         {
             ShootShotgun();
-            animator.SetTrigger("ShootGun");   
+            
         }
+        else
+        {
+            if (heatcooldowndelaytimer > 0)
+            {
+                heatcooldowndelaytimer = heatcooldowndelaytimer - Time.deltaTime;
+
+            }
+            else if (heat > 0)
+            {
+                heatCooldownAccel = heatCooldownAccel + (0.4f * Time.deltaTime);
+                if (heat - heatCooldownAccel < 0)
+                {
+                    heat = 0;
+                }
+                else
+                {
+                    heat = heat - heatCooldownAccel;
+                }
+            }
+        }
+
+
+        cooldown = cooldown -Time.deltaTime;
+
+
+        //cooldown heat timer
+
+        
+
     }
 
 
@@ -161,7 +224,7 @@ public class CraigController : MonoBehaviour
 
     }
 
-  
+
     /*
         Takes an int corresponding to the current powerup craig will get
          0 - nothing
@@ -179,8 +242,8 @@ public class CraigController : MonoBehaviour
 
     public void Damage(float damageTaken)
     {
-            health -= damageTaken;
-            AS.PlayOneShot(hurtSound); 
+        health -= damageTaken;
+        AS.PlayOneShot(hurtSound);
     }
 
     public float GetHealth()
@@ -189,7 +252,7 @@ public class CraigController : MonoBehaviour
     }
 
 
-    
+
     public void PickupHealth()
     {
         health += 15f;
@@ -199,47 +262,58 @@ public class CraigController : MonoBehaviour
         }
     }
 
-    
-    
+
+
 
     public void ShootShotgun()
     {
+        if (cooldown <= 0)
+        {
+
         AS.PlayOneShot(shotgunSound);
 
         Quaternion rotation = transform.rotation;
         rotation *= Quaternion.Euler(Vector3.forward * 90);
 
-        GameObject projectileLaunched = Instantiate(bullet, shootPosition.position, rotation) as GameObject;
-        GameObject projectileLaunched2 = Instantiate(bullet, shootPosition.position, rotation) as GameObject;
-        GameObject projectileLaunched3 = Instantiate(bullet, shootPosition.position, rotation) as GameObject;
-        GameObject projectileLaunched4 = Instantiate(bullet, shootPosition.position, rotation) as GameObject;
-        GameObject projectileLaunched5 = Instantiate(bullet, shootPosition.position, rotation) as GameObject;
-        GameObject projectileLaunched6 = Instantiate(bullet, shootPosition.position, rotation) as GameObject;
-        GameObject projectileLaunched7 = Instantiate(bullet, shootPosition.position, rotation) as GameObject;
-        GameObject projectileLaunched8 = Instantiate(bullet, shootPosition.position, rotation) as GameObject;
-        GameObject projectileLaunched9 = Instantiate(bullet, shootPosition.position, rotation) as GameObject;
 
-        projectileLaunched.transform.Rotate(0, 0, Random.Range(-15, 15));
-        projectileLaunched2.transform.Rotate(0, 0, Random.Range(-15, 15));
-        projectileLaunched3.transform.Rotate(0, 0, Random.Range(-15, 15));
-        projectileLaunched4.transform.Rotate(0, 0, Random.Range(-15, 15));
-        projectileLaunched5.transform.Rotate(0, 0, Random.Range(-15, 15));
-        projectileLaunched6.transform.Rotate(0, 0, Random.Range(-15, 15));
-        projectileLaunched7.transform.Rotate(0, 0, Random.Range(-15, 15));
-        projectileLaunched8.transform.Rotate(0, 0, Random.Range(-15, 15));
-        projectileLaunched9.transform.Rotate(0, 0, Random.Range(-15, 15));
-        projectileLaunched.GetComponent<Rigidbody2D>().velocity = projectileLaunched.transform.right * (bulletVelocity + Random.Range(-2, 2));
-        projectileLaunched2.GetComponent<Rigidbody2D>().velocity = projectileLaunched2.transform.right * (bulletVelocity + Random.Range(-2, 2));
-        projectileLaunched3.GetComponent<Rigidbody2D>().velocity = projectileLaunched3.transform.right * (bulletVelocity + Random.Range(-2, 2));
-        projectileLaunched4.GetComponent<Rigidbody2D>().velocity = projectileLaunched4.transform.right * (bulletVelocity + Random.Range(-2, 2));
-        projectileLaunched5.GetComponent<Rigidbody2D>().velocity = projectileLaunched5.transform.right * (bulletVelocity + Random.Range(-2, 2));
-        projectileLaunched6.GetComponent<Rigidbody2D>().velocity = projectileLaunched6.transform.right * (bulletVelocity + Random.Range(-2, 2));
-        projectileLaunched7.GetComponent<Rigidbody2D>().velocity = projectileLaunched7.transform.right * (bulletVelocity + Random.Range(-2, 2));
-        projectileLaunched8.GetComponent<Rigidbody2D>().velocity = projectileLaunched8.transform.right * (bulletVelocity + Random.Range(-2, 2));
-        projectileLaunched9.GetComponent<Rigidbody2D>().velocity = projectileLaunched9.transform.right * (bulletVelocity + Random.Range(-2, 2));
+//Spread = 1;
+//fireRate = 1.5f;
+//damage = 3f;
+//heatCooldownAccel = 1;
+//heatCost = 5f;
+//craigSpeed = 5f;
+//bulletVolume = 50f;
 
-        
+
+        for (int i = 0; i<spread; i++) {
+            GameObject projectileLaunched = Instantiate(bullet, shootPosition.position, rotation) as GameObject;
+            projectileLaunched.GetComponent<BulletController>().setValues(damage, knockback);
+            projectileLaunched.transform.Rotate(0, 0, Random.Range(-5, 5));
+            projectileLaunched.GetComponent<Rigidbody2D>().velocity = projectileLaunched.transform.right * (bulletVelocity + Random.Range(-2, 2));
+
+        }
+            animator.SetTrigger("ShootGun");
+            heat += heatCost;
+            //Debug.Log(heat);
+            
+            cooldown = fireRate + (0.4f * (heat/heatMax));
+            if (!heatCooldownDelay)
+            {
+                heatcooldowndelaytimer = 1f;
+            }
+            else
+            {
+                heatcooldowndelaytimer = 0.4f;
+                heatCooldownAccel = heatCooldownAccelBase;
+            }
+            
+            //Debug.Log(cooldown);
+            if (heat >= heatMax)
+            {
+                //OVERHEAT
+            }
+            
     }
-
+    }//End of cooldown
 
 }
