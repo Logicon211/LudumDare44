@@ -40,6 +40,7 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = health;
+        Instantiate(poofEffect, transform.position, Quaternion.identity);
     }
 
     private void Update()
@@ -64,7 +65,6 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
         if(!isDead) {
             isDead = true;
             Instantiate(explosion, transform.position, Quaternion.identity);
-            // gameManager.DecreaseEnemyCount();
             if(roomController) {
                 roomController.DecrementAliveEnemyCount();
             }

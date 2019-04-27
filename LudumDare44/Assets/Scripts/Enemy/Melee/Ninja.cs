@@ -19,6 +19,8 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     public GameObject poofEffect;
     public GameObject hitEffect;
     public AudioClip attackSound;
+
+    public RoomController roomController;
 	
     private AudioSource audio;
     private Rigidbody2D enemyBody;
@@ -48,6 +50,7 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     
     private void Start()
     {
+        Instantiate(poofEffect, transform.position, Quaternion.identity);
         currentHealth = health;
     }
 
@@ -73,7 +76,9 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
         if(!isDead) {
             isDead = true;
             Instantiate(explosion, transform.position, Quaternion.identity);
-            // gameManager.DecreaseEnemyCount();
+            if(roomController) {
+                roomController.DecrementAliveEnemyCount();
+            }
             Destroy(gameObject);
         }
     }

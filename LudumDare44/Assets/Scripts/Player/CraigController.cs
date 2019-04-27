@@ -129,7 +129,6 @@ public class CraigController : MonoBehaviour
 
         PlayerRigidBody.mass = 1;
 
-        Debug.Log(heat);
 
         if (direction != Vector2.zero)
         {
