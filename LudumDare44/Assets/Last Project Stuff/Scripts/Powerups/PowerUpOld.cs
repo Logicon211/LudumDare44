@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PowerUp : MonoBehaviour {
+public abstract class PowerUpOld : MonoBehaviour {
 
 	protected PlayerController controller;
 	public AudioClip[] clips;
