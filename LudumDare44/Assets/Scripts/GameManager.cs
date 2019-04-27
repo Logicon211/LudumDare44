@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	public float cooldownBetweenSpawns = 4f;
+	//public float cooldownBetweenSpawns = 4f;
 
 	public bool spawn = true;
 	private float currentTimeBetweenSpawns;

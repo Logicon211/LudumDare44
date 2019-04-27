@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 4871754821846508}
   - component: {fileID: 212417208103882724}
   - component: {fileID: 50071675085877800}
-  - component: {fileID: 61138353516980562}
   - component: {fileID: 95725642779222972}
   - component: {fileID: 4956581430682128998}
   - component: {fileID: 3451232877390836828}
   - component: {fileID: 82736749433757514}
+  - component: {fileID: 1389203581}
   m_Layer: 11
   m_Name: Ninja
   m_TagString: Enemy
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 1981390518264148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 65.261536, y: -13.8538, z: 4.3164062}
-  m_LocalScale: {x: 1.9023483, y: 1.9023483, z: 1.9023483}
+  m_LocalScale: {x: 3.4166176, y: 3.4166176, z: 3.4166176}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cd1d3bca2dcddb342a48e5a829a402b3, type: 3}
+  m_Sprite: {fileID: -5680240355889849229, guid: 265f666a96901624db93745765d8dda2,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,32 +107,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61138353516980562
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981390518264148}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.5, y: 4.5}
-    newSize: {x: 4.5, y: 4.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.4, y: 2}
-  m_EdgeRadius: 0
 --- !u!95 &95725642779222972
 Animator:
   serializedVersion: 3
@@ -167,11 +142,13 @@ MonoBehaviour:
   health: 10
   shootCooldown: 5
   attackDamage: 5
+  maxRangeToLandAttack: 7
   animator: {fileID: 95725642779222972}
   explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
   poofEffect: {fileID: 156964, guid: bfe13d3159b77fd479831552255c3a41, type: 3}
   hitEffect: {fileID: 1410727943527182, guid: fd5f37cdce8bb924ca437ea0068f84af, type: 3}
   attackSound: {fileID: 8300000, guid: 4f11b51baa26ec34c979ed61696d60c2, type: 3}
+  roomController: {fileID: 0}
 --- !u!114 &3451232877390836828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   attackDistance: 7
-  speed: 10
+  speed: 80
   attackSpeed: 20
   attackCooldown: 1
 --- !u!82 &82736749433757514
@@ -285,3 +262,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &1389203581
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981390518264148}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0035266206, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5084734
