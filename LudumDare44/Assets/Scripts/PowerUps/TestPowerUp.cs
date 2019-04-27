@@ -20,4 +20,9 @@ public class TestPowerUp : PowerUp
     {
      //   throw new System.NotImplementedException();
     }
+
+    public override float GetHealthLossAmount()
+    {
+        return 0.3f;
+    }
 }

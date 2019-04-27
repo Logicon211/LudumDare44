@@ -6,24 +6,29 @@ public class HealthBar : MonoBehaviour
 {
 
     private Transform bar;
+    private SpriteRenderer barRenderer;
     private float currentHealth;
 
-    private GameObject healthLossPreview;
-    private Vector3 defaultHealthLossPreviewPos;
-    private Vector3 defaultHealthLossPreviewScale;
-    private float healthLossPreviewMaxWidth;
-    private SpriteRenderer healthLossPreviewSpriteRenderer;
+    private GameObject healthLossPreviewRed;
+    private SpriteRenderer healthLossPreviewSpriteRendererRed;
+
+    private GameObject healthLossPreviewGreen;
+    private SpriteRenderer healthLossPreviewSpriteRendererGreen;
     
     // Start is called before the first frame update
     void Start()
     {
         bar = transform.Find("Bar");
-        healthLossPreview = transform.Find("HealthLossPreview").gameObject;
-        defaultHealthLossPreviewPos = healthLossPreview.transform.localPosition;
-        defaultHealthLossPreviewScale = healthLossPreview.transform.localScale;
-        healthLossPreviewSpriteRenderer = healthLossPreview.transform.Find("HealthLossPreviewSprite").gameObject
-            .GetComponent<SpriteRenderer>();
-        healthLossPreviewMaxWidth = healthLossPreviewSpriteRenderer.size.x;
+        barRenderer = bar.Find("BarSprite").gameObject.GetComponent<SpriteRenderer>();
+        
+        healthLossPreviewRed = transform.Find("HealthLossPreviewRed").gameObject;
+        healthLossPreviewSpriteRendererRed = healthLossPreviewRed.transform.Find("HealthLossPreviewRedSprite")
+            .gameObject.GetComponent<SpriteRenderer>();
+        
+        healthLossPreviewGreen = transform.Find("HealthLossPreviewGreen").gameObject;
+        healthLossPreviewSpriteRendererGreen = healthLossPreviewGreen.transform.Find("HealthLossPreviewGreenSprite")
+            .gameObject.GetComponent<SpriteRenderer>();
+        
         HideHealthLossPreview();
         currentHealth = 1f;
     }
@@ -59,17 +64,18 @@ public class HealthBar : MonoBehaviour
     public void ShowHealthLossPreview(float normalizedHealth)
     {
         float healthToLose = Mathf.Min(normalizedHealth, currentHealth);
-        healthLossPreview.transform.localScale = new Vector3(healthToLose, 1f);
-        float healthLossPreviewOffset = currentHealth - healthToLose;
-        healthLossPreview.transform.localPosition += new Vector3(healthLossPreviewOffset, 0f);
-        healthLossPreviewSpriteRenderer.enabled = true;
+        healthLossPreviewRed.transform.localScale = new Vector3(currentHealth, 1f);
+        healthLossPreviewGreen.transform.localScale = new Vector3(currentHealth - healthToLose, 1f);
+        healthLossPreviewSpriteRendererRed.enabled = true;
+        healthLossPreviewSpriteRendererGreen.enabled = true;
+        barRenderer.enabled = false;
     }
 
     public void HideHealthLossPreview()
     {
-        healthLossPreviewSpriteRenderer.enabled = false;
-        healthLossPreview.transform.localScale = defaultHealthLossPreviewScale;
-        healthLossPreview.transform.localPosition = defaultHealthLossPreviewPos;
+        healthLossPreviewSpriteRendererRed.enabled = false;
+        healthLossPreviewSpriteRendererGreen.enabled = false;
+        barRenderer.enabled = true;
     }
 
     // Set health to a percentage and then return current health
