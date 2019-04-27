@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0d98f5be51926f46bc797504da5ad22, type: 3}
-  m_Name: TestTileset
+  m_Name: SpaceTileset
   m_EditorClassIdentifier: 
   AtlasTexture: {fileID: 2800000, guid: 06c36cb824d15294fa87e9ab25516959, type: 3}
   TilePxSize: {x: 50, y: 50}
   SliceOffset: {x: 0, y: 0}
   SlicePadding: {x: 0, y: 0}
   BackgroundColor: {r: 0.8039216, g: 0.8039216, b: 0.8039216, a: 0.8039216}
-  VisualTileSize: {x: 20, y: 20}
+  VisualTileSize: {x: 89.3, y: 89.3}
   VisualTilePadding: 1
-  TileRowLength: 7
+  TileRowLength: 9
   m_tileViews: []
-  m_tilesetWidth: 7
+  m_tilesetWidth: 9
   m_tilesetHeight: 2
   m_brushes:
   - Id: 1
-    BrushAsset: {fileID: 11400000, guid: be5a2f0578a1f77438dde3bcd0b405df, type: 2}
+    BrushAsset: {fileID: 11400000, guid: 79327e7bf08717445b749456222be926, type: 2}
   m_tiles:
   - uv:
       serializedVersion: 2
       x: 0
       y: 0.5
-      width: 0.14285713
+      width: 0.11111111
       height: 0.5
     collData:
       vertices: []
@@ -48,9 +48,9 @@ MonoBehaviour:
     autilingGroup: 0
   - uv:
       serializedVersion: 2
-      x: 0.14285715
+      x: 0.11111111
       y: 0.5
-      width: 0.14285713
+      width: 0.11111111
       height: 0.5
     collData:
       vertices: []
@@ -67,9 +67,9 @@ MonoBehaviour:
     autilingGroup: 0
   - uv:
       serializedVersion: 2
-      x: 0.2857143
+      x: 0.22222222
       y: 0.5
-      width: 0.14285713
+      width: 0.11111111
       height: 0.5
     collData:
       vertices: []
@@ -86,9 +86,9 @@ MonoBehaviour:
     autilingGroup: 0
   - uv:
       serializedVersion: 2
-      x: 0.42857143
+      x: 0.33333334
       y: 0.5
-      width: 0.14285713
+      width: 0.11111111
       height: 0.5
     collData:
       vertices: []
@@ -105,9 +105,9 @@ MonoBehaviour:
     autilingGroup: 0
   - uv:
       serializedVersion: 2
-      x: 0.5714286
+      x: 0.44444445
       y: 0.5
-      width: 0.14285713
+      width: 0.11111111
       height: 0.5
     collData:
       vertices: []
@@ -124,9 +124,9 @@ MonoBehaviour:
     autilingGroup: 0
   - uv:
       serializedVersion: 2
-      x: 0.71428573
+      x: 0.5555556
       y: 0.5
-      width: 0.14285713
+      width: 0.11111111
       height: 0.5
     collData:
       vertices: []
@@ -143,9 +143,47 @@ MonoBehaviour:
     autilingGroup: 0
   - uv:
       serializedVersion: 2
-      x: 0.85714287
+      x: 0.6666667
       y: 0.5
-      width: 0.14285713
+      width: 0.11111111
+      height: 0.5
+    collData:
+      vertices: []
+      type: 0
+    paramContainer:
+      m_paramList: []
+    prefabData:
+      prefab: {fileID: 0}
+      offset: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      offsetMode: 0
+      showTileWithPrefab: 0
+      showPrefabPreviewInTilePalette: 0
+    autilingGroup: 0
+  - uv:
+      serializedVersion: 2
+      x: 0.7777778
+      y: 0.5
+      width: 0.11111111
+      height: 0.5
+    collData:
+      vertices: []
+      type: 0
+    paramContainer:
+      m_paramList: []
+    prefabData:
+      prefab: {fileID: 0}
+      offset: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      offsetMode: 0
+      showTileWithPrefab: 0
+      showPrefabPreviewInTilePalette: 0
+    autilingGroup: 0
+  - uv:
+      serializedVersion: 2
+      x: 0.8888889
+      y: 0.5
+      width: 0.11111111
       height: 0.5
     collData:
       vertices: []
@@ -164,7 +202,7 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 0
-      width: 0.14285713
+      width: 0.11111111
       height: 0.5
     collData:
       vertices: []
@@ -181,9 +219,9 @@ MonoBehaviour:
     autilingGroup: 0
   - uv:
       serializedVersion: 2
-      x: 0.14285715
+      x: 0.11111111
       y: 0
-      width: 0.14285713
+      width: 0.11111111
       height: 0.5
     collData:
       vertices: []
@@ -200,9 +238,9 @@ MonoBehaviour:
     autilingGroup: 0
   - uv:
       serializedVersion: 2
-      x: 0.2857143
+      x: 0.22222222
       y: 0
-      width: 0.14285713
+      width: 0.11111111
       height: 0.5
     collData:
       vertices: []
@@ -219,9 +257,9 @@ MonoBehaviour:
     autilingGroup: 0
   - uv:
       serializedVersion: 2
-      x: 0.42857143
+      x: 0.33333334
       y: 0
-      width: 0.14285713
+      width: 0.11111111
       height: 0.5
     collData:
       vertices: []
@@ -238,9 +276,9 @@ MonoBehaviour:
     autilingGroup: 0
   - uv:
       serializedVersion: 2
-      x: 0.5714286
+      x: 0.44444445
       y: 0
-      width: 0.14285713
+      width: 0.11111111
       height: 0.5
     collData:
       vertices: []
@@ -257,9 +295,9 @@ MonoBehaviour:
     autilingGroup: 0
   - uv:
       serializedVersion: 2
-      x: 0.71428573
+      x: 0.5555556
       y: 0
-      width: 0.14285713
+      width: 0.11111111
       height: 0.5
     collData:
       vertices: []
@@ -276,9 +314,9 @@ MonoBehaviour:
     autilingGroup: 0
   - uv:
       serializedVersion: 2
-      x: 0.85714287
+      x: 0.6666667
       y: 0
-      width: 0.14285713
+      width: 0.11111111
       height: 0.5
     collData:
       vertices: []
@@ -293,7 +331,45 @@ MonoBehaviour:
       showTileWithPrefab: 0
       showPrefabPreviewInTilePalette: 0
     autilingGroup: 0
-  m_pixelsPerUnit: 1
+  - uv:
+      serializedVersion: 2
+      x: 0.7777778
+      y: 0
+      width: 0.11111111
+      height: 0.5
+    collData:
+      vertices: []
+      type: 0
+    paramContainer:
+      m_paramList: []
+    prefabData:
+      prefab: {fileID: 0}
+      offset: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      offsetMode: 0
+      showTileWithPrefab: 0
+      showPrefabPreviewInTilePalette: 0
+    autilingGroup: 0
+  - uv:
+      serializedVersion: 2
+      x: 0.8888889
+      y: 0
+      width: 0.11111111
+      height: 0.5
+    collData:
+      vertices: []
+      type: 0
+    paramContainer:
+      m_paramList: []
+    prefabData:
+      prefab: {fileID: 0}
+      offset: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      offsetMode: 0
+      showTileWithPrefab: 0
+      showPrefabPreviewInTilePalette: 0
+    autilingGroup: 0
+  m_pixelsPerUnit: 25
   m_brushGroupNames:
   - Default
   - 
