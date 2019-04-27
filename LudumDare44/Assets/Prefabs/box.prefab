@@ -120,4 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
+  debris:
+  - {fileID: 3771755643162012852, guid: 5a006d71ab1d67f4a8865334b496aa9e, type: 3}
+  - {fileID: 991825576575760274, guid: 3854ec057d6538b46a8377011399e2b1, type: 3}
+  - {fileID: 209042248941288296, guid: 0960046e57c5a1143a1a5ac07a4e76ad, type: 3}
   health: 20

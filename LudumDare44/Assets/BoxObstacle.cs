@@ -36,6 +36,16 @@ public class BoxObstacle : MonoBehaviour, IDamageable<float>
         if(!isDead) {
             isDead = true;
             Instantiate(explosion, transform.position, Quaternion.identity);
+
+            foreach(GameObject debrisPiece in debris) {
+                GameObject part = Instantiate(debrisPiece, transform.position, Quaternion.identity);
+                Rigidbody2D rb = part.GetComponent<Rigidbody2D>();
+                Vector3 velocity = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f));
+                velocity.Normalize();
+                rb.AddForce(velocity * 1000f);
+                rb.AddTorque(Random.Range(0f, 1000f));
+
+            }
             // gameManager.DecreaseEnemyCount();
             Destroy(gameObject);
         }
