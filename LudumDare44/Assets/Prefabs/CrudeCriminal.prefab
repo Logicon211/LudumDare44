@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1295776532161758}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.61, z: 0}
+  m_LocalPosition: {x: 0.7, y: 1.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4480246567940678}
@@ -43,9 +43,9 @@ GameObject:
   - component: {fileID: 50507671464571290}
   - component: {fileID: 212619093811003274}
   - component: {fileID: 82329235933501372}
-  - component: {fileID: 61180723807492762}
   - component: {fileID: -5179160941740462179}
   - component: {fileID: -569289314358243700}
+  - component: {fileID: 1618181644561438260}
   m_Layer: 11
   m_Name: CrudeCriminal
   m_TagString: Enemy
@@ -145,7 +145,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e08596b7e4ab11a4ebfa905d4d6c4e88, type: 3}
+  m_Sprite: {fileID: -6746458971857172807, guid: a6ac3c7380eeea641aad78adfd2daa4f,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -176,7 +177,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.90569687
+  MinDistance: 0.9694443
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -252,32 +253,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!61 &61180723807492762
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425373558792166}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.01571846, y: -0.17288494}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.5, y: 4.5}
-    newSize: {x: 4.5, y: 4.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.588417, y: 2.0795956}
-  m_EdgeRadius: 0
 --- !u!114 &-5179160941740462179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,3 +291,19 @@ MonoBehaviour:
   speed: 10
   attackSpeed: 100
   attackCooldown: 2
+--- !u!58 &1618181644561438260
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425373558792166}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0066246986, y: -0.016503334}
+  serializedVersion: 2
+  m_Radius: 0.9132447
