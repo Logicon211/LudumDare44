@@ -168,6 +168,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
                 bullet.GetComponent<Rigidbody2D>().velocity = projectileSpeed * bullet.transform.up;
                 currentAngle += bulletAngleIncrements;
             }
+            currentProjectileCooldown = projectileSpawnRate;
         }
     }
 }

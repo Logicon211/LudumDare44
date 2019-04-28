@@ -55,10 +55,12 @@ public class RoomController : MonoBehaviour
                 Quaternion rotation = Quaternion.identity;
                 if(isFirstBossRoom) {
                     gameManager.StartCutScene(0);
+                    gameManager.PlayMidBossMusic();
                     GameObject spawnedFossilFuel = Instantiate (fossilFuel, bossSpawnPoint.position, rotation);
                     spawnedFossilFuel.GetComponent<FossilFuel>().roomController = this;
                 } else if(isLastBossRoom) {
                     gameManager.StartCutScene(1);
+                    gameManager.PlayFinalBossMusic();
                     GameObject spawnedKillJane = Instantiate (killJane, bossSpawnPoint.position, rotation);
                     spawnedKillJane.GetComponent<KillJane>().roomController = this;
                 }
