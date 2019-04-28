@@ -136,6 +136,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
         }
         else
         {
+            setAttackCooldown(0f);
             SpinAttack();
         }
     }
@@ -202,5 +203,10 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
             currentAngle += bulletAngleIncrements;
         }
         currentProjectileCooldown = projectileSpawnRate;
+    }
+
+    public void setAttackCooldown(float newAttackCooldown)
+    {
+        this.attackCooldown = newAttackCooldown;
     }
 }
