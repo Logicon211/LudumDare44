@@ -7,13 +7,18 @@ public class Upgrade_Mystery : PowerUp
 
     public GameObject SpawnerPrefab;
     private Powerup_Spawner P_Spawner;
-    private float healthCost = 0.7f;
 
-    public override float GetHealthLossAmount()
+    // Start is called before the first frame update
+    void Start()
     {
-        return healthCost;
+        base.Start();
+        if (P_Spawner == null)
+        {
+            P_Spawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<Powerup_Spawner>();
+        }
+        SetHealthCost(0.7f);
     }
-
+    
     public override void PowerUpEffect()
     {
         int Numtospawn = (int)Random.Range(1, 4);
@@ -23,7 +28,6 @@ public class Upgrade_Mystery : PowerUp
         {
             GameObject instantiatedPowerupSpawner = Instantiate(SpawnerPrefab, (this.transform.position + new Vector3(0, 2, 0)), Quaternion.identity);
             GameObject Powerup1 = P_Spawner.SpawnPowerUp(instantiatedPowerupSpawner);
-            Debug.Log(Powerup1);
             Powerup1.GetComponent<PowerUp>().SetHealthCostFree();
         }
         if (Numtospawn == 2)
@@ -32,7 +36,6 @@ public class Upgrade_Mystery : PowerUp
             GameObject instantiatedPowerupSpawner2 = Instantiate(SpawnerPrefab, (this.transform.position + new Vector3(-3, 2, 0)), Quaternion.identity);
             GameObject Powerup1 = P_Spawner.SpawnPowerUp(instantiatedPowerupSpawner);
             GameObject Powerup2 = P_Spawner.SpawnPowerUp(instantiatedPowerupSpawner2);
-            Debug.Log(Powerup1);
             Powerup1.GetComponent<PowerUp>().SetHealthCostFree();
             Powerup2.GetComponent<PowerUp>().SetHealthCostFree();
 
@@ -45,7 +48,6 @@ public class Upgrade_Mystery : PowerUp
             GameObject Powerup1 = P_Spawner.SpawnPowerUp(instantiatedPowerupSpawner);
             GameObject Powerup2 = P_Spawner.SpawnPowerUp(instantiatedPowerupSpawner2);
             GameObject Powerup3 = P_Spawner.SpawnPowerUp(instantiatedPowerupSpawner3);
-            Debug.Log(Powerup1);
             Powerup1.GetComponent<PowerUp>().SetHealthCostFree();
             Powerup2.GetComponent<PowerUp>().SetHealthCostFree();
             Powerup3.GetComponent<PowerUp>().SetHealthCostFree();
@@ -56,19 +58,4 @@ public class Upgrade_Mystery : PowerUp
         //play some unique sound effect?
     }
 
-    public override void SetHealthCostFree()
-    {
-        healthCost = 0;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        base.Start();
-        if (P_Spawner == null)
-        {
-            P_Spawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<Powerup_Spawner>();
-        }
-
-    }
 }

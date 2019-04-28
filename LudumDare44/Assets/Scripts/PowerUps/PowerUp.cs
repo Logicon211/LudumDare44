@@ -18,14 +18,21 @@ public abstract class PowerUp : MonoBehaviour
     private float overlayVerticalOffset = 12f;
     private float overlayScale = 4f;
 
+    private float healthCost;
+
+    private Boolean instantiated = false;
+    private Boolean isFree = false;
+
     private bool pickupable;
     // Start is called before the first frame update
     public void Start()
     {
         pickupable = false;
+        SetHealthCost(0f);
         overlay = InstantiatePowerUpOverlay();
         healthBar = GameObject.FindWithTag("Health Bar").GetComponent<HealthBar>();
         craig = GameObject.FindGameObjectWithTag("Player").GetComponent<CraigController>();
+        instantiated = true;
     }
 
     // Update is called once per frame
@@ -98,10 +105,24 @@ public abstract class PowerUp : MonoBehaviour
         Destroy(gameObject);
         
     }
+    
+    public float GetHealthLossAmount()
+    {
+        return isFree ? 0f : healthCost;
+    }
+
+    public void SetHealthCostFree()
+    {
+        Debug.Log("In Set Health Free");
+        isFree = true;
+    }
+
+    public void SetHealthCost(float healthCost)
+    {
+        Debug.Log("In Set Health");
+        this.healthCost = healthCost;
+    }
 
     public abstract void PowerUpEffect();
 
-    public abstract float GetHealthLossAmount();
-
-    public abstract void SetHealthCostFree();
 }
