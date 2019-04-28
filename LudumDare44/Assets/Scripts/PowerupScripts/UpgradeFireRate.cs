@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class UpgradeFireRate : PowerUp
 {
+    private float healthCost = 0.25f;
 
     public override float GetHealthLossAmount()
     {
-        return 0.25f;
+        return healthCost;
     }
 
     private CraigController cc;
@@ -18,10 +19,18 @@ public class UpgradeFireRate : PowerUp
         //play some unique sound effect?
     }
 
+    public override void SetHealthCostFree()
+    {
+        healthCost = 0;
+        Debug.Log("HEALTHCOSTSET");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         base.Start();
         cc = (GameObject.FindGameObjectWithTag("Player")).GetComponent<CraigController>();
     }
+
+
 }

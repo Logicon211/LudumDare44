@@ -51,7 +51,7 @@ void Start()
     
 
 
-    public void SpawnPowerUp(GameObject objectIn)
+    public GameObject SpawnPowerUp(GameObject objectIn)
     {
         int powerup = (int) Mathf.Floor(Random.Range(0, listIndex.Count));
         int powerupIn = listIndex[powerup];
@@ -67,7 +67,7 @@ void Start()
         {
             listIndex.Remove(powerupIn);
         }
-
+        return instantiatedPowerup;
     }
 
         

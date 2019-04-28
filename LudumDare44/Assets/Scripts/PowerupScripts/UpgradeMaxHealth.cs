@@ -6,6 +6,7 @@ public class UpgradeMaxHealth : PowerUp
 {
 
     private CraigController cc;
+    private float healthCost = 0.1f;
 
     public override float GetHealthLossAmount()
     {
@@ -16,6 +17,11 @@ public class UpgradeMaxHealth : PowerUp
     {
         cc.upgradeMaxHealth();
         //play some unique sound effect?
+    }
+
+    public override void SetHealthCostFree()
+    {
+        healthCost = 0;
     }
 
     // Start is called before the first frame update

@@ -6,6 +6,7 @@ public class UpgradeHealthRegen : PowerUp
 {
 
     private CraigController cc;
+    private float healthCost = 0.3f;
 
     public override float GetHealthLossAmount()
     {
@@ -16,6 +17,11 @@ public class UpgradeHealthRegen : PowerUp
     {
         cc.upgradeHealthRegenUp();
         //play some unique sound effect?
+    }
+
+    public override void SetHealthCostFree()
+    {
+        healthCost = 0;
     }
 
     // Start is called before the first frame update
