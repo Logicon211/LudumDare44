@@ -149,6 +149,11 @@ MonoBehaviour:
   hitEffect: {fileID: 1410727943527182, guid: fd5f37cdce8bb924ca437ea0068f84af, type: 3}
   attackSound: {fileID: 8300000, guid: 4f11b51baa26ec34c979ed61696d60c2, type: 3}
   roomController: {fileID: 0}
+  debris:
+  - {fileID: 7582653590281806506, guid: 88825c56b47b5074bb7ca150cdfcea5c, type: 3}
+  - {fileID: 3681909732555729600, guid: 1f46352d661137644a9f5532d259b748, type: 3}
+  - {fileID: 466717414064639049, guid: bda10ed64d721484698164bcd716bde1, type: 3}
+  - {fileID: 8496429652601242794, guid: 54e0e30107b4a5c489c46e0045cce452, type: 3}
 --- !u!114 &3451232877390836828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +280,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0035266206, y: 0}
+  m_Offset: {x: -0.00352661, y: -0.11596576}
   serializedVersion: 2
-  m_Radius: 0.5084734
+  m_Radius: 0.41034833

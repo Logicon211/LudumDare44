@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2879373854799920002}
   - component: {fileID: -2426196283052692575}
   - component: {fileID: 8698356148947210655}
+  - component: {fileID: 722111175}
   m_Layer: 14
   m_Name: box
   m_TagString: Untagged
@@ -125,3 +126,24 @@ MonoBehaviour:
   - {fileID: 991825576575760274, guid: 3854ec057d6538b46a8377011399e2b1, type: 3}
   - {fileID: 209042248941288296, guid: 0960046e57c5a1143a1a5ac07a4e76ad, type: 3}
   health: 20
+--- !u!50 &722111175
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8698356148947210654}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 30
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

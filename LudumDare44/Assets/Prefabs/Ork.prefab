@@ -161,8 +161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 0
-  attackDistance: 7
-  speed: 80
+  attackDistance: 10
+  speed: 30
   attackSpeed: 20
   attackCooldown: 1
 --- !u!82 &82736749433757514
