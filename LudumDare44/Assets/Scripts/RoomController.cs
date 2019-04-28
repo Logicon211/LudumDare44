@@ -92,9 +92,9 @@ public class RoomController : MonoBehaviour
 
                     //Spawn Orks
                     for(int i=0; i< oilOrksWaves[currentWaveNumber]; i++) {
-                        //GameObject spawnedOilOrk = Instantiate (oilOrk, PickSpawnPointNotOnPlayer(), rotation);
-                        //TODO: Assign roomcontroller here
-                        //currentAliveEnemyCount++;
+                        GameObject spawnedCrudeCriminal = Instantiate (oilOrk, PickSpawnPointNotOnPlayer(), rotation);
+                        spawnedCrudeCriminal.GetComponent<Ninja>().roomController = this;
+                        currentAliveEnemyCount++;
                     }
                 }
             }

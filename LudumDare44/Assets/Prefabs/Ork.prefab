@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 1981390518264148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 65.261536, y: -13.8538, z: 4.3164062}
-  m_LocalScale: {x: 3.4166176, y: 3.4166176, z: 3.4166176}
+  m_LocalScale: {x: 2.6307955, y: 2.6307955, z: 2.6307955}
   m_Children:
   - {fileID: 7652688096414703489}
   m_Father: {fileID: 0}
@@ -139,10 +139,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSmoothing: 0.05
-  health: 10
+  health: 30
   shootCooldown: 5
-  attackDamage: 5
-  maxRangeToLandAttack: 7
+  attackDamage: 10
+  maxRangeToLandAttack: 8
   animator: {fileID: 95725642779222972}
   explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
   poofEffect: {fileID: 156964, guid: bfe13d3159b77fd479831552255c3a41, type: 3}
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   attackDistance: 10
-  speed: 30
+  speed: 15
   attackSpeed: 20
   attackCooldown: 1
 --- !u!82 &82736749433757514

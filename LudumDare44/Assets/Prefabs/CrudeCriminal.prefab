@@ -295,8 +295,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 30
   attackDistance: 30
-  speed: 10
-  attackSpeed: 50
+  speed: 15
+  attackSpeed: 42
   attackCooldown: 0.5
 --- !u!58 &1618181644561438260
 CircleCollider2D:
