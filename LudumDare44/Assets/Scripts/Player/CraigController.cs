@@ -301,6 +301,7 @@ public class CraigController : MonoBehaviour
             animator.SetTrigger("ShootGun");
             AS.PlayOneShot(shotgunSound);
             heat += heatCost;
+            heat = Mathf.Min(heat, heatMax);
             //Debug.Log(heat);
 
             
@@ -316,11 +317,6 @@ public class CraigController : MonoBehaviour
             }
             heatCooldownAccel = heatCooldownAccelBase;
 
-            //Debug.Log(cooldown);
-            if (heat >= heatMax)
-            {
-                //OVERHEAT
-            }
 
         }//End of cooldown
     }
