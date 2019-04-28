@@ -16,10 +16,14 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     [Range(0f, 1f)][SerializeField] private float projectileSpawnRate = 0.2f;
     [Range(0f, 360f)][SerializeField] private float projectileSpread = 25f;
     [Range(0f, 50f)][SerializeField] private float projectileSpeed = 1f;
+    [Range(1f, 100f)] [SerializeField] private float projectileSize = 1f;
+    [Range(0, 50)] [SerializeField] private int amountOfBulletsAtATime = 1;
     [Header("Game Objects")]
     [SerializeField] private GameObject explosion;
     [SerializeField] private GameObject projectile;
-    
+    [SerializeField] private GameObject gunHoleLocation;
+
+    private Animator animator; 
     private Rigidbody2D enemyBody;
     private Vector3 velocity = Vector3.zero;
     private Transform shotOriginatingLocation;
@@ -36,8 +40,9 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     private void Awake()
     {
         enemyBody = GetComponent<Rigidbody2D>();
-        shotOriginatingLocation = GetComponent<Transform>();
+        shotOriginatingLocation = gunHoleLocation.GetComponent<Transform>();
         player = GameObject.FindWithTag("Player");
+        animator = GetComponent<Animator>();
         currentHealth = health;
         currentAttackCooldown = attackCooldown;
         currentAttackDuration = 0f;
@@ -86,14 +91,19 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
             if (currentAttackDuration >= attackDuration)
             {
                 reloading = true;
+                animator.SetBool("Attack Cooldown", true);
                 currentAttackDuration = 0f;
             }
             if (currentProjectileCooldown <= 0f)
             {
                 Quaternion rotation = transform.rotation;
-                var bullet = Instantiate(projectile, shotOriginatingLocation.position, rotation) as GameObject;
-                bullet.transform.Rotate(0, 0, Random.Range(-projectileSpread, projectileSpread));
-                bullet.GetComponent<Rigidbody2D>().velocity = projectileSpeed * bullet.transform.up;
+                for (int i = 1; i <= amountOfBulletsAtATime; i++)
+                {
+                    var bullet = Instantiate(projectile, shotOriginatingLocation.position, rotation) as GameObject;
+                    bullet.transform.localScale = new Vector3(projectileSize, projectileSize);
+                    bullet.transform.Rotate(0, 0, Random.Range(-projectileSpread, projectileSpread));
+                    bullet.GetComponent<Rigidbody2D>().velocity = projectileSpeed * bullet.transform.up;
+                }
                 currentProjectileCooldown = projectileSpawnRate;
             }
         }
@@ -103,6 +113,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
             if (currentAttackCooldown <= 0f)
             {
                 reloading = false;
+                animator.SetBool("Attack Cooldown", false);
                 currentAttackCooldown = attackCooldown;
             }
         }
