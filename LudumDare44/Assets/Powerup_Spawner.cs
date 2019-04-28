@@ -6,11 +6,15 @@ public class Powerup_Spawner : MonoBehaviour
 {
 
     public List<GameObject> PowerupPrefabs;
-    public List<int> listIndex;
-    private Hashtable NumberSpawnable;
+    public List<int> listIndex = new List<int>();
+    private Hashtable NumberSpawnable = new Hashtable();
 
+    private List<GameObject> SpawnerList = new List<GameObject>();
+ 
+ 
+        
 
- // Start is called before the first frame update
+// Start is called before the first frame update
 void Start()
     {
         NumberSpawnable.Add(0, 1);//Bullet Time
@@ -27,8 +31,24 @@ void Start()
         NumberSpawnable.Add(11, 4);//HealthMax
         NumberSpawnable.Add(12, 2);//Accuracy
         NumberSpawnable.Add(13, 2);//Volume
+
+
+
+        foreach (GameObject fooObj in GameObject.FindGameObjectsWithTag("PowerUpSpawner"))
+        {
+            SpawnerList.Add(fooObj);
+        }
+
+
+        foreach (GameObject fooObj in SpawnerList)
+        {
+            SpawnPowerUp(fooObj);
+        }
+
+
     }
 
+    
 
 
     public void SpawnPowerUp(GameObject objectIn)
