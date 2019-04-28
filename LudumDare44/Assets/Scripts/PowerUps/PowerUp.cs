@@ -15,8 +15,8 @@ public abstract class PowerUp : MonoBehaviour
     private SpriteRenderer overlaySpriteRenderer;
     CraigController craig;
 
-    private float overlayVerticalOffset = 8f;
-    private float overlayScale = 2.5f;
+    private float overlayVerticalOffset = 12f;
+    private float overlayScale = 4f;
 
     private bool pickupable;
     // Start is called before the first frame update
