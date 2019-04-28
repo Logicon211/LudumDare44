@@ -109,8 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9027d70180951b84b9e27db5211ea0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpOverlay: {fileID: 679222922426803567, guid: 858f5ba70ce095848953e31f335b4fda,
+  powerUpOverlay: {fileID: 3740354070229455255, guid: ca3075c2bb411df4f80a2ac6f6fab02b,
     type: 3}
   SpawnerPrefab: {fileID: 4227315530911361981, guid: 044553ab5bf925244aa0fbbded9d5c99,
     type: 3}
-  P_Spawner: {fileID: 0}

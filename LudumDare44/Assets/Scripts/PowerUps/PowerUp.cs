@@ -114,6 +114,7 @@ public abstract class PowerUp : MonoBehaviour
     public void SetHealthCostFree()
     {
         Debug.Log("In Set Health Free");
+        
         isFree = true;
     }
 
