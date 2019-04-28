@@ -10,6 +10,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     [SerializeField] private float health = 50f;
     [SerializeField] private float howBigABitchMitchIs = 100f;
     [SerializeField] private float movementSmoothing = 0.5f;
+    
     [Header("Attack Properties")]
     [SerializeField] private float attackDuration = 5f;
     [SerializeField] private float attackCooldown = 3f;
@@ -20,6 +21,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     [Range(1f, 100f)] [SerializeField] private float projectileSize = 1f;
     [Range(0, 50)] [SerializeField] private int amountOfBulletsAtATime = 1;
     [Range(0f, 100f)] [SerializeField] private float phaseTransitionPercent = 25f;
+    
     [Header("Game Objects")]
     [SerializeField] private GameObject explosion;
     [SerializeField] private GameObject projectile;
