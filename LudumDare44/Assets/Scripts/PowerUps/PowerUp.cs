@@ -39,20 +39,20 @@ public abstract class PowerUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collision Enter");
+        
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Collision With Player Enter");
+            
             EnablePowerUpOverlay();
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("Collision Exit");
+        
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Collision With Player Exit");
+            
             DisablePowerUpOverlay();
         }
     }
@@ -103,4 +103,5 @@ public abstract class PowerUp : MonoBehaviour
 
     public abstract float GetHealthLossAmount();
 
+    public abstract void SetHealthCostFree();
 }

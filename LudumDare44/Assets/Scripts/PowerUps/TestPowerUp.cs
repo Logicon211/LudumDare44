@@ -25,4 +25,9 @@ public class TestPowerUp : PowerUp
     {
         return 0.3f;
     }
+
+    public override void SetHealthCostFree()
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -6,16 +6,22 @@ public class AccuracyUpgrade : PowerUp
 {
 
     private CraigController cc;
+    private float healthCost = 0.3f;
 
     public override float GetHealthLossAmount()
     {
-        return 0.3f;
+        return healthCost;
     }
 
     public override void PowerUpEffect()
     {
         cc.upgradeAccuracy();
         //play some unique sound effect?
+    }
+
+    public override void SetHealthCostFree()
+    {
+        healthCost = 0;
     }
 
     // Start is called before the first frame update
