@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour {
 
 	public AudioClip doorOpenClose;
 
-	public float volumeMax = 1f;
+	public float volumeMax = 0.2f;
 
 	private bool changeToShopMusic;
 
@@ -98,8 +98,8 @@ public class GameManager : MonoBehaviour {
 
 		if (changeToShopMusic) {
 			shopTheme.volume += Time.deltaTime;
-			if(shopTheme.volume > 1f) {
-				shopTheme.volume = 1f;
+			if(shopTheme.volume > volumeMax) {
+				shopTheme.volume = volumeMax;
 			}
 			AS.volume -= Time.deltaTime;
 			if(AS.volume < 0f) {
@@ -107,8 +107,8 @@ public class GameManager : MonoBehaviour {
 			}
 		} else {
 			AS.volume += Time.deltaTime;
-			if(AS.volume > 1f) {
-				AS.volume = 1f;
+			if(AS.volume > volumeMax) {
+				AS.volume = volumeMax;
 			}
 			shopTheme.volume -= Time.deltaTime;
 			if(shopTheme.volume < 0f) {

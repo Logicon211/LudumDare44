@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1954811204}
   - component: {fileID: 1954811205}
+  - component: {fileID: 1954811206}
   m_Layer: 0
   m_Name: ShopThemeController
   m_TagString: Untagged
@@ -127,6 +128,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!165 &1954811206
+AudioHighPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954811203}
+  m_Enabled: 1
+  m_CutoffFrequency: 5000
+  m_HighpassResonanceQ: 1
 --- !u!1 &1858940524409500
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,8 +189,9 @@ MonoBehaviour:
   mainTheme: {fileID: 8300000, guid: 27e8a92a0bfb5434ab2fdd0b716000e7, type: 3}
   finalBossTheme: {fileID: 8300000, guid: 2aa0fa93dbe3c0c46bf5a66fa6ec6f70, type: 3}
   midBossTheme: {fileID: 8300000, guid: 6b1936cccba520e4ca1b25821c555884, type: 3}
-  shopTheme: {fileID: 8300000, guid: 33d2edfc50e072549aaa722e3ac7dffe, type: 3}
+  shopTheme: {fileID: 1954811205}
   doorOpenClose: {fileID: 8300000, guid: bf4bdb61c03587744ba6f7eccf15b5e8, type: 3}
+  volumeMax: 0.2
 --- !u!82 &1040078066
 AudioSource:
   m_ObjectHideFlags: 0
@@ -192,7 +204,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 27e8a92a0bfb5434ab2fdd0b716000e7, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
