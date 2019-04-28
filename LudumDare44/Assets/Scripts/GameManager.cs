@@ -34,8 +34,12 @@ public class GameManager : MonoBehaviour {
 
 	private int nextCutsceneIndex = 0;
 	private int currentCutSceneIndex;
-	// public AudioSource AS;
-	// public AudioClip AC1;
+	private AudioSource AS;
+
+	public AudioClip mainTheme;
+	public AudioClip finalBossTheme;
+	public AudioClip midBossTheme;
+	public AudioClip shopTheme;
 
 
 	private void Awake() {
@@ -66,6 +70,7 @@ public class GameManager : MonoBehaviour {
 		cameraObject = GameObject.FindWithTag("MainCamera");
 		listener = cameraObject.GetComponent<AudioListener>();
 		craigController = player.GetComponent<CraigController>();
+		AS = GetComponent<AudioSource>();
 
 		// if(spawn){
 		// 	enemyCount = spawnManager.GetNumOfEnemiesOnLevel(currentLevel);
@@ -180,6 +185,26 @@ public class GameManager : MonoBehaviour {
 	public void UnPauseGame() {
 		paused = false;
 		Time.timeScale = 1;
+	}
+
+	public void PlayShopMusic() {
+		AS.clip = shopTheme;
+		AS.Play();
+	}
+
+	public void PlayMainMusic() {
+		AS.clip = mainTheme;
+		AS.Play();
+	}
+
+	public void PlayMidBossMusic() {
+		AS.clip = midBossTheme;
+		AS.Play();
+	}
+
+	public void PlayFinalBossMusic() {
+		AS.clip = finalBossTheme;
+		AS.Play();
 	}
 
 	// public void DecreaseEnemyCount() {
