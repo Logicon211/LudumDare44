@@ -15,6 +15,9 @@ public abstract class PowerUp : MonoBehaviour
     private SpriteRenderer overlaySpriteRenderer;
     CraigController craig;
 
+    private float overlayVerticalOffset = 5f;
+    private float overlayScale = 1.5f;
+
     private bool pickupable;
     // Start is called before the first frame update
     public void Start()
@@ -56,8 +59,9 @@ public abstract class PowerUp : MonoBehaviour
 
     private GameObject InstantiatePowerUpOverlay()
     {
-        Vector3 overlayPosition = transform.position + new Vector3(0f, 3.5f);
+        Vector3 overlayPosition = transform.position + new Vector3(0f, overlayVerticalOffset);
         GameObject overlay = Instantiate(powerUpOverlay, overlayPosition, Quaternion.identity);
+        overlay.transform.localScale = new Vector3(overlayScale, overlayScale);
         overlaySpriteRenderer = overlay.GetComponent<SpriteRenderer>();
         overlaySpriteRenderer.enabled = false;
         return overlay;
