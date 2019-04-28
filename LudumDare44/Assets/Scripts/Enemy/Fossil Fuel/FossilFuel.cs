@@ -19,7 +19,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     [Range(0f, 50f)][SerializeField] private float projectileSpeed = 1f;
     [Range(1f, 100f)] [SerializeField] private float projectileSize = 1f;
     [Range(0, 50)] [SerializeField] private int amountOfBulletsAtATime = 1;
-    [Range(0f, 100f)] [SerializeField] private float phaseTransition = 25f;
+    [Range(0f, 100f)] [SerializeField] private float phaseTransitionPercent = 25f;
     [Header("Game Objects")]
     [SerializeField] private GameObject explosion;
     [SerializeField] private GameObject projectile;
@@ -37,6 +37,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     private float currentProjectileCooldown;
     private bool isDead = false;
     private bool reloading = false;
+    private bool isSpinning = false;
 
     public RoomController roomController;
     
@@ -68,7 +69,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
 
     public void Rotate(Vector3 direction)
     {
-        if (direction != Vector3.zero) 
+        if (direction != Vector3.zero && !isSpinning) 
         {
             transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
         }
@@ -88,15 +89,13 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
             }
             if (currentProjectileCooldown <= 0f)
             {
-                if (randomizeSpread)
-                    RandomSpreadAttack();
-                else
-                    RegularSpreadAttack();
+                PhaseController();
             }
         }
         else if (reloading)
         {
             currentAttackCooldown -= Time.deltaTime;
+            isSpinning = false;
             if (currentAttackCooldown <= 0f)
             {
                 reloading = false;
@@ -124,6 +123,22 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     public void StopMove()
     {
        
+    }
+
+    private void PhaseController()
+    {
+        if ((currentHealth / health) > (phaseTransitionPercent / 100))
+        {
+            if (randomizeSpread)
+                RandomSpreadAttack();
+            else
+                RegularSpreadAttack();
+        }
+        else
+        {
+            setAttackCooldown(0f);
+            SpinAttack();
+        }
     }
 
     private void RandomSpreadAttack()
@@ -170,5 +185,28 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
             }
             currentProjectileCooldown = projectileSpawnRate;
         }
+    }
+
+    private void SpinAttack()
+    {
+        isSpinning = true;
+        this.gameObject.transform.Rotate(0, 0, Random.Range(-360, 360));
+        Quaternion rotation = transform.rotation;
+        var bulletAngleIncrements = projectileSpread / (amountOfBulletsAtATime - 1);
+        var currentAngle = -(projectileSpread / 2);
+        for (int i = 1; i <= amountOfBulletsAtATime; i++)
+        {
+            var bullet = Instantiate(projectile, shotOriginatingLocation.position, rotation) as GameObject;
+            bullet.transform.localScale = new Vector3(projectileSize, projectileSize);
+            bullet.transform.Rotate(0, 0, currentAngle);
+            bullet.GetComponent<Rigidbody2D>().velocity = projectileSpeed * bullet.transform.up;
+            currentAngle += bulletAngleIncrements;
+        }
+        currentProjectileCooldown = projectileSpawnRate;
+    }
+
+    public void setAttackCooldown(float newAttackCooldown)
+    {
+        this.attackCooldown = newAttackCooldown;
     }
 }

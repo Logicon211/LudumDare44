@@ -109,5 +109,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53f1e1a0122a514e9edf0ee240b9b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpOverlay: {fileID: 679222922426803567, guid: 858f5ba70ce095848953e31f335b4fda,
+  powerUpOverlay: {fileID: 7163360596856133864, guid: ffecabb68a7788646bcd0d2c39b98fa7,
     type: 3}
