@@ -28,7 +28,10 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
 
     public RoomController roomController;
     public Transform shotLocation;
+    public Transform explodeLocation;
     public GameObject projectile;
+
+    public GameObject[] debris;
 
     private void Awake() {
         enemyBody = GetComponent<Rigidbody2D>();
@@ -64,16 +67,28 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
     {
         if(!isDead) {
             isDead = true;
-            Instantiate(explosion, transform.position, Quaternion.identity);
+            Instantiate(explosion, explodeLocation.position, Quaternion.identity);
             if(roomController) {
                 roomController.DecrementAliveEnemyCount();
             }
+
+            foreach(GameObject debrisPiece in debris) {
+                GameObject part = Instantiate(debrisPiece, explodeLocation.position, Quaternion.identity);
+                Rigidbody2D rb = part.GetComponent<Rigidbody2D>();
+                Vector3 velocity = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f));
+                velocity.Normalize();
+                rb.AddForce(velocity * 1000f);
+                rb.AddTorque(Random.Range(0f, 500f));
+
+            }
+
             Destroy(gameObject);
         }
     }
 
     public void Move(float tarX, float tarY)
     {
+        animator.SetBool("moving", true);
         Vector3 targetVelocity = new Vector2(tarX * 10f, tarY * 10f);
         enemyBody.velocity = Vector3.SmoothDamp(enemyBody.velocity, targetVelocity, ref velocity, movementSmoothing);
     }
@@ -94,12 +109,18 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
         //     playerController.Damage(attackDamage);
         //     Instantiate(hitEffect, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 0.1f), Quaternion.identity);
         // }
+        animator.SetBool("moving", false);
         animator.SetTrigger("shootTrigger");
         audio.Play(0);
         GameObject bullet = Instantiate(projectile, shotLocation.position, Quaternion.identity) as GameObject;
         bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(tarX * 10f, tarY * 10f);
         hasShot = true;
     }
+
+    public void StopMove() {
+        animator.SetBool("moving", false);
+    }
+
 
     private void CheckAttackCooldown()
     {

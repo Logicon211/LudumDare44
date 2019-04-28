@@ -5,7 +5,7 @@ using UnityEngine;
 public class UpgradeExplodingEnemies : PowerUp
 {
 
-    private CraigController cc;
+    
 
     public override float GetHealthLossAmount()
     {
@@ -14,7 +14,7 @@ public class UpgradeExplodingEnemies : PowerUp
 
     public override void PowerUpEffect()
     {
-        cc.UpgradeExplodingEnemies();
+           //Turn on explosions
         //play some unique sound effect?
     }
 
@@ -22,6 +22,5 @@ public class UpgradeExplodingEnemies : PowerUp
     void Start()
     {
         base.Start();
-        cc = (GameObject.FindGameObjectWithTag("Player")).GetComponent<CraigController>();
     }
 }

@@ -33,7 +33,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 65.261536, y: -13.8538, z: 4.3164062}
   m_LocalScale: {x: 3.4166176, y: 3.4166176, z: 3.4166176}
-  m_Children: []
+  m_Children:
+  - {fileID: 7204216327715788684}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -149,6 +150,7 @@ MonoBehaviour:
   hitEffect: {fileID: 1410727943527182, guid: fd5f37cdce8bb924ca437ea0068f84af, type: 3}
   attackSound: {fileID: 8300000, guid: 4f11b51baa26ec34c979ed61696d60c2, type: 3}
   roomController: {fileID: 0}
+  explodeLocation: {fileID: 7204216327715788684}
   debris:
   - {fileID: 7582653590281806506, guid: 88825c56b47b5074bb7ca150cdfcea5c, type: 3}
   - {fileID: 3681909732555729600, guid: 1f46352d661137644a9f5532d259b748, type: 3}
@@ -283,3 +285,33 @@ CircleCollider2D:
   m_Offset: {x: -0.00352661, y: -0.11596576}
   serializedVersion: 2
   m_Radius: 0.41034833
+--- !u!1 &8532057759034094479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7204216327715788684}
+  m_Layer: 11
+  m_Name: ExplodeLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7204216327715788684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8532057759034094479}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4871754821846508}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

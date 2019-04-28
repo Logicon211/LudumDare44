@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1295776532161758}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.61, z: 0}
+  m_LocalPosition: {x: 0.7, y: 1.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4480246567940678}
@@ -43,9 +43,9 @@ GameObject:
   - component: {fileID: 50507671464571290}
   - component: {fileID: 212619093811003274}
   - component: {fileID: 82329235933501372}
-  - component: {fileID: 61180723807492762}
   - component: {fileID: -5179160941740462179}
   - component: {fileID: -569289314358243700}
+  - component: {fileID: 1618181644561438260}
   m_Layer: 11
   m_Name: CrudeCriminal
   m_TagString: Enemy
@@ -62,9 +62,10 @@ Transform:
   m_GameObject: {fileID: 1425373558792166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 52.57659, y: -21.01982, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.645077, y: 1.645077, z: 1.645077}
   m_Children:
   - {fileID: 4850739919538926}
+  - {fileID: 747127378570747785}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -145,7 +146,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e08596b7e4ab11a4ebfa905d4d6c4e88, type: 3}
+  m_Sprite: {fileID: -6746458971857172807, guid: a6ac3c7380eeea641aad78adfd2daa4f,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -166,7 +168,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0e14607f35b5a064ba3c403869ae34c2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 09c286b6be28dc746b5e9e8a4d4e6072, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -176,7 +178,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.90569687
+  MinDistance: 0.9694443
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -252,32 +254,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!61 &61180723807492762
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425373558792166}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.01571846, y: -0.17288494}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.5, y: 4.5}
-    newSize: {x: 4.5, y: 4.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.588417, y: 2.0795956}
-  m_EdgeRadius: 0
 --- !u!114 &-5179160941740462179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,7 +274,13 @@ MonoBehaviour:
   poofEffect: {fileID: 156964, guid: bfe13d3159b77fd479831552255c3a41, type: 3}
   roomController: {fileID: 0}
   shotLocation: {fileID: 4850739919538926}
+  explodeLocation: {fileID: 747127378570747785}
   projectile: {fileID: 110538, guid: 431624222d72c7947a5d7d26e3ef0764, type: 3}
+  debris:
+  - {fileID: 1349139984014051092, guid: 1b2e85e753b8e53489df62d77fef43af, type: 3}
+  - {fileID: 6651666445903592851, guid: 043aff95605af214fba9a1d842c5d8dc, type: 3}
+  - {fileID: 6523460603014211097, guid: b592f8ebb7f3d52489e0b3814a8b750a, type: 3}
+  - {fileID: 4632981807617834736, guid: 8e342b06e1ec00b49aef770984594db2, type: 3}
 --- !u!114 &-569289314358243700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,8 +293,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1201d1a652d7a9548be35b41900c60e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 40
-  attackDistance: 40
+  maxDistance: 30
+  attackDistance: 30
   speed: 10
   attackSpeed: 100
-  attackCooldown: 2
+  attackCooldown: 0.5
+--- !u!58 &1618181644561438260
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425373558792166}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0066246986, y: -0.016503334}
+  serializedVersion: 2
+  m_Radius: 0.9132447
+--- !u!1 &9086154308652077219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 747127378570747785}
+  m_Layer: 11
+  m_Name: ExplodePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &747127378570747785
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9086154308652077219}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4480246567940678}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

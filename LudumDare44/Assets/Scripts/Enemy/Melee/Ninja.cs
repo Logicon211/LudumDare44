@@ -38,6 +38,7 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     private bool isAttacking = false;
 
     private Transform shootPosition;
+    public Transform explodeLocation;
 
     public GameObject[] debris;
     
@@ -77,13 +78,13 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     {
         if(!isDead) {
             isDead = true;
-            Instantiate(explosion, transform.position, Quaternion.identity);
+            Instantiate(explosion, explodeLocation.position, Quaternion.identity);
             if(roomController) {
                 roomController.DecrementAliveEnemyCount();
             }
 
             foreach(GameObject debrisPiece in debris) {
-                GameObject part = Instantiate(debrisPiece, transform.position, Quaternion.identity);
+                GameObject part = Instantiate(debrisPiece, explodeLocation.position, Quaternion.identity);
                 Rigidbody2D rb = part.GetComponent<Rigidbody2D>();
                 Vector3 velocity = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f));
                 velocity.Normalize();
@@ -107,6 +108,10 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
         {
             transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
         }
+    }
+
+    public void StopMove() {
+        //Nothing
     }
 
     public void Attack(float tarX, float tarY)

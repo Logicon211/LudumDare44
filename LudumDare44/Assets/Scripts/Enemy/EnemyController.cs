@@ -45,12 +45,14 @@ public class EnemyController : MonoBehaviour
         Vector3 normal = (player.transform.position - transform.position).normalized;
         if (move) {
             moveDir = normal;	
+            controller.Move(moveDir.x * speed * Time.fixedDeltaTime, moveDir.y * speed * Time.fixedDeltaTime);
+        } else {
+            controller.StopMove();
         }
         if (attack) {
             controller.Attack(normal.x * attackSpeed * Time.fixedDeltaTime, normal.y * attackSpeed * Time.fixedDeltaTime);
             ResetAttack();
         }
-        controller.Move(moveDir.x * speed * Time.fixedDeltaTime, moveDir.y * speed * Time.fixedDeltaTime);
         controller.Rotate(normal);
         moveDir = Vector3.zero;
         move = false;
