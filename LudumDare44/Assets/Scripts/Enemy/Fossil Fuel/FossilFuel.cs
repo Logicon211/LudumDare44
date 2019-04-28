@@ -117,4 +117,9 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
             Destroy(gameObject);
         }
     }
+
+    public void StopMove()
+    {
+        throw new System.NotImplementedException();
+    }
 }
