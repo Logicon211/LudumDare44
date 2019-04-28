@@ -30,6 +30,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     private Vector3 velocity = Vector3.zero;
     private Transform shotOriginatingLocation;
     private GameObject player;
+    private CraigController craigController;
     
     private float currentHealth;
     private float currentAttackDuration;
@@ -47,6 +48,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
         enemyBody = GetComponent<Rigidbody2D>();
         shotOriginatingLocation = gunHoleLocation.GetComponent<Transform>();
         player = GameObject.FindWithTag("Player");
+        craigController = player.GetComponent<CraigController>();
         animator = GetComponent<Animator>();
         currentHealth = health;
         currentAttackCooldown = attackCooldown;
@@ -150,6 +152,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
             bullet.transform.localScale = new Vector3(projectileSize, projectileSize);
             bullet.transform.Rotate(0, 0, Random.Range(-projectileSpread, projectileSpread));
             bullet.GetComponent<Rigidbody2D>().velocity = projectileSpeed * bullet.transform.up;
+            CheckForBulletTime(bullet);
         }
         currentProjectileCooldown = projectileSpawnRate;
     }
@@ -167,6 +170,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
                 bullet.transform.localScale = new Vector3(projectileSize, projectileSize);
                 bullet.transform.Rotate(0, 0, currentAngle);
                 bullet.GetComponent<Rigidbody2D>().velocity = projectileSpeed * bullet.transform.up;
+                CheckForBulletTime(bullet);
                 currentAngle += bulletAngle;
             }
             currentProjectileCooldown = projectileSpawnRate;
@@ -181,6 +185,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
                 bullet.transform.localScale = new Vector3(projectileSize, projectileSize);
                 bullet.transform.Rotate(0, 0, currentAngle);
                 bullet.GetComponent<Rigidbody2D>().velocity = projectileSpeed * bullet.transform.up;
+                CheckForBulletTime(bullet);
                 currentAngle += bulletAngleIncrements;
             }
             currentProjectileCooldown = projectileSpawnRate;
@@ -200,13 +205,17 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
             bullet.transform.localScale = new Vector3(projectileSize, projectileSize);
             bullet.transform.Rotate(0, 0, currentAngle);
             bullet.GetComponent<Rigidbody2D>().velocity = projectileSpeed * bullet.transform.up;
+            CheckForBulletTime(bullet);
             currentAngle += bulletAngleIncrements;
         }
         currentProjectileCooldown = projectileSpawnRate;
     }
 
-    public void setAttackCooldown(float newAttackCooldown)
+    private void CheckForBulletTime(GameObject bullet)
     {
-        this.attackCooldown = newAttackCooldown;
+        if (craigController.bulletTime)
+        {
+            bullet.GetComponent<Rigidbody2D>().velocity *= craigController.bulletTimeEffect;
+        }
     }
 }
