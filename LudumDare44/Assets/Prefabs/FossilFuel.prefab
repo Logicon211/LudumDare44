@@ -143,6 +143,11 @@ MonoBehaviour:
   explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
   projectile: {fileID: 110538, guid: 431624222d72c7947a5d7d26e3ef0764, type: 3}
   gunHoleLocation: {fileID: 1998359176}
+  timeBetweenVoiceLines: 5
+  voiceLines:
+  - {fileID: 8300000, guid: 60c5b1fda9556fa42824f55e8aa37a17, type: 3}
+  - {fileID: 8300000, guid: 6ef73581ec2f71d40aeb2076c4fcbc9a, type: 3}
+  - {fileID: 8300000, guid: 0e7b5337abe3682499a49243843714b7, type: 3}
   roomController: {fileID: 0}
 --- !u!114 &6964122309241993307
 MonoBehaviour:
