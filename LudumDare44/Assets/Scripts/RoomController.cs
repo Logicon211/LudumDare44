@@ -27,6 +27,8 @@ public class RoomController : MonoBehaviour
 
     private GameObject player;
 
+    
+
 
 	// Use this for initialization
 	void Start () {
