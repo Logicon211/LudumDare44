@@ -13,11 +13,13 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     [Header("Attack Properties")]
     [SerializeField] private float attackDuration = 5f;
     [SerializeField] private float attackCooldown = 3f;
+    [SerializeField] private bool randomizeSpread = false;
     [Range(0f, 1f)][SerializeField] private float projectileSpawnRate = 0.2f;
     [Range(0f, 360f)][SerializeField] private float projectileSpread = 25f;
     [Range(0f, 50f)][SerializeField] private float projectileSpeed = 1f;
     [Range(1f, 100f)] [SerializeField] private float projectileSize = 1f;
     [Range(0, 50)] [SerializeField] private int amountOfBulletsAtATime = 1;
+    [Range(0f, 100f)] [SerializeField] private float phaseTransition = 25f;
     [Header("Game Objects")]
     [SerializeField] private GameObject explosion;
     [SerializeField] private GameObject projectile;
@@ -49,18 +51,6 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
         currentAttackCooldown = attackCooldown;
         currentAttackDuration = 0f;
         currentProjectileCooldown = projectileSpawnRate;
-    }
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        
     }
 
     public void Damage(float damageTaken)
@@ -98,15 +88,10 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
             }
             if (currentProjectileCooldown <= 0f)
             {
-                Quaternion rotation = transform.rotation;
-                for (int i = 1; i <= amountOfBulletsAtATime; i++)
-                {
-                    var bullet = Instantiate(projectile, shotOriginatingLocation.position, rotation) as GameObject;
-                    bullet.transform.localScale = new Vector3(projectileSize, projectileSize);
-                    bullet.transform.Rotate(0, 0, Random.Range(-projectileSpread, projectileSpread));
-                    bullet.GetComponent<Rigidbody2D>().velocity = projectileSpeed * bullet.transform.up;
-                }
-                currentProjectileCooldown = projectileSpawnRate;
+                if (randomizeSpread)
+                    RandomSpreadAttack();
+                else
+                    RegularSpreadAttack();
             }
         }
         else if (reloading)
@@ -138,6 +123,51 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
 
     public void StopMove()
     {
-        throw new System.NotImplementedException();
+       
+    }
+
+    private void RandomSpreadAttack()
+    {
+        Quaternion rotation = transform.rotation;
+        for (int i = 1; i <= amountOfBulletsAtATime; i++)
+        {
+            var bullet = Instantiate(projectile, shotOriginatingLocation.position, rotation) as GameObject;
+            bullet.transform.localScale = new Vector3(projectileSize, projectileSize);
+            bullet.transform.Rotate(0, 0, Random.Range(-projectileSpread, projectileSpread));
+            bullet.GetComponent<Rigidbody2D>().velocity = projectileSpeed * bullet.transform.up;
+        }
+        currentProjectileCooldown = projectileSpawnRate;
+    }
+
+    private void RegularSpreadAttack()
+    {
+        Quaternion rotation = transform.rotation;
+        if (amountOfBulletsAtATime % 2 == 0)
+        {
+            var bulletAngle = projectileSpread / (amountOfBulletsAtATime / 2);
+            var currentAngle = -projectileSpread;
+            for (int i = 1; i <= amountOfBulletsAtATime; i++)
+            {
+                var bullet = Instantiate(projectile, shotOriginatingLocation.position, rotation) as GameObject;
+                bullet.transform.localScale = new Vector3(projectileSize, projectileSize);
+                bullet.transform.Rotate(0, 0, currentAngle);
+                bullet.GetComponent<Rigidbody2D>().velocity = projectileSpeed * bullet.transform.up;
+                currentAngle += bulletAngle;
+            }
+            currentProjectileCooldown = projectileSpawnRate;
+        }
+        else
+        {
+            var bulletAngleIncrements = projectileSpread / (amountOfBulletsAtATime - 1);
+            var currentAngle = -(projectileSpread / 2);
+            for (int i = 1; i <= amountOfBulletsAtATime; i++)
+            {
+                var bullet = Instantiate(projectile, shotOriginatingLocation.position, rotation) as GameObject;
+                bullet.transform.localScale = new Vector3(projectileSize, projectileSize);
+                bullet.transform.Rotate(0, 0, currentAngle);
+                bullet.GetComponent<Rigidbody2D>().velocity = projectileSpeed * bullet.transform.up;
+                currentAngle += bulletAngleIncrements;
+            }
+        }
     }
 }
