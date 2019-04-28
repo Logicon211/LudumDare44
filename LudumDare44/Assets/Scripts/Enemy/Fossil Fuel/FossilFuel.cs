@@ -243,8 +243,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
 
     public void InitiateFinalPhase()
     {
-        amountOfBulletsAtATime = 5;
-        projectileSpawnRate /= 2;
+        //projectileSpawnRate /= 1.5f;
     }
     
     public void SetAttackCooldown(float newAttackCooldown)

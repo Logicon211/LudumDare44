@@ -142,7 +142,7 @@ MonoBehaviour:
   amountOfBulletsAtATime: 3
   phaseTransitionPercent: 25
   explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
-  projectile: {fileID: 110538, guid: 431624222d72c7947a5d7d26e3ef0764, type: 3}
+  projectile: {fileID: 110538, guid: 508127af2de07544f86380eca03ed876, type: 3}
   gunHoleLocation: {fileID: 1998359176}
   timeBetweenVoiceLines: 5
   voiceLines:
