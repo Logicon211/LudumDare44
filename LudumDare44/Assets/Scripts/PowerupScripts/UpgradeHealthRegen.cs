@@ -9,7 +9,7 @@ public class UpgradeHealthRegen : PowerUp
 
     public override float GetHealthLossAmount()
     {
-        return 30f;
+        return 0.3f;
     }
 
     public override void PowerUpEffect()

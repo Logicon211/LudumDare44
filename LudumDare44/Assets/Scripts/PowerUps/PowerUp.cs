@@ -13,6 +13,7 @@ public abstract class PowerUp : MonoBehaviour
     // Actual overlay used by the object
     private GameObject overlay;
     private SpriteRenderer overlaySpriteRenderer;
+    CraigController craig;
 
     private bool pickupable;
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public abstract class PowerUp : MonoBehaviour
         pickupable = false;
         overlay = InstantiatePowerUpOverlay();
         healthBar = GameObject.FindWithTag("Health Bar").GetComponent<HealthBar>();
+        craig = GameObject.FindGameObjectWithTag("Player").GetComponent<CraigController>();
     }
 
     // Update is called once per frame
@@ -66,7 +68,7 @@ public abstract class PowerUp : MonoBehaviour
         pickupable = true;
         overlaySpriteRenderer.enabled = true;
         
-        healthBar.ShowHealthLossPreview(0.3f);
+        healthBar.ShowHealthLossPreview(GetHealthLossAmount());
     }
 
     private void DisablePowerUpOverlay()
@@ -87,6 +89,8 @@ public abstract class PowerUp : MonoBehaviour
         Destroy(overlay);
         healthBar.HideHealthLossPreview();
         healthBar.DecreaseHealth(GetHealthLossAmount());
+        float damage = craig.maxHealth * GetHealthLossAmount();
+        craig.Damage(damage);
         Destroy(gameObject);
         
     }

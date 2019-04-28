@@ -9,7 +9,7 @@ public class Upgrade_Mystery : PowerUp
 
     public override float GetHealthLossAmount()
     {
-        return 80f;
+        return 0.8f;
     }
 
     public override void PowerUpEffect()

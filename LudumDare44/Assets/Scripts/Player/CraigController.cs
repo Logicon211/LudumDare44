@@ -11,7 +11,7 @@ public class CraigController : MonoBehaviour
     private float horizontalMove;
     private float verticalMove;
 
-    private float maxHealth = 200f;
+    public float maxHealth = 200f;
     private float health = 200f;
     private float energy = 0f;
     private float bulletVelocity = 50f;
@@ -83,6 +83,8 @@ public class CraigController : MonoBehaviour
     //Gun sound
     //Jeans
 
+    HealthBar healthbar;
+
 
 
 
@@ -104,6 +106,8 @@ public class CraigController : MonoBehaviour
         animator.SetLayerWeight(BASE_ANIMATION_LAYER, 0f);
         animator.SetLayerWeight(SHOTGUN_ANIMATION_LAYER, 100f);
         animator.SetLayerWeight(LAZER_ANIMATION_LAYER, 0f);
+
+        healthbar = GameObject.FindGameObjectWithTag("Health Bar").GetComponent<HealthBar>();
     }
 
     // Update is called once per frame
@@ -214,6 +218,8 @@ public class CraigController : MonoBehaviour
     {
         health -= damageTaken;
         AS.PlayOneShot(hurtSound);
+
+        healthbar.SetHealth(health/maxHealth);
     }
 
     public float GetHealth()

@@ -9,7 +9,7 @@ public class UpgradeExplodingEnemies : PowerUp
 
     public override float GetHealthLossAmount()
     {
-        return 60f;
+        return 0.6f;
     }
 
     public override void PowerUpEffect()

@@ -9,7 +9,7 @@ public class UpgradeKnockback : PowerUp
 
     public override float GetHealthLossAmount()
     {
-        return 50f;
+        return 0.5f;
     }
 
     public override void PowerUpEffect()

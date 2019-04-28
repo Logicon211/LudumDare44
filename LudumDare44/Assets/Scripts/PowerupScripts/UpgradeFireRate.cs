@@ -7,7 +7,7 @@ public class UpgradeFireRate : PowerUp
 
     public override float GetHealthLossAmount()
     {
-        return 25f;
+        return 0.25f;
     }
 
     private CraigController cc;

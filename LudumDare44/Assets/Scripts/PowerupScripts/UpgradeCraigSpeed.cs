@@ -9,7 +9,7 @@ public class UpgradeCraigSpeed : PowerUp
 
     public override float GetHealthLossAmount()
     {
-        return 20f;
+        return 0.2f;
     }
 
     public override void PowerUpEffect()

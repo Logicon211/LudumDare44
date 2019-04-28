@@ -82,7 +82,7 @@ public class HealthBar : MonoBehaviour
     // Set health to a percentage and then return current health
     public float SetHealth(float normalizedHealth)
     {
-        currentHealth = normalizedHealth;
+        currentHealth = Mathf.Clamp(normalizedHealth, 0f, 1f);
         bar.localScale = new Vector3(currentHealth, 1f);
         return currentHealth;
     }

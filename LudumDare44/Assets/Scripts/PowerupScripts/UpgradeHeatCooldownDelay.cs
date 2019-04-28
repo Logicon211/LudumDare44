@@ -9,7 +9,7 @@ public class UpgradeHeatCooldownDelay : PowerUp
 
     public override float GetHealthLossAmount()
     {
-        return 40f;
+        return 0.4f;
     }
 
     public override void PowerUpEffect()

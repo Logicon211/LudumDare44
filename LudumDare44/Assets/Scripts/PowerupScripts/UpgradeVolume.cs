@@ -9,7 +9,7 @@ public class UpgradeVolume : PowerUp
 
     public override float GetHealthLossAmount()
     {
-        return 10f;
+        return 0.1f;
     }
 
     public override void PowerUpEffect()
