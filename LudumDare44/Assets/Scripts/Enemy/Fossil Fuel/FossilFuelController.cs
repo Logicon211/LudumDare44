@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class FossilFuelController : MonoBehaviour
 {
-    public float maxDistance = 20f;
-    public float attackDistance = 40f;
-    public float speed = 10f;
-    public float attackSpeed = 20f;
-    public float attackCooldown = 5f;
+    [SerializeField] private float maxDistance = 20f;
+    [SerializeField] private float attackDistance = 40f;
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private float attackSpeed = 20f;
+    [SerializeField] private float attackCooldown = 5f;
     [SerializeField] private GameObject gunHole;
 
     private GameObject player;
