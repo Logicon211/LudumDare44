@@ -18,13 +18,13 @@ public class FossilFuelController : MonoBehaviour
     private bool move = false;
     private bool attack = false;
     private Vector3 moveDir = Vector3.zero;
-    private IEnemy controller;
+    private FossilFuel controller;
     private float currentAttackCooldown;
 
     // Use this for initialization
     private void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
-        this.controller = this.gameObject.GetComponent<IEnemy>();
+        this.controller = this.gameObject.GetComponent<FossilFuel>();
         gunHoleTransform = gunHole.GetComponent<Transform>();
         currentAttackCooldown = attackCooldown;
     }
@@ -51,6 +51,7 @@ public class FossilFuelController : MonoBehaviour
             controller.Attack(normal.x * Time.fixedDeltaTime, normal.y * Time.fixedDeltaTime);
             ResetAttack();
         }
+        controller.PlayAudio();
         controller.Move(moveDir.x * speed * Time.fixedDeltaTime, moveDir.y * speed * Time.fixedDeltaTime);
         Vector3 gunHoleNormal = (player.transform.position - gunHoleTransform.position).normalized;
         controller.Rotate(gunHoleNormal);

@@ -27,6 +27,10 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     [SerializeField] private GameObject projectile;
     [SerializeField] private GameObject gunHoleLocation;
 
+    [Header("Voice Clips")]
+    [SerializeField] private float timeBetweenVoiceLines = 5f;
+    [SerializeField] private AudioClip[] voiceLines;
+
     private Animator animator; 
     private Rigidbody2D enemyBody;
     private Vector3 velocity = Vector3.zero;
@@ -34,11 +38,13 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     private GameObject player;
     private CraigController craigController;
     private SpriteRenderer spriteRenderer;
+    private AudioSource audioSource;
     
     private float currentHealth;
     private float currentAttackDuration;
     private float currentAttackCooldown;
     private float currentProjectileCooldown;
+    private float currentTimeBetweenVoiceLines;
     private bool isDead = false;
     private bool reloading = false;
     private bool isSpinning = false;
@@ -54,10 +60,12 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
         craigController = player.GetComponent<CraigController>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
         currentHealth = health;
         currentAttackCooldown = attackCooldown;
         currentAttackDuration = 0f;
         currentProjectileCooldown = projectileSpawnRate;
+        currentTimeBetweenVoiceLines = timeBetweenVoiceLines;
     }
 
     public void Damage(float damageTaken)
@@ -238,5 +246,18 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     public void SetAttackCooldown(float newAttackCooldown)
     {
         this.attackCooldown = newAttackCooldown;
+    }
+
+    public void PlayAudio()
+    {
+        currentTimeBetweenVoiceLines -= Time.deltaTime;
+        if (currentTimeBetweenVoiceLines <= 0f)
+        {
+            int lineToPlay = Random.Range(1, voiceLines.Length);
+            Debug.Log(lineToPlay);
+            audioSource.PlayOneShot(voiceLines[lineToPlay]);
+            currentTimeBetweenVoiceLines = timeBetweenVoiceLines;
+        }
+        
     }
 }
