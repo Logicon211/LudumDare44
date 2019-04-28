@@ -35,6 +35,8 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     private float currentProjectileCooldown;
     private bool isDead = false;
     private bool reloading = false;
+
+    public RoomController roomController;
     
 
     private void Awake()
@@ -125,6 +127,11 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
         if(!isDead) {
             isDead = true;
             Instantiate(explosion, transform.position, Quaternion.identity);
+
+            if(roomController) {
+                roomController.KillBoss();
+            }
+
             Destroy(gameObject);
         }
     }

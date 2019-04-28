@@ -1817,17 +1817,22 @@ PrefabInstance:
     - target: {fileID: 2348716064384057295, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -117.1
+      value: -76.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064384057295, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 2348716064878677885, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -67
+      value: -78.6
       objectReference: {fileID: 0}
     - target: {fileID: 2348716064878677885, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.3
+      value: -17.4
       objectReference: {fileID: 0}
     - target: {fileID: 2348716064604472074, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
@@ -1849,6 +1854,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -15.7
       objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: isFirstBossRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: bossSpawnPoint
+      value: 
+      objectReference: {fileID: 747462808}
     - target: {fileID: 7480446083038277439, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
       propertyPath: m_IsActive
@@ -3386,6 +3401,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd7a3d08568bb9f4da7bed36635bbac0, type: 3}
+--- !u!4 &747462808 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2348716064878677885, guid: f428bc4c0f0fe71458202d557dcff66d,
+    type: 3}
+  m_PrefabInstance: {fileID: 304399090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &762600620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3566,6 +3587,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -15.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: isLastBossRoom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7480446083038277439, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
@@ -4984,6 +5010,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -15.7
       objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: isFirstBossRoom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: bossSpawnPoint
+      value: 
+      objectReference: {fileID: 1882999679}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: isLastBossRoom
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1862725604856172854, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5514,17 +5555,22 @@ PrefabInstance:
     - target: {fileID: 2348716064384057295, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -117.1
+      value: -76.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064384057295, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2348716064878677885, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -67
+      value: -81.6
       objectReference: {fileID: 0}
     - target: {fileID: 2348716064878677885, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.3
+      value: -20.2
       objectReference: {fileID: 0}
     - target: {fileID: 2348716064604472074, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
@@ -5546,6 +5592,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -15.7
       objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: isLastBossRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: bossSpawnPoint
+      value: 
+      objectReference: {fileID: 1567195814}
     - target: {fileID: 7480446083038277439, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
       propertyPath: m_IsActive
@@ -7877,6 +7933,12 @@ MeshRenderer:
   m_SortingLayerID: 1731781259
   m_SortingLayer: -3
   m_SortingOrder: 0
+--- !u!4 &1567195814 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2348716064384057295, guid: f428bc4c0f0fe71458202d557dcff66d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1160527504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1570465204
 GameObject:
   m_ObjectHideFlags: 1
@@ -10656,6 +10718,12 @@ MeshRenderer:
   m_SortingLayerID: 1731781259
   m_SortingLayer: -3
   m_SortingOrder: 0
+--- !u!4 &1882999679 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2348716066338254389, guid: f428bc4c0f0fe71458202d557dcff66d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1021071451}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1890129052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11660,11 +11728,6 @@ PrefabInstance:
     - target: {fileID: 2348716064982460599, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
-        type: 3}
-      propertyPath: running
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7480446083038277439, guid: f428bc4c0f0fe71458202d557dcff66d,
