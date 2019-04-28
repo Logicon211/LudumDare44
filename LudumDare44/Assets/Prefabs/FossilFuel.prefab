@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 6964122309241993306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.3670921, y: 16.006464, z: 1}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: -3, y: 3, z: 1}
   m_Children:
   - {fileID: 1998359177}
   m_Father: {fileID: 0}
@@ -132,14 +132,17 @@ MonoBehaviour:
   movementSmoothing: 0.5
   attackDuration: 8
   attackCooldown: 3
-  projectileSpawnRate: 0.05
-  projectileSpread: 30
-  projectileSpeed: 10
+  randomizeSpread: 0
+  projectileSpawnRate: 0.242
+  projectileSpread: 45
+  projectileSpeed: 15.8
   projectileSize: 10
-  amountOfBulletsAtATime: 1
+  amountOfBulletsAtATime: 3
+  phaseTransition: 25
   explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
   projectile: {fileID: 110538, guid: 431624222d72c7947a5d7d26e3ef0764, type: 3}
   gunHoleLocation: {fileID: 1998359176}
+  roomController: {fileID: 0}
 --- !u!114 &6964122309241993307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +160,7 @@ MonoBehaviour:
   speed: 10
   attackSpeed: 20
   attackCooldown: 5
+  gunHole: {fileID: 1998359176}
 --- !u!50 &6964122309241993255
 Rigidbody2D:
   serializedVersion: 4
