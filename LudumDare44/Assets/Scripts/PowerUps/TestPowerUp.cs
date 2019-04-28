@@ -8,6 +8,7 @@ public class TestPowerUp : PowerUp
     void Start()
     {
         base.Start();
+        SetHealthCost(0.3f);
     }
 
     // Update is called once per frame
@@ -21,13 +22,4 @@ public class TestPowerUp : PowerUp
      //   throw new System.NotImplementedException();
     }
 
-    public override float GetHealthLossAmount()
-    {
-        return 0.3f;
-    }
-
-    public override void SetHealthCostFree()
-    {
-        throw new System.NotImplementedException();
-    }
 }
