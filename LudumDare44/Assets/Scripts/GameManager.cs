@@ -40,9 +40,14 @@ public class GameManager : MonoBehaviour {
 	public AudioClip mainTheme;
 	public AudioClip finalBossTheme;
 	public AudioClip midBossTheme;
-	public AudioClip shopTheme;
+
+	public AudioSource shopTheme;
 
 	public AudioClip doorOpenClose;
+
+	public float volumeMax = 1f;
+
+	private bool changeToShopMusic;
 
 
 	private void Awake() {
@@ -90,6 +95,26 @@ public class GameManager : MonoBehaviour {
 		// CheckForWaveChange();
 		if (player != null)
 			CheckGameOver();
+
+		if (changeToShopMusic) {
+			shopTheme.volume += Time.deltaTime;
+			if(shopTheme.volume > 1f) {
+				shopTheme.volume = 1f;
+			}
+			AS.volume -= Time.deltaTime;
+			if(AS.volume < 0f) {
+				AS.volume = 0f;
+			}
+		} else {
+			AS.volume += Time.deltaTime;
+			if(AS.volume > 1f) {
+				AS.volume = 1f;
+			}
+			shopTheme.volume -= Time.deltaTime;
+			if(shopTheme.volume < 0f) {
+				shopTheme.volume = 0f;
+			}
+		}
 	}
 
 	
@@ -148,6 +173,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void StartCutScene(int cutSceneIndex) {
+		AS.volume = volumeMax;
+		shopTheme.volume = 0f;
+		ResumeMainMusic();
+
 		Debug.Log("START SCENE INDEX: " + cutSceneIndex);
 		currentCutSceneIndex = cutSceneIndex;
 		SceneManager.LoadScene(cutscenes[cutSceneIndex], LoadSceneMode.Additive);
@@ -192,8 +221,11 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void PlayShopMusic() {
-		AS.clip = shopTheme;
-		AS.Play();
+		changeToShopMusic = true;
+	}
+
+	public void ResumeMainMusic() {
+		changeToShopMusic = false;
 	}
 
 	public void PlayMainMusic() {

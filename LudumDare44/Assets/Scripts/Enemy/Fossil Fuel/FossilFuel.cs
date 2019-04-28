@@ -138,7 +138,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
         }
         else
         {
-            setAttackCooldown(0f);
+            SetAttackCooldown(0f);
             SpinAttack();
         }
     }

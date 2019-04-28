@@ -67,7 +67,7 @@ public class CraigController : MonoBehaviour
     private float fireRate = 0.2f;
     private float damage = 3f;
     private float heatCost = 5f;
-    private float playerspeed = 10f;
+    private float playerspeed = 12f;
     private float accuracy = 8f;
     
 
@@ -353,7 +353,7 @@ public class CraigController : MonoBehaviour
     }
     public void upgradeCraigSpeed()
     {
-        playerspeed += 0.5f;
+        playerspeed += 3f;
     }
     public void upgradeBulletVolume()
     {

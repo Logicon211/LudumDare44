@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1998359177}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: bullet hole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 6964122309241993255}
   - component: {fileID: 647639923}
   - component: {fileID: 7923324176021699215}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FossilFuel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ MonoBehaviour:
   projectileSpeed: 15.8
   projectileSize: 10
   amountOfBulletsAtATime: 3
-  phaseTransition: 25
+  phaseTransitionPercent: 25
   explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
   projectile: {fileID: 110538, guid: 431624222d72c7947a5d7d26e3ef0764, type: 3}
   gunHoleLocation: {fileID: 1998359176}

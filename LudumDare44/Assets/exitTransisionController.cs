@@ -6,6 +6,8 @@ public class exitTransisionController : MonoBehaviour
 {
     GameManager gameController;
     CraigController craig;
+    
+    public bool isFirstTransition = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,10 @@ public class exitTransisionController : MonoBehaviour
         if(other.gameObject.tag == "Player") {
             craig.endTransition();
             gameController.disableLowPassFilter();
+
+            if(!isFirstTransition) {
+                gameController.PlayShopMusic();
+            }            
 
             gameObject.SetActive(false);
         }
