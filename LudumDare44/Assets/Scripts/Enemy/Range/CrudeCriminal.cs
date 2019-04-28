@@ -28,7 +28,10 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
 
     public RoomController roomController;
     public Transform shotLocation;
+    public Transform explodeLocation;
     public GameObject projectile;
+
+    public GameObject[] debris;
 
     private void Awake() {
         enemyBody = GetComponent<Rigidbody2D>();
@@ -64,10 +67,21 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
     {
         if(!isDead) {
             isDead = true;
-            Instantiate(explosion, transform.position, Quaternion.identity);
+            Instantiate(explosion, explodeLocation.position, Quaternion.identity);
             if(roomController) {
                 roomController.DecrementAliveEnemyCount();
             }
+
+            foreach(GameObject debrisPiece in debris) {
+                GameObject part = Instantiate(debrisPiece, explodeLocation.position, Quaternion.identity);
+                Rigidbody2D rb = part.GetComponent<Rigidbody2D>();
+                Vector3 velocity = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f));
+                velocity.Normalize();
+                rb.AddForce(velocity * 1000f);
+                rb.AddTorque(Random.Range(0f, 500f));
+
+            }
+
             Destroy(gameObject);
         }
     }

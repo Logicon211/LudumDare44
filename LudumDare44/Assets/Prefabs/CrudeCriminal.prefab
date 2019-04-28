@@ -65,6 +65,7 @@ Transform:
   m_LocalScale: {x: 1.645077, y: 1.645077, z: 1.645077}
   m_Children:
   - {fileID: 4850739919538926}
+  - {fileID: 747127378570747785}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -273,7 +274,13 @@ MonoBehaviour:
   poofEffect: {fileID: 156964, guid: bfe13d3159b77fd479831552255c3a41, type: 3}
   roomController: {fileID: 0}
   shotLocation: {fileID: 4850739919538926}
+  explodeLocation: {fileID: 747127378570747785}
   projectile: {fileID: 110538, guid: 431624222d72c7947a5d7d26e3ef0764, type: 3}
+  debris:
+  - {fileID: 1349139984014051092, guid: 1b2e85e753b8e53489df62d77fef43af, type: 3}
+  - {fileID: 6651666445903592851, guid: 043aff95605af214fba9a1d842c5d8dc, type: 3}
+  - {fileID: 6523460603014211097, guid: b592f8ebb7f3d52489e0b3814a8b750a, type: 3}
+  - {fileID: 4632981807617834736, guid: 8e342b06e1ec00b49aef770984594db2, type: 3}
 --- !u!114 &-569289314358243700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,3 +314,33 @@ CircleCollider2D:
   m_Offset: {x: 0.0066246986, y: -0.016503334}
   serializedVersion: 2
   m_Radius: 0.9132447
+--- !u!1 &9086154308652077219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 747127378570747785}
+  m_Layer: 11
+  m_Name: ExplodePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &747127378570747785
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9086154308652077219}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4480246567940678}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
