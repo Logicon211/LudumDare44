@@ -84,6 +84,7 @@ public class CraigController : MonoBehaviour
     //Jeans
 
     HealthBar healthbar;
+    CooldownBar cooldownBar;
 
 
 
@@ -108,6 +109,7 @@ public class CraigController : MonoBehaviour
         animator.SetLayerWeight(LAZER_ANIMATION_LAYER, 0f);
 
         healthbar = GameObject.FindGameObjectWithTag("Health Bar").GetComponent<HealthBar>();
+        cooldownBar = GameObject.FindGameObjectWithTag("Cooldown Bar").GetComponent<CooldownBar>();
     }
 
     // Update is called once per frame
@@ -204,7 +206,9 @@ public class CraigController : MonoBehaviour
         }
 
         cooldown = cooldown -Time.deltaTime;
-        GunSizzlan.volume = (0.5f * (heat / heatMax));
+        float heatPercentage = heat / heatMax;
+        cooldownBar.SetCooldown(heatPercentage);
+        GunSizzlan.volume = (0.5f * (heatPercentage));
 
     }
 
