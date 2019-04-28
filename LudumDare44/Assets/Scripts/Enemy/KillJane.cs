@@ -43,6 +43,8 @@ public class KillJane : MonoBehaviour, IKillable, IDamageable<float>
     public float attackCooldown = 5f;
     public float dashTime = 1f;
 
+    public GameObject projectile;
+
     private Transform playerTransform;
     private Vector3 moveDir = Vector3.zero;
 
