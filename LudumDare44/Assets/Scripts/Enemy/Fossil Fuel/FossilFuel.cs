@@ -218,4 +218,9 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
             bullet.GetComponent<Rigidbody2D>().velocity *= craigController.bulletTimeEffect;
         }
     }
+
+    public void SetAttackCooldown(float newAttackCooldown)
+    {
+        this.attackCooldown = newAttackCooldown;
+    }
 }
