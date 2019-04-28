@@ -53,12 +53,15 @@ void Start()
 
     public void SpawnPowerUp(GameObject objectIn)
     {
-                int powerup = (int) Mathf.Floor(Random.Range(0, listIndex.Count));
-                int powerupIn = listIndex[powerup];
+        int powerup = (int) Mathf.Floor(Random.Range(0, listIndex.Count));
+        int powerupIn = listIndex[powerup];
          
-                             
-                    Instantiate(PowerupPrefabs[powerupIn], objectIn.transform);
-                    NumberSpawnable[powerupIn] = (int) NumberSpawnable[powerupIn] - 1;
+        
+
+        GameObject instantiatedPowerup = Instantiate(PowerupPrefabs[powerupIn], objectIn.transform.position, Quaternion.identity);
+        //instantiatedPowerup.transform.localScale = new Vector3(1f, 1f, 1f);
+
+        NumberSpawnable[powerupIn] = (int) NumberSpawnable[powerupIn] - 1;
                     
         if((int)NumberSpawnable[powerupIn] == 0)
         {
