@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9198297546099713157}
   - component: {fileID: 7990106581770096094}
   - component: {fileID: 6739583134136509193}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: boxdebris3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,8 +67,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1133434811
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 66b7bb66e506dd94eb0ca5612b00f693, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

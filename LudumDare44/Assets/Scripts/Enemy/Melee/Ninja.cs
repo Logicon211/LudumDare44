@@ -1,9 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Enemy.Interface;
 using TMPro.EditorUtilities;
 using UnityEngine;
+
 
 public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
 {
@@ -38,6 +38,8 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     private bool isAttacking = false;
 
     private Transform shootPosition;
+
+    public GameObject[] debris;
     
     private void Awake() {
         enemyBody = GetComponent<Rigidbody2D>();
@@ -78,6 +80,16 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
             Instantiate(explosion, transform.position, Quaternion.identity);
             if(roomController) {
                 roomController.DecrementAliveEnemyCount();
+            }
+
+            foreach(GameObject debrisPiece in debris) {
+                GameObject part = Instantiate(debrisPiece, transform.position, Quaternion.identity);
+                Rigidbody2D rb = part.GetComponent<Rigidbody2D>();
+                Vector3 velocity = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f));
+                velocity.Normalize();
+                rb.AddForce(velocity * 1000f);
+                rb.AddTorque(Random.Range(0f, 500f));
+
             }
             Destroy(gameObject);
         }
