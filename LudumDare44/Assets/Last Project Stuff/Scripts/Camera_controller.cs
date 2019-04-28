@@ -37,30 +37,24 @@ private float Offset;
 	void Update () {
 		 Vector3 mousePos = Input.mousePosition;
      	mousePos.z = ViewDistance;
-    	Vector3 CursorPosition = Camera.main.ScreenToWorldPoint(mousePos);
+        Vector3 CursorPosition = Camera.main.ScreenToWorldPoint(mousePos);
         var PlayerPosition = Player.position;
      float playerX = PlayerPosition.x;
 	 float playerY = PlayerPosition.y;
 	 float mouseX = CursorPosition.x;
 	 float mouseY = CursorPosition.y;
 
-	float newX = playerX + mouseX /2;
-	float newY = playerY + mouseY / 2;
+	float newX = playerX + (mouseX-playerX) /2;
+	float newY = playerY + (mouseY-playerY) /2;
+
 
 	newX = Mathf.Clamp(newX, playerX-4, playerX+4);
-	
 	newY = Mathf.Clamp(newY, playerY-4, playerY+4);
 
      Center = new Vector3(newX, newY, -10);
-     
-
-
-     transform.position = Vector3.Lerp(transform.position, Center + new Vector3(0,Height,Offset), Time.deltaTime * Damping); 
-
-
-
-
-
+               
+        transform.position = Vector3.Lerp(transform.position, Center + new Vector3(0,Height,Offset), Time.deltaTime * Damping);
+        
 		if(shake != 0){
 		Camera.main.transform.localPosition += (Random.insideUnitSphere * shake);
 		transform.localPosition = new Vector3(transform.position.x,transform.position.y,-10);
