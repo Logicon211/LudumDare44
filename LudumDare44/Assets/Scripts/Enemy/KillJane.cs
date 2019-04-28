@@ -120,7 +120,7 @@ public class KillJane : MonoBehaviour, IKillable, IDamageable<float>
         //     move = true;
         // }
 
-        Debug.Log(currentAttackCooldown);
+//        Debug.Log(currentAttackCooldown);
     }
 
     private void FixedUpdate() {
@@ -129,7 +129,7 @@ public class KillJane : MonoBehaviour, IKillable, IDamageable<float>
         if(isDashing) {
             //Vector3 targetVelocity = new Vector2(tarX * 10f, tarY * 10f);
             enemyBody.velocity = dashSpeed * transform.up; //Vector3.SmoothDamp(enemyBody.velocity, dashVelocity, ref velocity, movementSmoothing);
-            Debug.Log(enemyBody.velocity);
+//            Debug.Log(enemyBody.velocity);
         } else {
             enemyBody.velocity = Vector2.zero;
         }
