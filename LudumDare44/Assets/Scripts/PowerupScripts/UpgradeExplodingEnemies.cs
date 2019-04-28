@@ -5,11 +5,13 @@ using UnityEngine;
 public class UpgradeExplodingEnemies : PowerUp
 {
 
-    
+    private CraigController cc;
+
     // Start is called before the first frame update
     void Start()
     {
         base.Start();
+        cc = (GameObject.FindGameObjectWithTag("Player")).GetComponent<CraigController>();
         SetHealthCost(0.6f);
     }
     
@@ -17,6 +19,7 @@ public class UpgradeExplodingEnemies : PowerUp
     {
            //Turn on explosions
         //play some unique sound effect?
+        cc.explodingEnemies = true;
     }
 
 }

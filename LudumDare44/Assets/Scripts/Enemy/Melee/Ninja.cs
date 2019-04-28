@@ -84,11 +84,20 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
 
             float debrisForce = 1000f;
             float debrisTorque = 500f;
-            if(player.GetComponent<CraigController>().explodingEnemies) {
+            CraigController craig = player.GetComponent<CraigController>();
+            if(craig.explodingEnemies) {
                 Instantiate(explosion, explodeLocation.position, Quaternion.identity);
                 //Damage other enemies here:
                 debrisForce += 500f;
                 debrisTorque += 500f;
+
+                Collider2D[] hitColliders = Physics2D.OverlapCircleAll(explodeLocation.position, 8f);
+                foreach(Collider2D collider in hitColliders) {
+                    IDamageable<float> damageable = collider.GetComponent<IDamageable<float>>();
+                    if(damageable != null) {
+                        damageable.Damage(craig.explodingEnemyDamage);
+                    }
+                }
             }
             foreach(GameObject debrisPiece in debris) {
                 GameObject part = Instantiate(debrisPiece, explodeLocation.position, Quaternion.identity);
