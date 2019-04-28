@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691f0dce9c649894fb67669d33242c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 100
   howBigABitchMitchIs: 100
   movementSmoothing: 0.5
   attackDuration: 8

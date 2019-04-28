@@ -31,6 +31,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     private Transform shotOriginatingLocation;
     private GameObject player;
     private CraigController craigController;
+    private SpriteRenderer spriteRenderer;
     
     private float currentHealth;
     private float currentAttackDuration;
@@ -50,6 +51,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
         player = GameObject.FindWithTag("Player");
         craigController = player.GetComponent<CraigController>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = health;
         currentAttackCooldown = attackCooldown;
         currentAttackDuration = 0f;
@@ -61,6 +63,11 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
         currentHealth -= damageTaken;
         if (currentHealth <= 0f && !isDead)
             Kill();
+        if (health > currentHealth) 
+        {
+            var healthPercentage = currentHealth/health;
+            spriteRenderer.color = new Color(1f, healthPercentage, healthPercentage);
+        }
     }
 
     public void Move(float tarX, float tarY)
@@ -138,6 +145,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
         }
         else
         {
+            InitiateFinalPhase();
             SetAttackCooldown(0f);
             SpinAttack();
         }
@@ -219,6 +227,12 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
         }
     }
 
+    public void InitiateFinalPhase()
+    {
+        amountOfBulletsAtATime = 5;
+        projectileSpawnRate /= 2;
+    }
+    
     public void SetAttackCooldown(float newAttackCooldown)
     {
         this.attackCooldown = newAttackCooldown;
