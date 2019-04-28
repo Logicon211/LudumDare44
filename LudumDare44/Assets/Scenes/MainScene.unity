@@ -15233,28 +15233,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd7a3d08568bb9f4da7bed36635bbac0, type: 3}
---- !u!1 &1954811203 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1954811203, guid: efe30090d881811478a8e571525223f6,
-    type: 3}
-  m_PrefabInstance: {fileID: 2043049282}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1954811205 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1954811205, guid: efe30090d881811478a8e571525223f6,
-    type: 3}
-  m_PrefabInstance: {fileID: 2043049282}
-  m_PrefabAsset: {fileID: 0}
---- !u!165 &1954811206
-AudioHighPassFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954811203}
-  m_Enabled: 1
-  m_CutoffFrequency: 5000
-  m_HighpassResonanceQ: 1
 --- !u!1001 &1988474281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15620,20 +15598,6 @@ PrefabInstance:
     - target: {fileID: 4784661110567854, guid: efe30090d881811478a8e571525223f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114518684774067194, guid: efe30090d881811478a8e571525223f6,
-        type: 3}
-      propertyPath: shopTheme
-      value: 
-      objectReference: {fileID: 1954811205}
-    - target: {fileID: 114518684774067194, guid: efe30090d881811478a8e571525223f6,
-        type: 3}
-      propertyPath: volumeMax
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1040078066, guid: efe30090d881811478a8e571525223f6, type: 3}
-      propertyPath: m_Volume
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe30090d881811478a8e571525223f6, type: 3}
