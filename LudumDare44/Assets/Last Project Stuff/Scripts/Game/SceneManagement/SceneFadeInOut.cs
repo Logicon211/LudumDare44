@@ -92,7 +92,7 @@ public class SceneFadeInOut : MonoBehaviour
 
 		// Make sure the texture is enabled.
 		GetComponent<GUITexture>().enabled = true;
-
+    
 		// Start fading towards black.
 		FadeToBlack();
 

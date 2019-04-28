@@ -39,7 +39,7 @@ public class KillJane : MonoBehaviour, IKillable, IDamageable<float>
     //public float attackDistance = 40f;
     //public float speed = 10f;
     public float attackSpeed = 20f;
-    public float dashSpeed = 20f;
+    public float dashSpeed;
     public float attackCooldown = 5f;
     public float dashTime = 1f;
 
@@ -55,6 +55,8 @@ public class KillJane : MonoBehaviour, IKillable, IDamageable<float>
     private Vector2 dashVelocity;
 
     private bool dashNext = false;
+    private bool dashNext2 = false;
+    private bool dashNext3 = false;
     private bool attackNext = true;
     
     private void Awake() {
@@ -80,45 +82,74 @@ public class KillJane : MonoBehaviour, IKillable, IDamageable<float>
         if (currentAttackCooldown <= 0f)
         {
             if(attackNext) {
-                Debug.Log("ATTACKING");
-                attack = true;
+                
                 attackNext = false;
                 dashNext = true;
-            } else if(dashNext) {
-                Debug.Log("DASHING");
+                attack = false;
+                currentAttackCooldown = 0.3f;
+            }
+            else if(dashNext) {
+                
+                
                 dash = true;
                 dashNext = false;
-                attackNext = true;
+                dashNext2 = true;
+                currentAttackCooldown = 0.3f;
             }
-            currentAttackCooldown = attackCooldown;
+            else if (dashNext2)
+            {
+                
+                dash = true;
+                dashNext2 = false;
+                dashNext3 = true;
+                currentAttackCooldown = 0.3f;
+            }
+            else if (dashNext3)
+            {
+                dash = true;
+                dashNext3 = false;
+                attackNext = true;
+                attack = true;
+                currentAttackCooldown = attackCooldown;
+            }
         }
         // float dist = Vector3.Distance(player.transform.position, transform.position);
         // if (dist > maxDistance) {
         //     move = true;
         // }
+
+        Debug.Log(currentAttackCooldown);
     }
 
     private void FixedUpdate() {
         Vector3 playerNormal = (player.transform.position - transform.position).normalized;
-
+        
         if(isDashing) {
             //Vector3 targetVelocity = new Vector2(tarX * 10f, tarY * 10f);
-            enemyBody.velocity = dashVelocity; //Vector3.SmoothDamp(enemyBody.velocity, dashVelocity, ref velocity, movementSmoothing);
+            enemyBody.velocity = dashSpeed * transform.up; //Vector3.SmoothDamp(enemyBody.velocity, dashVelocity, ref velocity, movementSmoothing);
+            Debug.Log(enemyBody.velocity);
         } else {
             enemyBody.velocity = Vector2.zero;
         }
 
         if (dash) {
-            Rotate(playerNormal);
-            Dash(playerNormal.x * dashSpeed, playerNormal.y * dashSpeed);
-            ResetAttack();
+            
+            animator.SetBool("Dashing", true);
+            StartCoroutine("StopDashing");
+            isDashing = true;
+            
+            if(dashNext3){
+                ResetAttack();
+            }
+
         }
         if (attack) {
             //Do some special stuff
-            Rotate(playerNormal);
+          
             Attack(playerNormal.x * attackSpeed, playerNormal.y * attackSpeed);
             ResetAttack();
         }
+        Rotate(playerNormal);
     }
 
     public void Damage(float damageTaken)
@@ -153,6 +184,7 @@ public class KillJane : MonoBehaviour, IKillable, IDamageable<float>
     
     public void Rotate(Vector3 direction)
     {
+
         if (direction != Vector3.zero) 
         {
             transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
@@ -165,8 +197,10 @@ public class KillJane : MonoBehaviour, IKillable, IDamageable<float>
         audio.PlayOneShot(attackSound);
     }
 
+    //NOT CURRENTLY USED
     public void Dash(float tarX, float tarY)
     {
+        if(dashNext)
         animator.SetBool("Dashing", true);
         StartCoroutine("StopDashing");
         dashVelocity = new Vector2(tarX, tarY);

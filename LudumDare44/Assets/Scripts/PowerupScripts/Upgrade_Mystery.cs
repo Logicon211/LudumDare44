@@ -43,7 +43,7 @@ public class Upgrade_Mystery : PowerUp
         if(Numtospawn == 3)
         {
             GameObject instantiatedPowerupSpawner = Instantiate(SpawnerPrefab, (this.transform.position + new Vector3(3, 2, 0)), Quaternion.identity);
-            GameObject instantiatedPowerupSpawner2 = Instantiate(SpawnerPrefab, (this.transform.position + new Vector3(0, 2, 0)), Quaternion.identity);
+            GameObject instantiatedPowerupSpawner2 = Instantiate(SpawnerPrefab, (this.transform.position + new Vector3(0, -2, 0)), Quaternion.identity);
             GameObject instantiatedPowerupSpawner3 = Instantiate(SpawnerPrefab, (this.transform.position + new Vector3(-3, 2, 0)), Quaternion.identity);
             GameObject Powerup1 = P_Spawner.SpawnPowerUp(instantiatedPowerupSpawner);
             GameObject Powerup2 = P_Spawner.SpawnPowerUp(instantiatedPowerupSpawner2);
