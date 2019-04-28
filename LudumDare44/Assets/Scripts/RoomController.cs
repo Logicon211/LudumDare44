@@ -10,28 +10,37 @@ public class RoomController : MonoBehaviour
     public int[] crudeCriminalsWaves;
     public int[] oilOrksWaves;
     public int numberOfWaves;
-    // Start is called before the first frame update
+    
+    public bool isFirstBossRoom = false;
+    public bool isLastBossRoom = false;
 
     public GameObject ninja;
     public GameObject crudeCriminal;
     public GameObject oilOrk;
+
+    public GameObject fossilFuel;
+    public GameObject killJane;
 
     private int currentWaveNumber = -1;
 
     public int currentAliveEnemyCount = 0;
 
     public Transform[] spawnPoints;
+    public Transform bossSpawnPoint;
     public GameObject nextDoor;
     public GameObject oldDoor;
     public GameObject roof;
 
     private GameObject player;
+    private GameManager gameManager;
 
-    
+    private bool hasPlayedCutscene = false;
+    private bool hasKilledBoss = false;
 
 
 	// Use this for initialization
 	void Start () {
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 		player = GameObject.FindGameObjectWithTag("Player");
         nextDoor.SetActive(false);
         nextDoor.SetActive(true);
@@ -40,12 +49,28 @@ public class RoomController : MonoBehaviour
     void Update()
     {
         if(running) {
+            if(!hasPlayedCutscene && (isFirstBossRoom || isLastBossRoom)) {
+                hasPlayedCutscene = true;
+
+                Quaternion rotation = Quaternion.identity;
+                if(isFirstBossRoom) {
+                    gameManager.StartCutScene(0);
+                    GameObject spawnedFossilFuel = Instantiate (fossilFuel, bossSpawnPoint.position, rotation);
+                    spawnedFossilFuel.GetComponent<FossilFuel>().roomController = this;
+                } else if(isLastBossRoom) {
+                    gameManager.StartCutScene(1);
+                    GameObject spawnedKillJane = Instantiate (killJane, bossSpawnPoint.position, rotation);
+                    spawnedKillJane.GetComponent<KillJane>().roomController = this;
+                }
+            }
             if(currentAliveEnemyCount <=0) {
                 currentWaveNumber++;
 
                 if(currentWaveNumber >= numberOfWaves) {
-                    OpenNextDoor();
-                    running = false;
+                    if(hasKilledBoss || (!isFirstBossRoom && !isLastBossRoom)) {
+                        OpenNextDoor();
+                        running = false;
+                    }
                 } else {
                     
                     Quaternion rotation = Quaternion.identity;
@@ -100,6 +125,15 @@ public class RoomController : MonoBehaviour
 
     public void DecrementAliveEnemyCount() {
         currentAliveEnemyCount--;
+    }
+
+    public void KillBoss() {
+        if (isFirstBossRoom) {
+            hasKilledBoss = true;
+        } else if(isLastBossRoom) {
+            //Trigger end of the game.
+            gameManager.Victory();
+        }
     }
 
     public void OpenNextDoor() {

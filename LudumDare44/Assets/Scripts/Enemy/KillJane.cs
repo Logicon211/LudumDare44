@@ -139,7 +139,7 @@ public class KillJane : MonoBehaviour, IKillable, IDamageable<float>
             isDead = true;
             Instantiate(explosion, transform.position, Quaternion.identity);
             if(roomController) {
-                roomController.DecrementAliveEnemyCount();
+                roomController.KillBoss();
             }
             Destroy(gameObject);
         }

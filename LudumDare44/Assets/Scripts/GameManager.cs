@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour {
 	private string[] cutscenes = {"Pre-BossScene", "SecondBossScene"};
 
 	private int nextCutsceneIndex = 0;
+	private int currentCutSceneIndex;
 	// public AudioSource AS;
 	// public AudioClip AC1;
 
@@ -137,17 +138,17 @@ public class GameManager : MonoBehaviour {
 		spawnManager.SpawnWave(currentLevel);
 	}
 
-	public void StartCutScene() {
-		Debug.Log("START SCENE INDEX: " + nextCutsceneIndex);
-		SceneManager.LoadScene(cutscenes[nextCutsceneIndex], LoadSceneMode.Additive);
+	public void StartCutScene(int cutSceneIndex) {
+		Debug.Log("START SCENE INDEX: " + cutSceneIndex);
+		currentCutSceneIndex = cutSceneIndex;
+		SceneManager.LoadScene(cutscenes[cutSceneIndex], LoadSceneMode.Additive);
 		listener.enabled = false; // Disabling the main cameras audio listener so that we have exactly one listener
 		PauseGame();
 	}
 
 	public void StopCutScene() {
-		Debug.Log("END SCENE INDEX: " + nextCutsceneIndex);
-		SceneManager.UnloadSceneAsync(cutscenes[nextCutsceneIndex]);
-		nextCutsceneIndex++;
+		Debug.Log("END SCENE INDEX: " + currentCutSceneIndex);
+		SceneManager.UnloadSceneAsync(cutscenes[currentCutSceneIndex]);
 		listener.enabled = true;
 		// SetEnemyCountToZero();
 		UnPauseGame();
@@ -163,6 +164,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Victory() {
+		Debug.Log("YOU WIN");
 		if (SceneManager.GetActiveScene().name != "VictoryScene" && !loss) {
 			victory = true;
 			SceneManager.LoadScene("VictoryScene", LoadSceneMode.Single);
