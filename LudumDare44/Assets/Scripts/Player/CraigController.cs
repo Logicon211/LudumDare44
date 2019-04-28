@@ -85,6 +85,7 @@ public class CraigController : MonoBehaviour
 
     HealthBar healthbar;
     CooldownBar cooldownBar;
+    GameObject radiationEffect;
 
 
 
@@ -110,6 +111,10 @@ public class CraigController : MonoBehaviour
 
         healthbar = GameObject.FindGameObjectWithTag("Health Bar").GetComponent<HealthBar>();
         cooldownBar = GameObject.FindGameObjectWithTag("Cooldown Bar").GetComponent<CooldownBar>();
+        radiationEffect = GameObject.FindGameObjectWithTag("RadiationEffect");
+        if(radiationEffect) {
+            radiationEffect.SetActive(false);
+        }
     }
 
     // Update is called once per frame

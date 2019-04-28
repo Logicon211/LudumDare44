@@ -11,6 +11,7 @@ TagManager:
   - Wall
   - Health Bar
   - Cooldown Bar
+  - RadiationEffect
   layers:
   - Default
   - TransparentFX
