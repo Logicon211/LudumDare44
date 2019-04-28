@@ -7,13 +7,14 @@ public class TestPlayerController : MonoBehaviour
 
     public float speed = 10f;
     public float maxHealth = 100f;
-    public float currentHealth = 100f;
+    public float currentHealth = 0f;
     public HealthBar healthBar;
+    public CooldownBar cooldownBar;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        cooldownBar = GameObject.FindWithTag("Cooldown Bar").GetComponent<CooldownBar>();
     }
 
     // Update is called once per frame
@@ -27,13 +28,13 @@ public class TestPlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             Debug.Log("P Pressed");
-            currentHealth = healthBar.DecreaseHealth(0.05f) * maxHealth;
+            currentHealth = cooldownBar.SetCooldown(currentHealth - 0.05f);
         }
 
         if (Input.GetKeyDown(KeyCode.O))
         {
             Debug.Log("O Pressed");
-            currentHealth = healthBar.IncreaseHealth(0.05f) * maxHealth;
+            currentHealth = cooldownBar.SetCooldown(currentHealth + 0.05f);
         }
     }
 }
