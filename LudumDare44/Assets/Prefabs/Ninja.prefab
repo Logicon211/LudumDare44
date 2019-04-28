@@ -142,7 +142,7 @@ MonoBehaviour:
   movementSmoothing: 0.05
   health: 10
   shootCooldown: 5
-  attackDamage: 5
+  attackDamage: 15
   maxRangeToLandAttack: 7
   animator: {fileID: 95725642779222972}
   explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}

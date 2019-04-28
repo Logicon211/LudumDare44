@@ -50,6 +50,8 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     private bool isSpinning = false;
 
     public RoomController roomController;
+
+    public AudioSource shotAudioSource;
     
 
     private void Awake()
@@ -104,6 +106,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
             {
                 reloading = true;
                 animator.SetBool("Attack Cooldown", true);
+                shotAudioSource.enabled = true;
                 currentAttackDuration = 0f;
             }
             if (currentProjectileCooldown <= 0f)
@@ -119,6 +122,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
             {
                 reloading = false;
                 animator.SetBool("Attack Cooldown", false);
+                shotAudioSource.enabled = false;
                 currentAttackCooldown = attackCooldown;
             }
         }

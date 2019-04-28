@@ -125,6 +125,20 @@ public class RoomController : MonoBehaviour
 		return new Vector2();
 	}
 
+    public Vector2 PickSpawnPointFurthestFromPlayer() {
+		if (player == null) {
+			player = GameObject.FindGameObjectWithTag("Player");
+		}
+		Transform furthestPoint = null;
+		foreach(Transform point in spawnPoints) {
+			if(furthestPoint == null || Vector2.Distance(point.position, player.transform.position) > Vector2.Distance(furthestPoint.position, player.transform.position)) {
+				furthestPoint = point;
+			}
+		}
+
+		return new Vector2(furthestPoint.position.x, furthestPoint.position.y);
+	}
+
     public void DecrementAliveEnemyCount() {
         currentAliveEnemyCount--;
     }

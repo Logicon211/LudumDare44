@@ -6,7 +6,6 @@ public class UpgradeCraigSpeed : PowerUp
 {
 
     private CraigController cc;
-    private float healthCost;
 
     // Start is called before the first frame update
     void Start()
