@@ -75,9 +75,12 @@ public class CraigController : MonoBehaviour
     //One time upgrades:
     private bool knockback = false;
     private bool heatCooldownDelay = false;
-    private bool bulletTime = false;
+    public bool bulletTime = false;
     private bool healthRegenUp = false;
-    private bool explodingEnemies = false;
+    public bool explodingEnemies = false;
+
+    public float bulletTimeEffect = 0.6f;
+    public float explodingEnemyDamage = 10f;
 
     //Joke upgrades
     //Gun sound

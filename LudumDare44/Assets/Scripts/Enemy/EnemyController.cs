@@ -50,7 +50,12 @@ public class EnemyController : MonoBehaviour
             controller.StopMove();
         }
         if (attack) {
-            controller.Attack(normal.x * attackSpeed * Time.fixedDeltaTime, normal.y * attackSpeed * Time.fixedDeltaTime);
+            CraigController craig = player.GetComponent<CraigController>();
+            if(craig.bulletTime) {
+                controller.Attack(normal.x * attackSpeed * craig.bulletTimeEffect, normal.y * attackSpeed * craig.bulletTimeEffect);
+            } else {
+                 controller.Attack(normal.x * attackSpeed, normal.y * attackSpeed);
+            }
             ResetAttack();
         }
         controller.Rotate(normal);

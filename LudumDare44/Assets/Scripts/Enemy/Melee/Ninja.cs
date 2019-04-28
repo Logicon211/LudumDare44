@@ -78,19 +78,25 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
     {
         if(!isDead) {
             isDead = true;
-            Instantiate(explosion, explodeLocation.position, Quaternion.identity);
             if(roomController) {
                 roomController.DecrementAliveEnemyCount();
             }
 
+            float debrisForce = 1000f;
+            float debrisTorque = 500f;
+            if(player.GetComponent<CraigController>().explodingEnemies) {
+                Instantiate(explosion, explodeLocation.position, Quaternion.identity);
+                //Damage other enemies here:
+                debrisForce += 500f;
+                debrisTorque += 500f;
+            }
             foreach(GameObject debrisPiece in debris) {
                 GameObject part = Instantiate(debrisPiece, explodeLocation.position, Quaternion.identity);
                 Rigidbody2D rb = part.GetComponent<Rigidbody2D>();
                 Vector3 velocity = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f));
                 velocity.Normalize();
-                rb.AddForce(velocity * 1000f);
-                rb.AddTorque(Random.Range(0f, 500f));
-
+                rb.AddForce(velocity * debrisForce);
+                rb.AddTorque(Random.Range(0f, debrisTorque));
             }
             Destroy(gameObject);
         }

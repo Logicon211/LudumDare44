@@ -113,13 +113,13 @@ public abstract class PowerUp : MonoBehaviour
 
     public void SetHealthCostFree()
     {
-        Debug.Log("In Set Health Free");
+        //Debug.Log("In Set Health Free");
         isFree = true;
     }
 
     public void SetHealthCost(float healthCost)
     {
-        Debug.Log("In Set Health");
+        //Debug.Log("In Set Health");
         this.healthCost = healthCost;
     }
 

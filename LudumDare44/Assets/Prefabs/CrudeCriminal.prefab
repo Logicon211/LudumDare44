@@ -296,7 +296,7 @@ MonoBehaviour:
   maxDistance: 30
   attackDistance: 30
   speed: 10
-  attackSpeed: 100
+  attackSpeed: 50
   attackCooldown: 0.5
 --- !u!58 &1618181644561438260
 CircleCollider2D:
