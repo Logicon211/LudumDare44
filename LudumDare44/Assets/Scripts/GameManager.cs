@@ -35,11 +35,14 @@ public class GameManager : MonoBehaviour {
 	private int nextCutsceneIndex = 0;
 	private int currentCutSceneIndex;
 	private AudioSource AS;
+	private AudioLowPassFilter lpFilter;
 
 	public AudioClip mainTheme;
 	public AudioClip finalBossTheme;
 	public AudioClip midBossTheme;
 	public AudioClip shopTheme;
+
+	public AudioClip doorOpenClose;
 
 
 	private void Awake() {
@@ -71,6 +74,7 @@ public class GameManager : MonoBehaviour {
 		listener = cameraObject.GetComponent<AudioListener>();
 		craigController = player.GetComponent<CraigController>();
 		AS = GetComponent<AudioSource>();
+		lpFilter = GetComponent<AudioLowPassFilter>();
 
 		// if(spawn){
 		// 	enemyCount = spawnManager.GetNumOfEnemiesOnLevel(currentLevel);
@@ -205,6 +209,18 @@ public class GameManager : MonoBehaviour {
 	public void PlayFinalBossMusic() {
 		AS.clip = finalBossTheme;
 		AS.Play();
+	}
+
+	public void PlayDoorNoise() {
+		AS.PlayOneShot(doorOpenClose);
+	}
+
+	public void enableLowPassFilter() {
+		lpFilter.enabled = true;
+	}
+
+	public void disableLowPassFilter() {
+		lpFilter.enabled = false;
 	}
 
 	// public void DecreaseEnemyCount() {

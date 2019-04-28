@@ -87,7 +87,12 @@ public class CraigController : MonoBehaviour
     CooldownBar cooldownBar;
     GameObject radiationEffect;
 
+    public float transitionSpeed = 2f;
+    private float preTransitionSpeed = 10f;
 
+    public float healthRegenPerTransition = 100f;
+    private float regenAmountRemaining = 0f;
+    private bool isRegenerating = false;
 
 
     // Use this for initialization
@@ -214,6 +219,20 @@ public class CraigController : MonoBehaviour
         float heatPercentage = heat / heatMax;
         cooldownBar.SetCooldown(heatPercentage);
         GunSizzlan.volume = (0.5f * (heatPercentage));
+
+        if(isRegenerating && regenAmountRemaining > 0f) {
+            float regenAmount = Time.deltaTime * 20f;
+            regenAmountRemaining -= regenAmount;
+            if(regenAmountRemaining <= 0f) {
+                regenAmountRemaining = 0f;
+                isRegenerating = false;
+            }
+            health += regenAmount;
+            if(health > maxHealth) {
+                health = maxHealth;
+            }
+            healthbar.SetHealth(health/maxHealth);
+        }
 
     }
 
@@ -359,6 +378,28 @@ public class CraigController : MonoBehaviour
     public void upgradeMaxHealth()
     {
         maxHealth = maxHealth + 50;
+    }
+
+    public void startTransition() {
+        if(radiationEffect) {
+            radiationEffect.SetActive(true);
+        }
+        preTransitionSpeed = playerspeed;
+        playerspeed = transitionSpeed;
+
+        isRegenerating = true;
+        regenAmountRemaining = healthRegenPerTransition;
+
+        if(healthRegenUp) {
+            regenAmountRemaining += 30f;
+        }
+    }
+
+    public void endTransition() {
+        if(radiationEffect) {
+            radiationEffect.SetActive(false);
+        }
+        playerspeed = preTransitionSpeed;
     }
 
 

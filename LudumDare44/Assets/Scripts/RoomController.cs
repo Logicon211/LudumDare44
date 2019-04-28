@@ -140,6 +140,7 @@ public class RoomController : MonoBehaviour
 
     public void OpenNextDoor() {
         nextDoor.SetActive(false);
+        gameManager.PlayDoorNoise();
         //Play open door noise?
     }
 
@@ -147,6 +148,7 @@ public class RoomController : MonoBehaviour
         if(!running) {
             oldDoor.SetActive(true);
             running = true;
+            gameManager.PlayDoorNoise();
             //Play open door noise?
         }
     }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 114518684774067194}
   - component: {fileID: 1040078066}
   - component: {fileID: 1040078063}
+  - component: {fileID: 1184745976}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -50,6 +51,7 @@ MonoBehaviour:
   finalBossTheme: {fileID: 8300000, guid: 2aa0fa93dbe3c0c46bf5a66fa6ec6f70, type: 3}
   midBossTheme: {fileID: 8300000, guid: 6b1936cccba520e4ca1b25821c555884, type: 3}
   shopTheme: {fileID: 8300000, guid: 33d2edfc50e072549aaa722e3ac7dffe, type: 3}
+  doorOpenClose: {fileID: 8300000, guid: bf4bdb61c03587744ba6f7eccf15b5e8, type: 3}
 --- !u!82 &1040078066
 AudioSource:
   m_ObjectHideFlags: 0
@@ -174,3 +176,28 @@ MonoBehaviour:
   - {fileID: 3450632374254689775, guid: d762e5e1bc9134a43a6cd33d731ccee2, type: 3}
   - {fileID: 2336558232593232835, guid: 9b45a85cb19734148b426de148980eec, type: 3}
   listIndex: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d000000
+--- !u!169 &1184745976
+AudioLowPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858940524409500}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.020009095
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
