@@ -74,6 +74,7 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
 
     public void Move(float tarX, float tarY)
     {
+        animator.SetBool("moving", true);
         Vector3 targetVelocity = new Vector2(tarX * 10f, tarY * 10f);
         enemyBody.velocity = Vector3.SmoothDamp(enemyBody.velocity, targetVelocity, ref velocity, movementSmoothing);
     }
@@ -94,12 +95,18 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
         //     playerController.Damage(attackDamage);
         //     Instantiate(hitEffect, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 0.1f), Quaternion.identity);
         // }
+        animator.SetBool("moving", false);
         animator.SetTrigger("shootTrigger");
         audio.Play(0);
         GameObject bullet = Instantiate(projectile, shotLocation.position, Quaternion.identity) as GameObject;
         bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(tarX * 10f, tarY * 10f);
         hasShot = true;
     }
+
+    public void StopMove() {
+        animator.SetBool("moving", false);
+    }
+
 
     private void CheckAttackCooldown()
     {

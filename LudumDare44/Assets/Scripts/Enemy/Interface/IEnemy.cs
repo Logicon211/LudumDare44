@@ -7,6 +7,9 @@ namespace Enemy.Interface
         // Move the enemy
         void Move(float tarX, float tarY);
 
+        // Stop Moving the enemy
+        void StopMove();
+
         // Rotate the enemy
         void Rotate(Vector3 direction);
 
