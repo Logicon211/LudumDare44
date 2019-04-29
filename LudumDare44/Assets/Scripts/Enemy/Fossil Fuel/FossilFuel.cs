@@ -102,11 +102,11 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
         {
             currentAttackDuration += Time.deltaTime;
             currentProjectileCooldown -= Time.deltaTime;
+            shotAudioSource.enabled = true;
             if (currentAttackDuration >= attackDuration)
             {
                 reloading = true;
                 animator.SetBool("Attack Cooldown", true);
-                shotAudioSource.enabled = true;
                 currentAttackDuration = 0f;
             }
             if (currentProjectileCooldown <= 0f)
@@ -118,15 +118,20 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
         {
             currentAttackCooldown -= Time.deltaTime;
             isSpinning = false;
+            shotAudioSource.enabled = false;
             if (currentAttackCooldown <= 0f)
             {
                 reloading = false;
                 animator.SetBool("Attack Cooldown", false);
-                shotAudioSource.enabled = false;
                 currentAttackCooldown = attackCooldown;
             }
         }
         
+    }
+
+    public void StopAttack() {
+        // animator.SetBool("Attack Cooldown", false);
+        // shotAudioSource.enabled = false;
     }
 
     public void Kill()

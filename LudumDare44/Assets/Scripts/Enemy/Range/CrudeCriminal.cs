@@ -138,6 +138,10 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
         animator.SetBool("moving", false);
     }
 
+    public void StopAttack() {
+       //nothing
+    }
+
 
     private void CheckAttackCooldown()
     {

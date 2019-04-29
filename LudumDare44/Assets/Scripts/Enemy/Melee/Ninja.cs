@@ -128,6 +128,10 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
         //Nothing
     }
 
+    public void StopAttack() {
+       //nothing
+    }
+
     public void Attack(float tarX, float tarY)
     {
         animator.SetTrigger("Attack");

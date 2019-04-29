@@ -15,5 +15,8 @@ namespace Enemy.Interface
 
         // Attack shit towards target
         void Attack(float tarX, float tarY);
+
+        // Stop Moving the enemy
+        void StopAttack();
     }
 }
