@@ -14572,10 +14572,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6964122309241993304, guid: d6633998547bb614294ca111c7514eae,
+    - target: {fileID: 569674490976962245, guid: d6633998547bb614294ca111c7514eae,
         type: 3}
-      propertyPath: timeBetweenVoiceLines
-      value: 10
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6633998547bb614294ca111c7514eae, type: 3}
