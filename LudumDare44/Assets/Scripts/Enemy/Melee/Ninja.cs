@@ -97,6 +97,8 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
                         damageable.Damage(craig.explodingEnemyDamage);
                     }
                 }
+            } else {
+                Instantiate(poofEffect, explodeLocation.position, Quaternion.identity);
             }
             foreach(GameObject debrisPiece in debris) {
                 GameObject part = Instantiate(debrisPiece, explodeLocation.position, Quaternion.identity);

@@ -77,7 +77,7 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
             float debrisForce = 1000f;
             float debrisTorque = 500f;
             CraigController craig = player.GetComponent<CraigController>();
-            if(player.GetComponent<CraigController>().explodingEnemies) {
+            if(craig.explodingEnemies) {
                 Instantiate(explosion, explodeLocation.position, Quaternion.identity);
                 //Damage other enemies here:
                 debrisForce += 500f;
@@ -90,6 +90,8 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
                         damageable.Damage(craig.explodingEnemyDamage);
                     }
                 }
+            } else {
+                Instantiate(poofEffect, explodeLocation.position, Quaternion.identity);
             }
             foreach(GameObject debrisPiece in debris) {
                 GameObject part = Instantiate(debrisPiece, explodeLocation.position, Quaternion.identity);
