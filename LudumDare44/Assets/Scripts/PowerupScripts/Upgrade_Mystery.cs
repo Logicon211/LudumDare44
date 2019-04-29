@@ -16,7 +16,7 @@ public class Upgrade_Mystery : PowerUp
         {
             P_Spawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<Powerup_Spawner>();
         }
-        SetHealthCost(0.7f);
+        SetHealthCost(0.6f);
     }
     
     public override void PowerUpEffect()

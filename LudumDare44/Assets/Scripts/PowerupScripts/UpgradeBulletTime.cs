@@ -11,7 +11,7 @@ public class UpgradeBulletTime : PowerUp
     {
         base.Start();
         cc = (GameObject.FindGameObjectWithTag("Player")).GetComponent<CraigController>();
-        SetHealthCost(0.7f);
+        SetHealthCost(0.5f);
     }
     
     public override void PowerUpEffect()
