@@ -144,6 +144,27 @@ public class RoomController : MonoBehaviour
 		return new Vector2(furthestPoint.position.x, furthestPoint.position.y);
 	}
 
+    public Vector2 PickSpawnPointNotOnPoint(Vector3 pointIn) {
+		Transform closestPoint = null;
+		foreach(Transform point in spawnPoints) {
+			if(closestPoint == null || Vector2.Distance(point.position, pointIn) < Vector2.Distance(closestPoint.position, pointIn)) {
+				closestPoint = point;
+			}
+		}
+
+		Vector2 chosenPosition;
+		bool spawnPointChosen = false;
+		while (!spawnPointChosen) {
+			chosenPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
+
+			if(!chosenPosition.Equals(closestPoint.position)) {
+				return OffsetPositionSlightly(chosenPosition);
+			}
+		}
+
+		return new Vector2();
+	}
+
     public void DecrementAliveEnemyCount() {
         currentAliveEnemyCount--;
     }

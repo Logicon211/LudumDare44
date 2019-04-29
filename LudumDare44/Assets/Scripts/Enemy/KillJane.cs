@@ -168,7 +168,7 @@ public class KillJane : MonoBehaviour, IKillable, IDamageable<float>
 
         if (teleport) {
             Instantiate(teleportEffect, gameObject.transform.position, Quaternion.identity);
-            gameObject.transform.position = roomController.PickSpawnPointNotOnPlayer();
+            gameObject.transform.position = roomController.PickSpawnPointNotOnPoint(transform.position);
 
             teleport = false;
         }
