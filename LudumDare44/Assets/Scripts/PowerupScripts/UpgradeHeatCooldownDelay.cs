@@ -12,7 +12,7 @@ public class UpgradeHeatCooldownDelay : PowerUp
     {
         base.Start();
         cc = (GameObject.FindGameObjectWithTag("Player")).GetComponent<CraigController>();
-        SetHealthCost(0.4f);
+        SetHealthCost(0.3f);
     }
 
     public override void PowerUpEffect()
