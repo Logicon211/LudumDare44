@@ -15,6 +15,8 @@ public abstract class PowerUp : MonoBehaviour
     private SpriteRenderer overlaySpriteRenderer;
     CraigController craig;
 
+    private GameManager gameManager;
+
     private float overlayVerticalOffset = 12f;
     private float overlayScale = 4f;
 
@@ -32,6 +34,7 @@ public abstract class PowerUp : MonoBehaviour
         overlay = InstantiatePowerUpOverlay();
         healthBar = GameObject.FindWithTag("Health Bar").GetComponent<HealthBar>();
         craig = GameObject.FindGameObjectWithTag("Player").GetComponent<CraigController>();
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         instantiated = true;
     }
 
@@ -96,13 +99,18 @@ public abstract class PowerUp : MonoBehaviour
     
     void Pickup()
     {
-        PowerUpEffect();
-        Destroy(overlay);
-        healthBar.HideHealthLossPreview();
-        healthBar.DecreaseHealth(GetHealthLossAmount());
         float damage = craig.maxHealth * GetHealthLossAmount();
-        craig.Damage(damage);
-        Destroy(gameObject);
+
+        if(craig.health - damage <= 0f) {
+            gameManager.PlayErrorNoise();
+        } else {
+            PowerUpEffect();
+            Destroy(overlay);
+            healthBar.HideHealthLossPreview();
+            healthBar.DecreaseHealth(GetHealthLossAmount());
+            craig.Damage(damage);
+            Destroy(gameObject);
+        }
         
     }
     

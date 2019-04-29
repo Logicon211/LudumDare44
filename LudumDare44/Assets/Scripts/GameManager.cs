@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour {
 	public AudioSource shopTheme;
 
 	public AudioClip doorOpenClose;
+	public AudioClip errorPurchaseNoise;
 
 	public float volumeMax = 0.2f;
 
@@ -245,6 +246,14 @@ public class GameManager : MonoBehaviour {
 
 	public void PlayDoorNoise() {
 		AS.PlayOneShot(doorOpenClose);
+	}
+
+	public void PlayErrorNoise() {
+		if(changeToShopMusic) {
+			shopTheme.PlayOneShot(errorPurchaseNoise);
+		} else {
+			AS.PlayOneShot(errorPurchaseNoise);
+		}
 	}
 
 	public void enableLowPassFilter() {

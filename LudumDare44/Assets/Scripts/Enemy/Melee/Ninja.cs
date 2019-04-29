@@ -132,7 +132,7 @@ public class Ninja: MonoBehaviour, IDamageable<float>, IKillable, IEnemy
        //nothing
     }
 
-    public void Attack(float tarX, float tarY)
+    public void Attack(float attackSpeed)
     {
         animator.SetTrigger("Attack");
         audio.PlayOneShot(attackSound);

@@ -281,6 +281,7 @@ MonoBehaviour:
   - {fileID: 6651666445903592851, guid: 043aff95605af214fba9a1d842c5d8dc, type: 3}
   - {fileID: 6523460603014211097, guid: b592f8ebb7f3d52489e0b3814a8b750a, type: 3}
   - {fileID: 4632981807617834736, guid: 8e342b06e1ec00b49aef770984594db2, type: 3}
+  accuracy: 12
 --- !u!114 &-569289314358243700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,11 +294,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1201d1a652d7a9548be35b41900c60e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 30
-  attackDistance: 30
+  maxDistance: 35
+  attackDistance: 35
   speed: 15
-  attackSpeed: 42
-  attackCooldown: 0.5
+  attackSpeed: 35
+  attackCooldown: 0.3
 --- !u!58 &1618181644561438260
 CircleCollider2D:
   m_ObjectHideFlags: 0

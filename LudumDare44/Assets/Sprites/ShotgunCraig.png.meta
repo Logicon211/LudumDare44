@@ -1,13 +1,21 @@
 fileFormatVersion: 2
 guid: ae0d7af23d612a042b9882e556762f54
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: ShotgunCraig_0
-    21300002: ShotgunCraig_1
-    21300004: ShotgunCraig_2
-    21300006: ShotgunCraig_3
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: ShotgunCraig_0
+  - first:
+      213: 21300002
+    second: ShotgunCraig_1
+  - first:
+      213: 21300004
+    second: ShotgunCraig_2
+  - first:
+      213: 21300006
+    second: ShotgunCraig_3
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -125,6 +133,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: ff6d7a17565f2794ab6808331ebfd3ee
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -145,6 +154,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 00650d77143531f44b8c397f605bed88
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -165,6 +175,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 8dc458ad87366bc47bb705f2b7d1a661
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -185,6 +196,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 2fb0d355431d61e4e8840d8dc2044121
+      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -193,10 +205,12 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 886fdbc3c2e48e640b564c6cd32fe6ea
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

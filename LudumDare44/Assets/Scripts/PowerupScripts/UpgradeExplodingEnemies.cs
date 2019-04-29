@@ -12,7 +12,7 @@ public class UpgradeExplodingEnemies : PowerUp
     {
         base.Start();
         cc = (GameObject.FindGameObjectWithTag("Player")).GetComponent<CraigController>();
-        SetHealthCost(0.6f);
+        SetHealthCost(0.4f);
     }
     
     public override void PowerUpEffect()

@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSmoothing: 0.05
-  health: 30
+  health: 35
   shootCooldown: 5
   attackDamage: 20
   maxRangeToLandAttack: 8
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   attackDistance: 10
-  speed: 15
+  speed: 20
   attackSpeed: 20
   attackCooldown: 1
 --- !u!82 &82736749433757514

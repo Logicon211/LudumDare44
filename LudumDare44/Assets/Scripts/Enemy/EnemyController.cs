@@ -52,9 +52,9 @@ public class EnemyController : MonoBehaviour
         if (attack) {
             CraigController craig = player.GetComponent<CraigController>();
             if(craig.bulletTime) {
-                controller.Attack(normal.x * attackSpeed * craig.bulletTimeEffect, normal.y * attackSpeed * craig.bulletTimeEffect);
+                controller.Attack(attackSpeed * craig.bulletTimeEffect);
             } else {
-                 controller.Attack(normal.x * attackSpeed, normal.y * attackSpeed);
+                 controller.Attack(attackSpeed);
             }
             ResetAttack();
         }

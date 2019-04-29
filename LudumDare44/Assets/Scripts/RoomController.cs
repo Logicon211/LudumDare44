@@ -118,12 +118,17 @@ public class RoomController : MonoBehaviour
 			chosenPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
 
 			if(!chosenPosition.Equals(closestPoint.position)) {
-				return chosenPosition;
+				return OffsetPositionSlightly(chosenPosition);
 			}
 		}
 
 		return new Vector2();
 	}
+
+    public Vector2 OffsetPositionSlightly(Vector2 point) {
+        return new Vector2(point.x + Random.Range(-0.1f, 0.1f), point.y + Random.Range(-0.1f, 0.1f));
+
+    }
 
     public Vector2 PickSpawnPointFurthestFromPlayer() {
 		if (player == null) {

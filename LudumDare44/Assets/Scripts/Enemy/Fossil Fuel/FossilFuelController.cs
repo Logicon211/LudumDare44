@@ -48,7 +48,7 @@ public class FossilFuelController : MonoBehaviour
             moveDir = normal;	
         }
         if (attack) {
-            controller.Attack(normal.x * Time.fixedDeltaTime, normal.y * Time.fixedDeltaTime);
+            controller.Attack(attackSpeed);
             ResetAttack();
         }
         controller.PlayAudio();

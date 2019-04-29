@@ -48,6 +48,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     private bool isDead = false;
     private bool reloading = false;
     private bool isSpinning = false;
+    private bool isInFinalPhase = false;
 
     public RoomController roomController;
 
@@ -96,7 +97,7 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
         }
     }
 
-    public void Attack(float tarX, float tarY)
+    public void Attack(float attackSpeed)
     {
         if (!reloading)
         {
@@ -249,6 +250,11 @@ public class FossilFuel : MonoBehaviour, IDamageable<float>, IEnemy, IKillable
     public void InitiateFinalPhase()
     {
         //projectileSpawnRate /= 1.5f;
+        if(!isInFinalPhase) {
+            amountOfBulletsAtATime *=2;
+            projectileSpawnRate = projectileSpawnRate/2;
+            isInFinalPhase = true;
+        }
     }
     
     public void SetAttackCooldown(float newAttackCooldown)

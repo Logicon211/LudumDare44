@@ -14,7 +14,7 @@ namespace Enemy.Interface
         void Rotate(Vector3 direction);
 
         // Attack shit towards target
-        void Attack(float tarX, float tarY);
+        void Attack(float attackSpeed);
 
         // Stop Moving the enemy
         void StopAttack();

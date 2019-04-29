@@ -12,7 +12,7 @@ public class CraigController : MonoBehaviour
     private float verticalMove;
 
     public float maxHealth = 200f;
-    private float health = 200f;
+    public float health = 200f;
     private float energy = 0f;
     private float bulletVelocity = 50f;
 
@@ -68,7 +68,7 @@ public class CraigController : MonoBehaviour
     private float damage = 3f;
     private float heatCost = 5f;
     private float playerspeed = 12f;
-    private float accuracy = 8f;
+    private float accuracy = 0f;
     
 
     //Bullet speed
@@ -390,7 +390,7 @@ public class CraigController : MonoBehaviour
         regenAmountRemaining = healthRegenPerTransition;
 
         if(healthRegenUp) {
-            regenAmountRemaining += 30f;
+            regenAmountRemaining += 40f;
         }
     }
 

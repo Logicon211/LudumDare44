@@ -33,6 +33,7 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
     public GameObject projectile;
 
     public GameObject[] debris;
+    public float accuracy = 8f;
 
     private void Awake() {
         enemyBody = GetComponent<Rigidbody2D>();
@@ -118,7 +119,7 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
         }
     }
 
-    public void Attack(float tarX, float tarY)
+    public void Attack(float attackSpeed)
     {
         // if(Vector2.Distance(player.transform.position, transform.position) <= attackRange) {
         //     //TODO: Do damage to player
@@ -129,8 +130,15 @@ public class CrudeCriminal : MonoBehaviour, IEnemy, IKillable, IDamageable<float
         animator.SetBool("moving", false);
         animator.SetTrigger("shootTrigger");
         audio.Play(0);
-        GameObject bullet = Instantiate(projectile, shotLocation.position, Quaternion.identity) as GameObject;
-        bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(tarX, tarY);
+        GameObject bullet = Instantiate(projectile, shotLocation.position, transform.rotation) as GameObject;
+
+        //reduce accuracy and add random shot spread
+        bullet.transform.Rotate(0, 0, Random.Range(-accuracy, accuracy));
+        bullet.GetComponent<Rigidbody2D>().velocity = attackSpeed * bullet.transform.up;
+
+        //bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(tarX, tarY);
+        //bullet.transform.Rotate(0, 0, Random.Range(-projectileSpread, projectileSpread));
+        //bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * ( new Vector2(tarX, tarY));
         hasShot = true;
     }
 

@@ -257,17 +257,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691f0dce9c649894fb67669d33242c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 200
   howBigABitchMitchIs: 100
   movementSmoothing: 0.5
   attackDuration: 8
   attackCooldown: 3
-  randomizeSpread: 0
+  randomizeSpread: 1
   projectileSpawnRate: 0.242
-  projectileSpread: 45
-  projectileSpeed: 15.8
+  projectileSpread: 70
+  projectileSpeed: 20
   projectileSize: 10
-  amountOfBulletsAtATime: 3
+  amountOfBulletsAtATime: 7
   phaseTransitionPercent: 25
   explosion: {fileID: 156964, guid: 15ff87b027731ae4cbf07bb092fba046, type: 3}
   projectile: {fileID: 110538, guid: 508127af2de07544f86380eca03ed876, type: 3}
