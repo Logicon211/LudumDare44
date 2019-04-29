@@ -68,7 +68,7 @@ public class CraigController : MonoBehaviour
     private float damage = 3f;
     private float heatCost = 5f;
     private float playerspeed = 12f;
-    private float accuracy = 0f;
+    private float accuracy = 8f;
     
 
     //Bullet speed
@@ -276,11 +276,11 @@ public class CraigController : MonoBehaviour
     {
         if (cooldown <= 0)
         {
-
-        
-
-        Quaternion rotation = transform.rotation;
-        rotation *= Quaternion.Euler(Vector3.forward * 90);
+            //Rotate shoot position so its pointing towards the mouse
+            Vector3 mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 gunHoleNormal = (mousePoint - shootPosition.position).normalized;
+            shootPosition.rotation = Quaternion.LookRotation(Vector3.forward, gunHoleNormal);
+            shootPosition.rotation *= Quaternion.Euler(Vector3.forward * 90);
 
 
             //Spread = 1;
@@ -292,7 +292,7 @@ public class CraigController : MonoBehaviour
             //bulletVolume = 50f;
 
             for (int i = 0; i<spread; i++) {
-            GameObject projectileLaunched = Instantiate(bullet, shootPosition.position, rotation) as GameObject;
+            GameObject projectileLaunched = Instantiate(bullet, shootPosition.position, shootPosition.rotation) as GameObject;
             projectileLaunched.GetComponent<BulletController>().setValues(damage, knockback);
             projectileLaunched.transform.Rotate(0, 0, Random.Range(-accuracy, accuracy));
             projectileLaunched.GetComponent<Rigidbody2D>().velocity = projectileLaunched.transform.right * (bulletVelocity);
