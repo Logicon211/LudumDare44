@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1954811204}
   - component: {fileID: 1954811205}
-  - component: {fileID: 1954811206}
   m_Layer: 0
   m_Name: ShopThemeController
   m_TagString: Untagged
@@ -128,16 +127,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!165 &1954811206
-AudioHighPassFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954811203}
-  m_Enabled: 1
-  m_CutoffFrequency: 5000
-  m_HighpassResonanceQ: 1
 --- !u!1 &1858940524409500
 GameObject:
   m_ObjectHideFlags: 0
