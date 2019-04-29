@@ -21,9 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Final Levels/VictoryScene.unity
     guid: 5bc1ed12e7f08d14fa251f33f6fe273c
   - enabled: 1
-    path: Assets/Scenes/InGameCutScenes/Pre-BossScene.unity
+    path: Assets/Scenes/Final Levels/InGameCutScenes/Pre-BossScene.unity
     guid: 61d51b07bb886cc479d466944a1b6761
   - enabled: 1
-    path: Assets/Scenes/InGameCutScenes/SecondBossScene.unity
+    path: Assets/Scenes/Final Levels/InGameCutScenes/SecondBossScene.unity
     guid: 6ba777b6b41e8124a9c6fedb4af76ee9
   m_configObjects: {}

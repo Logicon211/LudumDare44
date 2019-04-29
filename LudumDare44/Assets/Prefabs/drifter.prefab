@@ -186,7 +186,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.72, y: 1.69}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &1391008896
 MonoBehaviour:
@@ -202,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogOverlay: {fileID: 5031168046786244115, guid: 66e5bc19d7514704592d22ac0811e54c,
     type: 3}
+  voiceIndex: 0
   audioClips:
   - {fileID: 8300000, guid: 704bf55ddc9fbb9439c149cb6abaa50e, type: 3}
   - {fileID: 8300000, guid: 1ee9fb895da756e4f8d81ea30cbab6e0, type: 3}

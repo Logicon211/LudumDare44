@@ -75,7 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cd1d3bca2dcddb342a48e5a829a402b3, type: 3}
+  m_Sprite: {fileID: 8851108775274731190, guid: d44b16c6b90e3c9439352258003f3c5d,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -150,7 +151,10 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 4f11b51baa26ec34c979ed61696d60c2, type: 3}
   roomController: {fileID: 0}
   explodeLocation: {fileID: 7652688096414703489}
-  debris: []
+  debris:
+  - {fileID: 5493000291409378898, guid: 81b72530c19274b47857bbf7ba79d688, type: 3}
+  - {fileID: 5493000291409378898, guid: 81b72530c19274b47857bbf7ba79d688, type: 3}
+  - {fileID: 621643599189613483, guid: d74335d6f40d4ee47bab753968b490a5, type: 3}
 --- !u!114 &3451232877390836828
 MonoBehaviour:
   m_ObjectHideFlags: 0
