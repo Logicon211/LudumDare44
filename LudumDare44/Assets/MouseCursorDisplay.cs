@@ -6,8 +6,8 @@ public class MouseCursorDisplay : MonoBehaviour
 {
 
     Vector2 mouse;
-    int width = 64;
-    int height = 64;
+    int width = 32;
+    int height = 32;
     public Texture2D cursor;
      
      void Start()
