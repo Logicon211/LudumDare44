@@ -14823,6 +14823,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 1.08
       objectReference: {fileID: 0}
+    - target: {fileID: 8087796814687620957, guid: aaef8b9c606be0f47a591775cf30a6ec,
+        type: 3}
+      propertyPath: hurtSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9db353efa1d3b204d9a85da5ed7adc24, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaef8b9c606be0f47a591775cf30a6ec, type: 3}
 --- !u!1001 &1848868135

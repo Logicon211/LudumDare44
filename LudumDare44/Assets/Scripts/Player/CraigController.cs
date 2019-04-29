@@ -97,6 +97,8 @@ public class CraigController : MonoBehaviour
     private float regenAmountRemaining = 0f;
     private bool isRegenerating = false;
 
+    private bool isCoolingDown = false;
+
 
     // Use this for initialization
     void Start()
@@ -197,7 +199,8 @@ public class CraigController : MonoBehaviour
             ShootShotgun();
             
         }
-        else
+        
+        if(!gameManager.IsPaused())
         {
             if (heatcooldowndelaytimer > 0)
             {
@@ -222,6 +225,14 @@ public class CraigController : MonoBehaviour
         float heatPercentage = heat / heatMax;
         cooldownBar.SetCooldown(heatPercentage);
         GunSizzlan.volume = (0.5f * (heatPercentage));
+
+        if(heat >= 100) {
+            isCoolingDown = true;
+        }
+
+        if(heat <= 0) {
+            isCoolingDown = false;
+        }
 
         if(isRegenerating && regenAmountRemaining > 0f) {
             float regenAmount = Time.deltaTime * 20f;
@@ -248,8 +259,9 @@ public class CraigController : MonoBehaviour
     public void Damage(float damageTaken)
     {
         health -= damageTaken;
-        AS.PlayOneShot(hurtSound);
-
+        if(damageTaken > 0f) {
+            AS.PlayOneShot(hurtSound);
+        }
         healthbar.SetHealth(health/maxHealth);
     }
 
@@ -274,7 +286,7 @@ public class CraigController : MonoBehaviour
 
     public void ShootShotgun()
     {
-        if (cooldown <= 0)
+        if (cooldown <= 0 && !isCoolingDown)
         {
             //Rotate shoot position so its pointing towards the mouse
             Vector3 mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -334,6 +346,7 @@ public class CraigController : MonoBehaviour
     public void upgradeSpread()
     {
         spread++;
+        damage *= 0.8f;
     }
     public void upgradeFireRate()
     {

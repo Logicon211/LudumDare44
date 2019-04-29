@@ -17,6 +17,7 @@ public class MouseCursorDisplay : MonoBehaviour
      
      void Update()
      {
+         Cursor.visible = false;
          mouse = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
      }
      
