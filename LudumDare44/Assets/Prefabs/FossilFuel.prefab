@@ -292,12 +292,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 20
-  attackDistance: 40
+  attackDistance: 10000
   speed: 10
   attackSpeed: 20
   attackCooldown: 5
   gunHole: {fileID: 1998359176}
-  animator: {fileID: 647639923}
 --- !u!50 &6964122309241993255
 Rigidbody2D:
   serializedVersion: 4
