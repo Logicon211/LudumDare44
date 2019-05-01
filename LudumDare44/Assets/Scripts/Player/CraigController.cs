@@ -93,7 +93,7 @@ public class CraigController : MonoBehaviour
     public float transitionSpeed = 2f;
     private float preTransitionSpeed = 10f;
 
-    public float healthRegenPerTransition = 100f;
+    public float healthRegenPerTransition = 0.5f;
     private float regenAmountRemaining = 0f;
     private bool isRegenerating = false;
 
@@ -400,7 +400,7 @@ public class CraigController : MonoBehaviour
         playerspeed = transitionSpeed;
 
         isRegenerating = true;
-        regenAmountRemaining = healthRegenPerTransition;
+        regenAmountRemaining = maxHealth * healthRegenPerTransition;
 
         if(healthRegenUp) {
             regenAmountRemaining += 40f;

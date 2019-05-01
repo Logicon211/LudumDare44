@@ -1106,7 +1106,7 @@ Transform:
   m_Children:
   - {fileID: 1899062065}
   m_Father: {fileID: 0}
-  m_RootOrder: 78
+  m_RootOrder: 79
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &134637937
 MonoBehaviour:
@@ -1378,7 +1378,7 @@ PrefabInstance:
     - target: {fileID: 9064437458878037718, guid: fd7a3d08568bb9f4da7bed36635bbac0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 9064437458878037718, guid: fd7a3d08568bb9f4da7bed36635bbac0,
         type: 3}
@@ -3781,7 +3781,7 @@ Transform:
   - {fileID: 1544128271}
   - {fileID: 1177852231}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &580408177
 PrefabInstance:
@@ -8892,7 +8892,7 @@ PrefabInstance:
     - target: {fileID: 9064437458878037718, guid: fd7a3d08568bb9f4da7bed36635bbac0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 79
+      value: 78
       objectReference: {fileID: 0}
     - target: {fileID: 9064437458878037718, guid: fd7a3d08568bb9f4da7bed36635bbac0,
         type: 3}
@@ -9960,7 +9960,7 @@ PrefabInstance:
     - target: {fileID: 2348716064782292300, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -71.2
+      value: -90.2
       objectReference: {fileID: 0}
     - target: {fileID: 2348716064782292300, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
@@ -9970,17 +9970,17 @@ PrefabInstance:
     - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
       propertyPath: oilOrksWaves.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
       propertyPath: crudeCriminalsWaves.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
       propertyPath: ninjasWaves.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
@@ -10000,7 +10000,7 @@ PrefabInstance:
     - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
       propertyPath: numberOfWaves
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
@@ -10035,6 +10035,156 @@ PrefabInstance:
     - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
         type: 3}
       propertyPath: ninjasWaves.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[4]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[5]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[6]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[7]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[8]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[9]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[10]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[11]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[12]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[13]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[14]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[15]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[16]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[17]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[18]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[19]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[20]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[21]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[22]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[23]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[24]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[25]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[26]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[27]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[28]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[29]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[30]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[31]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[32]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348716064982460598, guid: f428bc4c0f0fe71458202d557dcff66d,
+        type: 3}
+      propertyPath: oilOrksWaves.Array.data[33]
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7480446083038277439, guid: f428bc4c0f0fe71458202d557dcff66d,
@@ -14818,16 +14968,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8084887534505666553, guid: aaef8b9c606be0f47a591775cf30a6ec,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087796814687620957, guid: aaef8b9c606be0f47a591775cf30a6ec,
-        type: 3}
-      propertyPath: hurtSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 9db353efa1d3b204d9a85da5ed7adc24, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaef8b9c606be0f47a591775cf30a6ec, type: 3}
 --- !u!1001 &1848868135
