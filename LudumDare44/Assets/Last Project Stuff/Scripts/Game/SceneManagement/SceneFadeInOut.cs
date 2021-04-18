@@ -13,7 +13,7 @@ public class SceneFadeInOut : MonoBehaviour
 	void Awake ()
 	{
 		// Set the texture so that it is the the size of the screen and covers it.
-		GetComponent<GUITexture>().pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
+		// GetComponent<UnityEngine.UI.Image>().pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
 	}
 
 
@@ -44,14 +44,14 @@ public class SceneFadeInOut : MonoBehaviour
 	void FadeToClear ()
 	{
 		// Lerp the colour of the texture between itself and transparent.
-		GetComponent<GUITexture>().color = Color.Lerp(GetComponent<GUITexture>().color, Color.clear, fadeSpeed * Time.deltaTime);
+		GetComponent<UnityEngine.UI.Image>().color = Color.Lerp(GetComponent<UnityEngine.UI.Image>().color, Color.clear, fadeSpeed * Time.deltaTime);
 	}
 
 
 	void FadeToBlack ()
 	{
 		// Lerp the colour of the texture between itself and black.
-		GetComponent<GUITexture>().color = Color.Lerp(GetComponent<GUITexture>().color, Color.black, fadeSpeed * Time.deltaTime);
+		GetComponent<UnityEngine.UI.Image>().color = Color.Lerp(GetComponent<UnityEngine.UI.Image>().color, Color.black, fadeSpeed * Time.deltaTime);
 	}
 
 
@@ -61,11 +61,11 @@ public class SceneFadeInOut : MonoBehaviour
 		FadeToClear();
 
 		// If the texture is almost clear...
-		if(GetComponent<GUITexture>().color.a <= 0.05f)
+		if(GetComponent<UnityEngine.UI.Image>().color.a <= 0.05f)
 		{
 			// ... set the colour to clear and disable the GUITexture.
-			GetComponent<GUITexture>().color = Color.clear;
-			GetComponent<GUITexture>().enabled = false;
+			GetComponent<UnityEngine.UI.Image>().color = Color.clear;
+			GetComponent<UnityEngine.UI.Image>().enabled = false;
 
 			// The scene is no longer starting.
 			sceneStarting = false;
@@ -91,13 +91,13 @@ public class SceneFadeInOut : MonoBehaviour
 		yield return new  WaitForSeconds(3);  // or however long you want it to wait
 
 		// Make sure the texture is enabled.
-		GetComponent<GUITexture>().enabled = true;
+		GetComponent<UnityEngine.UI.Image>().enabled = true;
     
 		// Start fading towards black.
 		FadeToBlack();
 
 		// If the screen is almost black...
-		if (GetComponent<GUITexture> ().color.a >= 0.95f) {
+		if (GetComponent<UnityEngine.UI.Image> ().color.a >= 0.95f) {
 			// ... reload the level.
 			//Application.LoadLevel(sceneToLoad);
 			//PersistentGameObject PGO = GameObject.FindGameObjectWithTag ("PersistentObject").GetComponent<PersistentGameObject> ();
