@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +11,6 @@ public class IntroSpriteFlow : MonoBehaviour
 	private bool sceneStarting = true;      // Whether or not the scene is still fading in.
 	private int sceneEnding = 0;
 	private SpriteRenderer spriteRenderer;
-	public UnityEngine.UI.Image gui;
 
 	public AudioSource audioSource;
 	public AudioClip jingle;
@@ -19,6 +19,8 @@ public class IntroSpriteFlow : MonoBehaviour
 	public int slideToStopMusicAndJingle = 0;
 
 	private GameManager gameManager;
+
+	public GameObject blackOutSquare;
 
 	void Start ()
 	{
@@ -30,8 +32,7 @@ public class IntroSpriteFlow : MonoBehaviour
 
 	void Awake ()
 	{
-		// Set the texture so that it is the the size of the screen and covers it.
-		// GetComponent<UnityEngine.UI.Image>().pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
+		blackOutSquare.SetActive(true);
 	}
 	
 	
@@ -74,9 +75,11 @@ public class IntroSpriteFlow : MonoBehaviour
 	{
 		// Lerp the colour of the texture between itself and transparent.
 		if(Time.deltaTime < 0.1f) {
-			GetComponent<UnityEngine.UI.Image>().color = Color.Lerp(GetComponent<UnityEngine.UI.Image>().color, Color.clear, fadeSpeed * Time.deltaTime);
+			blackOutSquare.GetComponent<Image>().color = Color.Lerp(blackOutSquare.GetComponent<Image>().color, Color.clear, fadeSpeed * Time.deltaTime);
+			// GetComponent<UnityEngine.UI.Image>().color = Color.Lerp(GetComponent<UnityEngine.UI.Image>().color, Color.clear, fadeSpeed * Time.deltaTime);
 		} else {
-			GetComponent<UnityEngine.UI.Image>().color = Color.Lerp(GetComponent<UnityEngine.UI.Image>().color, Color.black, fadeSpeed * Time.deltaTime);
+			blackOutSquare.GetComponent<Image>().color = Color.Lerp(blackOutSquare.GetComponent<Image>().color, Color.black, fadeSpeed * Time.deltaTime);
+			// GetComponent<UnityEngine.UI.Image>().color = Color.Lerp(GetComponent<UnityEngine.UI.Image>().color, Color.black, fadeSpeed * Time.deltaTime);
 		}
 	}
 	
@@ -84,15 +87,15 @@ public class IntroSpriteFlow : MonoBehaviour
 	void FadeToBlack ()
 	{
 		// Lerp the colour of the texture between itself and black.
-		float prevAlpha = GetComponent<UnityEngine.UI.Image>().color.a;
+		float prevAlpha = blackOutSquare.GetComponent<Image>().color.a;
 
-		GetComponent<UnityEngine.UI.Image>().color = Color.Lerp(GetComponent<UnityEngine.UI.Image>().color, Color.black, fadeSpeed * Time.deltaTime);
+		blackOutSquare.GetComponent<Image>().color = Color.Lerp(blackOutSquare.GetComponent<Image>().color, Color.black, fadeSpeed * Time.deltaTime);
 
-		float currAlpha = GetComponent<UnityEngine.UI.Image>().color.a;
+		float currAlpha = blackOutSquare.GetComponent<Image>().color.a;
 
 		if(currAlpha - prevAlpha < 0.05f) {
-			Color mask = GetComponent<UnityEngine.UI.Image>().color;
-			GetComponent<UnityEngine.UI.Image>().color = new Color(mask.r, mask.g, mask.b, mask.a +0.05f);
+			Color mask = blackOutSquare.GetComponent<Image>().color;
+			blackOutSquare.GetComponent<Image>().color = new Color(mask.r, mask.g, mask.b, mask.a +0.05f);
 		}
 	}
 	
@@ -103,11 +106,11 @@ public class IntroSpriteFlow : MonoBehaviour
 		FadeToClear();
 		
 		// If the texture is almost clear...
-		if(GetComponent<UnityEngine.UI.Image>().color.a <= 0.05f)
+		if(blackOutSquare.GetComponent<Image>().color.a <= 0.05f)
 		{
 			// ... set the colour to clear and disable the GUITexture.
-			GetComponent<UnityEngine.UI.Image>().color = Color.clear;
-			GetComponent<UnityEngine.UI.Image>().enabled = false;
+			blackOutSquare.GetComponent<Image>().color = Color.clear;
+			blackOutSquare.GetComponent<Image>().enabled = false;
 			
 			// The scene is no longer starting.
 			sceneStarting = false;
@@ -118,13 +121,13 @@ public class IntroSpriteFlow : MonoBehaviour
 	public void EndScene ()
 	{
 		// Make sure the texture is enabled.
-		GetComponent<UnityEngine.UI.Image>().enabled = true;
+		blackOutSquare.GetComponent<Image>().enabled = true;
 		
 		// Start fading towards black.
 		FadeToBlack();
 		
 		// If the screen is almost black...
-		if(GetComponent<UnityEngine.UI.Image>().color.a >= 0.95f) {
+		if(blackOutSquare.GetComponent<Image>().color.a >= 0.95f) {
 			// ... reload the level.
 			//Application.LoadLevel(levelToLoad);
 			// if (gameManager != null)
